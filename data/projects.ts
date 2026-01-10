@@ -45,6 +45,24 @@ export const projects: Project[] = [
     github: "https://github.com/rachts/Vitamend-UPSTOP",
     featured: true,
   },
+  {
+  id: "kolkata-metro-web",
+  name: "Kolkata Metro Route Planner",
+  problem: "Commuters need a simple web tool to plan optimal routes and estimate travel time across the Kolkata Metro network.",
+  description:
+    "A civic-tech web application that displays the Kolkata Metro map and intelligently estimates optimal routes and travel time between stations using graph-based pathfinding. Designed for commuters to plan journeys efficiently and visually explore the metro network.",
+  techStack: ["Next.js 15", "React", "TypeScript", "Tailwind CSS", "shadcn/ui", "Lucide React"],
+  features: [
+    "Interactive map of the Kolkata Metro network",
+    "Optimal route planning using Dijkstra’s algorithm",
+    "Travel time breakdown with interchange handling",
+    "Dark & light theme support",
+    "Responsive design for mobile and desktop",
+  ],
+  liveDemo: "https://metro-kolkata.vercel.app/",
+  github: "https://github.com/rachts/Kolkata-Metro",
+  featured: true,
+},
     {
   id: "doceasy",
   name: "DocEasy",
