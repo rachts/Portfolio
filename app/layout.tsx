@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     description: "Full-stack developer building AI-driven web products with real-world impact.",
     type: "website",
   },
-    generator: 'v0.app'
+    generator: ''
 }
 
 export const viewport: Viewport = {
