@@ -10,7 +10,8 @@ const _mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" })
 export const metadata: Metadata = {
   title: "Rachit Kumar Tiwari | AI Product Builder",
   description: "Tactical UI Portfolio of Rachit Kumar Tiwari, Full-Stack AI Developer.",
-  generator: 'v0.app'
+  generator: 'v0.app',
+  icons: "/icon.png",
 }
 
 export const viewport: Viewport = {
