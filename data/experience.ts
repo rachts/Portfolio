@@ -26,6 +26,17 @@ export const experiences: Experience[] = [
     description: "Building and shipping self-driven projects, focusing on AI-powered platforms and automation tools.",
     highlights: ["End-to-end product development", "User research and iteration", "Production deployment experience"],
   },
+  {
+  id: "vitamend-founder",
+  title: "Founder, Vitamend",
+  period: "2024 — Present",
+  description: "Leading the development of an AI-driven platform to streamline medicine donation and redistribution, focusing on accessibility, safety, and scalable healthcare impact.",
+  highlights: [
+    "Built and scaled an end-to-end medicine donation ecosystem",
+    "Implemented AI-based verification and expiry detection systems",
+    "Designed secure workflows for validation, credits, and redistribution"
+  ],
+},
    {
     id: "Database Management System Intern",
     title: "Database Management System Intern For Swiggy",
