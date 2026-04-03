@@ -12,23 +12,6 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: "vocalis",
-    name: "Vocalis",
-    problem: "Need for intelligent voice-driven AI assistants in web applications",
-    description:
-      "An AI-powered virtual assistant and experimental product platform that leverages natural language processing for seamless human-computer interaction.",
-    techStack: ["Next.js", "TypeScript", "OpenAI", "TailwindCSS", "Vercel"],
-    features: [
-      "Voice recognition and synthesis",
-      "Context-aware conversations",
-      "Plugin architecture for extensibility",
-      "Real-time response streaming",
-    ],
-    liveDemo: "https://vocalis-va.vercel.app/",
-    github: "https://github.com/rachts/Vocalis",
-    featured: true,
-  },
-  {
     id: "vitamend",
     name: "Vitamend",
     problem: "Medicine waste and lack of donation infrastructure",
@@ -43,6 +26,23 @@ export const projects: Project[] = [
     ],
     liveDemo: "https://vitamend-org.vercel.app/",
     github: "https://github.com/rachts/Vitamend-official",
+    featured: true,
+  },
+  {
+    id: "vocalis",
+    name: "Vocalis",
+    problem: "Need for intelligent voice-driven AI assistants in web applications",
+    description:
+      "An AI-powered virtual assistant and experimental product platform that leverages natural language processing for seamless human-computer interaction.",
+    techStack: ["Next.js", "TypeScript", "OpenAI", "TailwindCSS", "Vercel"],
+    features: [
+      "Voice recognition and synthesis",
+      "Context-aware conversations",
+      "Plugin architecture for extensibility",
+      "Real-time response streaming",
+    ],
+    liveDemo: "https://vocalis-va.vercel.app/",
+    github: "https://github.com/rachts/Vocalis",
     featured: true,
   },
     {
