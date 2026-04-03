@@ -1,36 +1,20 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
-import { Inter, Geist_Mono } from "next/font/google"
+import { JetBrains_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
+import { TopNav } from "@/components/top-nav"
 
-const _inter = Inter({ subsets: ["latin"] })
-const _geistMono = Geist_Mono({ subsets: ["latin"] })
+const _mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" })
 
 export const metadata: Metadata = {
-  title: "Rachit Kumar Tiwari | Full-Stack Developer",
-  description:
-    "Full-stack developer building AI-driven web products with real-world impact. Specializing in JavaScript, TypeScript, Next.js, and AI integration.",
-  keywords: [
-    "Full-Stack Developer",
-    "JavaScript",
-    "TypeScript",
-    "Next.js",
-    "React",
-    "AI Integration",
-    "Web Development",
-  ],
-  authors: [{ name: "Rachit Kumar Tiwari" }],
-  openGraph: {
-    title: "Rachit Kumar Tiwari | Full-Stack Developer",
-    description: "Full-stack developer building AI-driven web products with real-world impact.",
-    type: "website",
-  },
-    generator: 'v0.app'
+  title: "Rachit Kumar Tiwari | AI Product Builder",
+  description: "Tactical UI Portfolio of Rachit Kumar Tiwari, Full-Stack AI Developer.",
+  generator: 'v0.app'
 }
 
 export const viewport: Viewport = {
-  themeColor: "#0f172a",
+  themeColor: "#0a0a0a",
 }
 
 export default function RootLayout({
@@ -39,8 +23,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`font-sans antialiased`}>
+    <html lang="en" className={`dark ${_mono.variable}`}>
+      <body className={`font-sans antialiased overflow-x-hidden selection:bg-primary selection:text-white`}>
+        <TopNav />
+        <div className="hud-grid" />
+        <div className="scanline" />
         {children}
         <Analytics />
       </body>
