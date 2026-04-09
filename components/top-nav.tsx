@@ -32,7 +32,7 @@ export function TopNav() {
     <header
       className={`fixed top-0 left-0 w-full z-[80] font-mono transition-transform duration-500 ease-[cubic-bezier(0.2,1,0.2,1)] ${hidden ? '-translate-y-full' : 'translate-y-0'} bg-background/90 backdrop-blur-sm border-b border-border`}
     >
-      <div className="w-full flex items-center justify-between px-8 py-4">
+      <div className="max-w-[1400px] mx-auto w-full flex items-center justify-between px-6 md:px-12 lg:px-[10%] py-4">
         {/* LOGO HUD */}
         <div className="flex items-center gap-3">
           <div className="w-3 h-3 bg-primary" />

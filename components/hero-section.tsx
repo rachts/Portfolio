@@ -105,7 +105,7 @@ export function HeroSection() {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center px-6 md:px-16 lg:px-[10%] overflow-hidden pt-20 bg-background text-foreground perspective-[1000px]">
+    <section className="relative min-h-screen flex items-center px-6 md:px-12 lg:px-[10%] overflow-hidden pt-20 bg-background text-foreground perspective-[1000px]">
       
       {/* Massive Organic Background Typography */}
       <motion.div 
@@ -117,7 +117,7 @@ export function HeroSection() {
 
       <motion.div 
         style={{ rotateX, rotateY, x: translateX, y: translateY }}
-        className="max-w-[1400px] w-full relative z-10 flex flex-col justify-center transform-style-3d will-change-transform"
+        className="max-w-[1400px] mx-auto w-full relative z-10 flex flex-col justify-center transform-style-3d will-change-transform"
       >
         
         {/* TOP META ROW */}
@@ -136,7 +136,7 @@ export function HeroSection() {
           <OrganicText 
             text="Rachit" 
             delayOffset={0.2} 
-            className="text-[4rem] sm:text-[6rem] md:text-[8rem] lg:text-[11rem] font-black tracking-tighter uppercase leading-[0.85] text-foreground mix-blend-difference" 
+            className="text-6xl sm:text-[5rem] md:text-[8rem] lg:text-[11rem] font-black tracking-tighter uppercase leading-[0.85] text-foreground mix-blend-difference" 
           />
           <OrganicText 
             text="Digital Product Architect" 

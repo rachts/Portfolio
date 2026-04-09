@@ -3,8 +3,8 @@ import { Github, Linkedin, Mail } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="py-12 px-6 border-t border-border">
-      <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+    <footer className="py-12 px-6 md:px-12 lg:px-[10%] border-t border-border">
+      <div className="max-w-[1400px] w-full mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
         <p className="text-sm text-muted-foreground">
           © {new Date().getFullYear()} Rachit Kumar Tiwari. All rights reserved.
         </p>
@@ -33,7 +33,7 @@ function SocialLink({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="text-muted-foreground hover:text-primary transition-colors"
+      className="p-2 sm:p-0 text-muted-foreground hover:text-primary transition-colors"
     >
       {icon}
     </a>

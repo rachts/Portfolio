@@ -3,9 +3,10 @@ import { ArrowUpRight } from "lucide-react"
 
 export function ExperienceSection() {
   return (
-    <section id="experience" className="py-24 px-6">
-      <div className="max-w-4xl mx-auto">
-        <div className="grid md:grid-cols-[1fr_2fr] gap-12">
+    <section id="experience" className="py-24 md:py-32 px-6 md:px-12 lg:px-[10%] w-full relative">
+      <div className="max-w-[1400px] w-full mx-auto flex justify-center">
+        <div className="w-full max-w-4xl">
+          <div className="grid md:grid-cols-[1fr_2fr] gap-12">
           <div>
             <h2 className="text-sm font-medium tracking-widest text-muted-foreground uppercase">Experience</h2>
           </div>

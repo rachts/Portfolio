@@ -4,9 +4,10 @@ import { Button } from "@/components/ui/button"
 
 export function ContactSection() {
   return (
-    <section id="contact" className="py-24 px-6">
-      <div className="max-w-4xl mx-auto">
-        <div className="grid md:grid-cols-[1fr_2fr] gap-12">
+    <section id="contact" className="py-24 md:py-32 px-6 md:px-12 lg:px-[10%] w-full relative">
+      <div className="max-w-[1400px] w-full mx-auto flex justify-center">
+        <div className="w-full max-w-4xl">
+          <div className="grid md:grid-cols-[1fr_2fr] gap-12">
           <div>
             <h2 className="text-sm font-medium tracking-widest text-muted-foreground uppercase">Contact</h2>
           </div>
@@ -35,7 +36,7 @@ export function ContactSection() {
             </div>
 
             <div className="pt-8">
-              <Button asChild>
+              <Button asChild size="lg" className="px-8 h-12">
                 <a href="mailto:tiwari.rachit@gmail.com">Get in Touch</a>
               </Button>
             </div>
@@ -60,7 +61,7 @@ function ContactLink({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors group"
+      className="flex items-center gap-3 py-2 text-muted-foreground hover:text-primary transition-colors group"
     >
       <span className="text-muted-foreground group-hover:text-primary transition-colors">{icon}</span>
       <span>{label}</span>

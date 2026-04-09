@@ -21,7 +21,7 @@ export function ProjectsSection() {
   const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.95, 1, 1, 0.95])
 
   return (
-    <section ref={sectionRef} id="projects" className="py-32 px-6 md:px-16 lg:px-[10%] relative perspective-[1200px]">
+    <section ref={sectionRef} id="projects" className="py-24 md:py-32 px-6 md:px-12 lg:px-[10%] relative perspective-[1200px]">
       
       {/* Massive Section Watermark */}
       <motion.div 
@@ -33,7 +33,7 @@ export function ProjectsSection() {
 
       <motion.div 
         style={{ rotateX, opacity, scale }}
-        className="max-w-[1400px] mx-auto relative z-10 flex flex-col gap-24 transform-style-3d will-change-transform"
+        className="max-w-[1400px] w-full mx-auto relative z-10 flex flex-col gap-16 md:gap-24 transform-style-3d will-change-transform"
       >
         
         <div className="flex flex-col md:flex-row items-baseline justify-between gap-8">

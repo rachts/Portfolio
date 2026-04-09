@@ -43,7 +43,7 @@ export function AboutSection() {
   }
 
   return (
-    <section ref={sectionRef} id="about" className="py-32 px-6 md:px-16 lg:px-[10%] relative overflow-hidden">
+    <section ref={sectionRef} id="about" className="py-24 md:py-32 px-6 md:px-12 lg:px-[10%] relative overflow-hidden">
       
       {/* Organic Background Blob / Element */}
       <motion.div 
@@ -56,7 +56,7 @@ export function AboutSection() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-10%" }}
-        className="max-w-[1400px] mx-auto relative z-10 flex flex-col lg:flex-row items-center gap-16 lg:gap-8"
+        className="max-w-[1400px] w-full mx-auto relative z-10 flex flex-col lg:flex-row items-center gap-12 md:gap-16 lg:gap-8"
       >
         
         {/* ASYMMETRICAL IMAGE CONTAINER */}

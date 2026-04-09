@@ -47,9 +47,9 @@ export function SkillsSection() {
       viewport={{ once: true, margin: "-10%" }}
       variants={containerVariants}
       id="skills" 
-      className="py-24 border-t border-border overflow-hidden"
+      className="py-24 md:py-32 border-t border-border overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto px-8 md:px-16 lg:px-24 mb-12">
+      <div className="max-w-[1400px] w-full mx-auto px-6 md:px-12 lg:px-[10%] mb-12">
         <motion.div variants={childVariants} className="border-b border-border pb-6 flex items-center justify-between">
           <h2 className="text-3xl font-black tracking-tighter text-foreground uppercase flex items-center gap-4">
             <span className="w-4 h-4 bg-primary shrink-0" />
@@ -59,7 +59,7 @@ export function SkillsSection() {
       </div>
 
       {/* Marquee Track */}
-      <motion.div variants={childVariants} className="relative w-full overflow-hidden flex border-y border-border/50 bg-card/30 py-12">
+      <motion.div variants={childVariants} className="relative w-full overflow-hidden flex border-y border-border/50 bg-card/30 py-8 md:py-12">
         
         {/* Left/Right sheer overlays for fade effect */}
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
