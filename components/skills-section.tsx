@@ -11,7 +11,6 @@ const techSkills = [
   { name: "Node.js", icon: "nodedotjs", color: "#339933" },
   { name: "PostgreSQL", icon: "postgresql", color: "#4169E1" },
   { name: "Tailwind CSS", icon: "tailwindcss", color: "#06B6D4" },
-  { name: "AWS", icon: "amazonwebservices", color: "#FF9900" },
   { name: "Docker", icon: "docker", color: "#2496ED" },
   { name: "Git", icon: "git", color: "#F05032" }
 ]
