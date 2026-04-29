@@ -3,12 +3,12 @@ import { Github, Linkedin, Mail } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="py-12 px-6 md:px-12 lg:px-[10%] border-t border-border">
-      <div className="max-w-[1400px] w-full mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
-        <p className="text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Rachit Kumar Tiwari. All rights reserved.
+    <footer className="py-12 px-6 md:px-12 lg:px-[10%] border-t border-white/10 bg-background">
+      <div className="max-w-[1400px] w-full mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+        <p className="text-sm font-medium text-muted-foreground text-center md:text-left">
+          © {new Date().getFullYear()} Rachit Tiwari. Built with Next.js & Tailwind.
         </p>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-6">
           <SocialLink href="https://github.com/rachts" icon={<Github className="h-5 w-5" />} label="GitHub" />
           <SocialLink href="https://www.linkedin.com/in/rachitkrtiwari/" icon={<Linkedin className="h-5 w-5" />} label="LinkedIn" />
           <SocialLink href="mailto:tiwari.rachit@gmail.com" icon={<Mail className="h-5 w-5" />} label="Email" />
@@ -33,7 +33,7 @@ function SocialLink({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="p-2 sm:p-0 text-muted-foreground hover:text-primary transition-colors"
+      className="text-muted-foreground hover:text-foreground hover:scale-110 transition-all duration-300"
     >
       {icon}
     </a>

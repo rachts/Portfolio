@@ -1,32 +1,20 @@
 "use client"
 
-import { Database, LineChart, Code2 } from "lucide-react"
-import { motion, useScroll, useTransform } from "framer-motion"
-import { useRef } from "react"
+import { Terminal } from "lucide-react"
+import { motion } from "framer-motion"
 
 export function AboutSection() {
-  const sectionRef = useRef<HTMLElement>(null)
-  
-  // Parallax subtle binding
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  })
-  
-  const yParallax = useTransform(scrollYProgress, [0, 1], [30, -30])
-
   const containerVariants = {
     hidden: {},
     show: {
       transition: {
         staggerChildren: 0.15,
-        delayChildren: 0.1,
       }
     }
   }
 
   const childVariants = {
-    hidden: { opacity: 0, y: 40 },
+    hidden: { opacity: 0, y: 30 },
     show: { 
       opacity: 1, 
       y: 0, 
@@ -34,100 +22,88 @@ export function AboutSection() {
     }
   }
 
-  const maskVariants = {
-    hidden: { clipPath: 'inset(100% 0 0 0)' },
-    show: { 
-      clipPath: 'inset(0% 0 0 0)', 
-      transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } 
-    }
-  }
-
   return (
-    <section ref={sectionRef} id="about" className="py-24 md:py-32 px-6 md:px-12 lg:px-[10%] relative overflow-hidden">
-      
-      {/* Organic Background Blob / Element */}
-      <motion.div 
-        style={{ y: yParallax }}
-        className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-primary/5 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 translate-x-1/4 will-change-transform" 
-      />
-
-      <motion.div 
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-10%" }}
-        className="max-w-[1400px] w-full mx-auto relative z-10 flex flex-col lg:flex-row items-center gap-12 md:gap-16 lg:gap-8"
-      >
+    <section id="about" className="py-24 md:py-32 px-6 md:px-12 lg:px-[10%] relative overflow-hidden bg-background">
+      <div className="max-w-[1400px] w-full mx-auto relative z-10 flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
         
-        {/* ASYMMETRICAL IMAGE CONTAINER */}
-        <div className="w-full lg:w-5/12 relative">
-          <motion.div 
-            variants={maskVariants}
-            className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl"
-          >
-            <div className="absolute inset-0 bg-primary/10 mix-blend-overlay z-10 pointer-events-none" />
-            <img 
-              src="/rachit1.jpg" 
-              alt="Secondary Profile" 
-              className="w-full h-full object-cover filter grayscale contrast-110 hover:grayscale-0 hover:scale-105 transition-all duration-1000 ease-out"
-            />
-            {/* Organic Label */}
-            <div className="absolute bottom-6 left-6 z-20 text-[10px] text-white font-sans tracking-widest bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 uppercase">
-              Visual Data. 01
-            </div>
-          </motion.div>
-          {/* Decorative Offset Element */}
-          <motion.div 
-            variants={maskVariants}
-            className="absolute -bottom-8 -right-8 w-64 h-64 border border-border rounded-full hidden md:block opacity-50" 
-          />
-        </div>
-
-        {/* ORGANIC TEXT CONTAINER */}
-        <div className="w-full lg:w-7/12 lg:pl-16 space-y-12">
-          
-          <motion.div variants={childVariants} className="pt-4 lg:pt-0">
-            <h2 className="text-[2.5rem] md:text-5xl lg:text-6xl font-black tracking-tighter text-foreground leading-[1.1] mb-6">
-              Engineering <br/> <span className="text-primary italic font-serif font-light">Digital Fluidity.</span>
+        {/* TEXT CONTENT */}
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
+          className="w-full lg:w-1/2 space-y-8"
+        >
+          <motion.div variants={childVariants}>
+            <h2 className="font-sora text-4xl md:text-5xl font-bold tracking-tight text-white mb-6">
+              Beyond the <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">Code</span>
             </h2>
           </motion.div>
 
-          <motion.div variants={childVariants} className="space-y-6 text-base md:text-lg font-sans leading-relaxed text-muted-foreground">
+          <motion.div variants={childVariants} className="space-y-6 text-lg font-inter text-gray-400 leading-relaxed">
             <p>
-              I am an architect of web systems deeply rooted in React, Next.js, and scaling robust APIs. My approach strips away rigid templates, focusing instead on delivering custom, high-fidelity experiences that adapt natively to their constraints.
+              Hi, I'm Rachit. I don't just write code; I build digital ecosystems. My journey in software engineering has been driven by a singular focus: transforming complex technical challenges into fluid, intuitive user experiences.
             </p>
             <p>
-              By fusing raw technical competency with an editorial design philosophy, I engineer systems that don’t just process data—they narrate it.
+              Over the years, I've architected everything from intelligent AI assistants and smart finance tools to comprehensive civic-tech platforms. I believe that the best software feels invisible to the user—it just works, brilliantly and beautifully.
+            </p>
+            <p>
+              When I'm not optimizing algorithms or polishing UI transitions, you'll probably find me exploring the intersection of artificial intelligence and human-computer interaction, looking for the next paradigm shift in how we use the web.
             </p>
           </motion.div>
+        </motion.div>
 
-          <motion.div variants={childVariants} className="grid grid-cols-1 sm:grid-cols-3 gap-8 pt-6 border-t border-border/40">
-            <div className="flex flex-col gap-3 group">
-              <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center group-hover:bg-primary transition-colors duration-500">
-                <Code2 className="w-4 h-4 text-primary group-hover:text-white transition-colors" />
+        {/* TERMINAL / CURRENTLY WORKING ON */}
+        <motion.div 
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.3 }}
+          className="w-full lg:w-1/2"
+        >
+          <div className="rounded-2xl bg-[#161616] border border-white/10 shadow-2xl overflow-hidden">
+            <div className="flex items-center px-4 py-3 border-b border-white/10 bg-[#1e1e1e]">
+              <div className="flex gap-2">
+                <div className="w-3 h-3 rounded-full bg-red-500/80" />
+                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                <div className="w-3 h-3 rounded-full bg-green-500/80" />
               </div>
-              <div className="text-sm font-bold text-foreground">Frontend</div>
-              <div className="text-[11px] text-muted-foreground leading-relaxed">Liquid abstractions in React and Framer Motion.</div>
-            </div>
-            <div className="flex flex-col gap-3 group">
-              <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center group-hover:bg-primary transition-colors duration-500">
-                <Database className="w-4 h-4 text-primary group-hover:text-white transition-colors" />
+              <div className="flex-1 flex justify-center text-xs text-gray-500 font-mono items-center gap-2">
+                <Terminal className="w-3 h-3" />
+                status.sh
               </div>
-              <div className="text-sm font-bold text-foreground">Backend</div>
-              <div className="text-[11px] text-muted-foreground leading-relaxed">Rock-solid infrastructure using Postgres, Prisma, & Node.</div>
             </div>
-            <div className="flex flex-col gap-3 group">
-              <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center group-hover:bg-primary transition-colors duration-500">
-                <LineChart className="w-4 h-4 text-primary group-hover:text-white transition-colors" />
+            <div className="p-6 md:p-8 font-mono text-sm">
+              <div className="text-gray-400 mb-4">
+                <span className="text-green-400">guest@rachit.io</span>:<span className="text-blue-400">~</span>$ ./check_status.sh
               </div>
-              <div className="text-sm font-bold text-foreground">Optimization</div>
-              <div className="text-[11px] text-muted-foreground leading-relaxed">Algorithmic efficiency and continuous deployment pipelines.</div>
+              <div className="space-y-4">
+                <div>
+                  <span className="text-indigo-400 font-bold">Currently Working On:</span>
+                  <ul className="mt-2 space-y-2 text-gray-300 ml-4 border-l-2 border-white/10 pl-4">
+                    <li className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                      Building next-gen AI interfaces
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                      Refining motion physics in React
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                      Exploring WebGL for 3D web experiences
+                    </li>
+                  </ul>
+                </div>
+                <div className="pt-4 text-gray-500 animate-pulse">
+                  _ Waiting for new connections...
+                </div>
+              </div>
             </div>
-          </motion.div>
+          </div>
+        </motion.div>
 
-        </div>
-
-      </motion.div>
+      </div>
     </section>
   )
 }

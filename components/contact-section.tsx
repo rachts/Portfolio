@@ -1,70 +1,48 @@
-import type React from "react"
-import { Github, Linkedin, Mail } from "lucide-react"
-import { Button } from "@/components/ui/button"
+"use client"
+
+import { Mail, ArrowRight } from "lucide-react"
+import { motion } from "framer-motion"
 
 export function ContactSection() {
   return (
-    <section id="contact" className="py-24 md:py-32 px-6 md:px-12 lg:px-[10%] w-full relative">
-      <div className="max-w-[1400px] w-full mx-auto flex justify-center">
-        <div className="w-full max-w-4xl">
-          <div className="grid md:grid-cols-[1fr_2fr] gap-12">
-          <div>
-            <h2 className="text-sm font-medium tracking-widest text-muted-foreground uppercase">Contact</h2>
-          </div>
-          <div className="space-y-8">
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              If you'd like to discuss a project or just say hi, I'm always down to chat. Feel free to reach out through
-              any of the channels below.
+    <section id="contact" className="py-24 md:py-32 px-6 md:px-12 lg:px-[10%] relative overflow-hidden bg-background">
+      <div className="max-w-[1000px] w-full mx-auto relative z-10">
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ type: "spring", stiffness: 100, damping: 20 }}
+          className="relative p-8 md:p-16 rounded-3xl overflow-hidden bg-[#161616] border border-white/10 shadow-2xl text-center"
+        >
+          {/* Ambient Glowing Orbs */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-lg h-full bg-indigo-500/20 blur-[100px] pointer-events-none mix-blend-screen" />
+          
+          <div className="relative z-10 flex flex-col items-center">
+            <div className="w-16 h-16 bg-indigo-500/20 rounded-2xl flex items-center justify-center mb-8 border border-indigo-500/30">
+              <Mail className="w-8 h-8 text-indigo-400" />
+            </div>
+            
+            <h2 className="font-sora text-3xl md:text-5xl font-bold tracking-tight text-white mb-6">
+              Let's Build Something <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">Extraordinary</span>
+            </h2>
+            
+            <p className="text-lg text-gray-400 font-inter mb-10 max-w-xl mx-auto">
+              Whether you have a specific project in mind or just want to explore possibilities, I'm currently open to new opportunities.
             </p>
-
-            <div className="flex flex-col gap-4">
-              <ContactLink
-                href="mailto:tiwari.rachit@gmail.com"
-                icon={<Mail className="h-5 w-5" />}
-                label="tiwari.rachit@gmail.com"
-              />
-              <ContactLink
-                href="https://github.com/rachts"
-                icon={<Github className="h-5 w-5" />}
-                label="github.com/rachts"
-              />
-              <ContactLink
-                href="https://www.linkedin.com/in/rachitkrtiwari/"
-                icon={<Linkedin className="h-5 w-5" />}
-                label="linkedin.com/in/rachitkrtiwari"
-              />
-            </div>
-
-            <div className="pt-8">
-              <Button asChild size="lg" className="px-8 h-12">
-                <a href="mailto:tiwari.rachit@gmail.com">Get in Touch</a>
-              </Button>
-            </div>
+            
+            <a 
+              href="mailto:tiwari.rachit@gmail.com" 
+              className="group relative inline-flex items-center justify-center gap-3 bg-white text-background px-8 py-4 rounded-xl font-bold hover:scale-105 active:scale-95 transition-all duration-300 overflow-hidden"
+            >
+              <span className="relative z-10">Send me an email</span>
+              <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" />
+              <div className="absolute inset-0 bg-gradient-to-r from-indigo-100 to-cyan-100 opacity-0 group-hover:opacity-100 transition-opacity" />
+            </a>
           </div>
-        </div>
+        </motion.div>
+
       </div>
     </section>
-  )
-}
-
-function ContactLink({
-  href,
-  icon,
-  label,
-}: {
-  href: string
-  icon: React.ReactNode
-  label: string
-}) {
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex items-center gap-3 py-2 text-muted-foreground hover:text-primary transition-colors group"
-    >
-      <span className="text-muted-foreground group-hover:text-primary transition-colors">{icon}</span>
-      <span>{label}</span>
-    </a>
   )
 }

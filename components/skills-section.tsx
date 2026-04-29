@@ -1,32 +1,55 @@
 "use client"
 
-import { useState } from "react"
 import { motion } from "framer-motion"
+import { Code2, Database, Wrench } from "lucide-react"
 
-const techSkills = [
-  { name: "TypeScript", icon: "typescript", color: "#3178C6" },
-  { name: "React", icon: "react", color: "#61DAFB" },
-  { name: "Next.js", icon: "nextdotjs", color: "#ffffff" },
-  { name: "Python", icon: "python", color: "#3776AB" },
-  { name: "Node.js", icon: "nodedotjs", color: "#339933" },
-  { name: "PostgreSQL", icon: "postgresql", color: "#4169E1" },
-  { name: "Tailwind CSS", icon: "tailwindcss", color: "#06B6D4" },
-  { name: "Docker", icon: "docker", color: "#2496ED" },
-  { name: "Git", icon: "git", color: "#F05032" }
+const skillCategories = [
+  {
+    title: "Frontend Development",
+    icon: <Code2 className="w-6 h-6 text-indigo-400" />,
+    skills: [
+      { name: "React.js", icon: "react" },
+      { name: "Next.js", icon: "nextdotjs" },
+      { name: "TypeScript", icon: "typescript" },
+      { name: "Tailwind CSS", icon: "tailwindcss" },
+      { name: "Framer Motion", icon: "framer" },
+      { name: "Redux / Zustand", icon: "redux" }
+    ],
+    className: "md:col-span-2 lg:col-span-1"
+  },
+  {
+    title: "Backend & Database",
+    icon: <Database className="w-6 h-6 text-indigo-400" />,
+    skills: [
+      { name: "Node.js", icon: "nodedotjs" },
+      { name: "Express", icon: "express" },
+      { name: "MongoDB", icon: "mongodb" },
+      { name: "PostgreSQL", icon: "postgresql" },
+      { name: "Supabase", icon: "supabase" }
+    ],
+    className: "md:col-span-1"
+  },
+  {
+    title: "Tools & DevOps",
+    icon: <Wrench className="w-6 h-6 text-indigo-400" />,
+    skills: [
+      { name: "Git & GitHub", icon: "git" },
+      { name: "Docker", icon: "docker" },
+      { name: "Vercel", icon: "vercel" },
+      { name: "Figma", icon: "figma" },
+      { name: "Postman", icon: "postman" }
+    ],
+    className: "md:col-span-1"
+  }
 ]
 
 export function SkillsSection() {
-  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null)
-
-  // Duplicate the array to create a seamless infinite marquee
-  const marqueeItems = [...techSkills, ...techSkills]
-
   const containerVariants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
+        staggerChildren: 0.15
       }
     }
   }
@@ -41,68 +64,65 @@ export function SkillsSection() {
   }
 
   return (
-    <motion.section 
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, margin: "-10%" }}
-      variants={containerVariants}
-      id="skills" 
-      className="py-24 md:py-32 border-t border-border overflow-hidden"
-    >
-      <div className="max-w-[1400px] w-full mx-auto px-6 md:px-12 lg:px-[10%] mb-12">
-        <motion.div variants={childVariants} className="border-b border-border pb-6 flex items-center justify-between">
-          <h2 className="text-3xl font-black tracking-tighter text-foreground uppercase flex items-center gap-4">
-            <span className="w-4 h-4 bg-primary shrink-0" />
-            Arsenal & Utilities
+    <section id="skills" className="py-24 md:py-32 bg-background relative overflow-hidden">
+      <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] pointer-events-none mix-blend-overlay" />
+      
+      <div className="max-w-[1400px] w-full mx-auto px-6 md:px-12 lg:px-[10%] relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ type: "spring", stiffness: 100, damping: 20 }}
+          className="mb-16"
+        >
+          <h2 className="font-sora text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
+            Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">Expertise</span>
           </h2>
+          <p className="text-gray-400 max-w-2xl font-inter text-lg">
+            A comprehensive overview of my technical stack and the tools I use to build scalable digital products.
+          </p>
         </motion.div>
-      </div>
 
-      {/* Marquee Track */}
-      <motion.div variants={childVariants} className="relative w-full overflow-hidden flex border-y border-border/50 bg-card/30 py-8 md:py-12">
-        
-        {/* Left/Right sheer overlays for fade effect */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
-
-        <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
-          {marqueeItems.map((skill, index) => (
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          {skillCategories.map((category, index) => (
             <motion.div 
-              key={`${skill.name}-${index}`}
-              className="flex flex-col items-center justify-center gap-4 w-32 md:w-48 group cursor-crosshair"
-              onMouseEnter={() => setHoveredSkill(skill.name)}
-              onMouseLeave={() => setHoveredSkill(null)}
-              animate={{
-                opacity: hoveredSkill && hoveredSkill !== skill.name ? 0.3 : 1,
-              }}
-              transition={{ duration: 0.3 }}
+              key={category.title}
+              variants={childVariants}
+              className={`p-8 rounded-2xl bg-[#161616] border border-white/5 hover:border-indigo-500/30 transition-colors duration-300 group ${category.className}`}
             >
-              <motion.img 
-                src={`https://cdn.simpleicons.org/${skill.icon}/ffffff`} 
-                alt={skill.name} 
-                className="w-12 h-12 md:w-16 md:h-16 pointer-events-none"
-                animate={{
-                  scale: hoveredSkill === skill.name ? 1.2 : 1,
-                  filter: hoveredSkill === skill.name 
-                    ? `drop-shadow(0 0 15px ${skill.color}) drop-shadow(0 0 5px #ffffff)` 
-                    : 'drop-shadow(0 0 0px transparent)'
-                }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              />
-              <motion.span 
-                className="text-xs font-mono tracking-widest uppercase"
-                animate={{
-                  color: hoveredSkill === skill.name ? skill.color : 'var(--muted-foreground)',
-                  y: hoveredSkill === skill.name ? 5 : 0
-                }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              >
-                {skill.name}
-              </motion.span>
+              <div className="flex items-center gap-4 mb-8">
+                <div className="p-3 bg-secondary/50 rounded-xl group-hover:scale-110 transition-transform duration-300">
+                  {category.icon}
+                </div>
+                <h3 className="font-sora text-xl font-bold text-white">
+                  {category.title}
+                </h3>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-y-6 gap-x-4">
+                {category.skills.map((skill) => (
+                  <div key={skill.name} className="flex items-center gap-3">
+                    <img 
+                      src={`https://cdn.simpleicons.org/${skill.icon}/9ca3af`} 
+                      alt={skill.name}
+                      className="w-5 h-5 opacity-70 group-hover:opacity-100 transition-opacity"
+                    />
+                    <span className="text-sm font-medium text-gray-400 group-hover:text-gray-200 transition-colors">
+                      {skill.name}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </motion.div>
           ))}
-        </div>
-      </motion.div>
-    </motion.section>
+        </motion.div>
+      </div>
+    </section>
   )
 }

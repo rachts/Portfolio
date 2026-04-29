@@ -1,181 +1,139 @@
 "use client"
 
-import { useEffect } from "react"
-import { ArrowRight, SquareMenu } from "lucide-react"
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
+import { ArrowRight, Download, Terminal } from "lucide-react"
+import { motion } from "framer-motion"
 
-function OrganicText({ text, delayOffset = 0, className = "" }: { text: string; delayOffset?: number; className?: string }) {
-  const container = {
+export function HeroSection() {
+  const containerVariants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.05, // micro-delays
-        delayChildren: delayOffset,
+        staggerChildren: 0.15,
       }
     }
   }
 
-  const item = {
-    hidden: { y: "120%", rotateZ: 5, opacity: 0 },
-    show: { 
-      y: "0%", 
-      rotateZ: 0, 
-      opacity: 1,
-      transition: { 
-        type: "spring", 
-        mass: 1, 
-        stiffness: 150, 
-        damping: 15 
-      } 
-    }
-  }
-
-  return (
-    <motion.div 
-      variants={container}
-      initial="hidden"
-      animate="show"
-      className={`overflow-hidden flex flex-wrap ${className}`}
-    >
-      {text.split('').map((char, index) => (
-        <motion.span 
-          key={index} 
-          variants={item}
-          className="inline-block will-change-transform" 
-        >
-          {char === ' ' ? '\u00A0' : char}
-        </motion.span>
-      ))}
-    </motion.div>
-  )
-}
-
-export function HeroSection() {
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
-
-  // Fluid physics for mouse tracking
-  const springConfig = { damping: 25, stiffness: 120, mass: 0.5 };
-  const smoothX = useSpring(mouseX, springConfig);
-  const smoothY = useSpring(mouseY, springConfig);
-
-  // Map mouse positions to rotations and translations
-  const rotateX = useTransform(smoothY, [-0.5, 0.5], [5, -5])
-  const rotateY = useTransform(smoothX, [-0.5, 0.5], [-5, 5])
-  const translateX = useTransform(smoothX, [-0.5, 0.5], [-20, 20])
-  const translateY = useTransform(smoothY, [-0.5, 0.5], [-20, 20])
-  
-  const bgTranslateX = useTransform(smoothX, [-0.5, 0.5], [50, -50])
-  const bgTranslateY = useTransform(smoothY, [-0.5, 0.5], [50, -50])
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const { innerWidth, innerHeight } = window
-      const x = (e.clientX - innerWidth / 2) / innerWidth;
-      const y = (e.clientY - innerHeight / 2) / innerHeight;
-      mouseX.set(x)
-      mouseY.set(y)
-    }
-
-    // Gentle random jitter initially before user moves mouse
-    mouseX.set(0)
-    mouseY.set(0)
-
-    window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
-  }, [mouseX, mouseY])
-
-  const metaVariants = {
+  const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     show: { 
       opacity: 1, 
       y: 0, 
-      transition: { type: "spring", stiffness: 100, damping: 20, delay: 0.4 } 
-    }
-  }
-
-  const actionVariants = {
-    hidden: { opacity: 0, y: 30 },
-    show: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { type: "spring", stiffness: 100, damping: 20, delay: 1.2 } 
+      transition: { type: "spring", stiffness: 100, damping: 20 } 
     }
   }
 
   return (
-    <section className="relative min-h-screen flex items-center px-6 md:px-12 lg:px-[10%] overflow-hidden pt-20 bg-background text-foreground perspective-[1000px]">
-      
-      {/* Massive Organic Background Typography */}
-      <motion.div 
-        style={{ x: bgTranslateX, y: bgTranslateY }}
-        className="absolute top-[20%] left-[-10%] text-[20vw] font-black text-white/[0.02] tracking-tighter mix-blend-overlay pointer-events-none whitespace-nowrap leading-none will-change-transform"
-      >
-        RACHIT.IO
-      </motion.div>
+    <section id="home" className="relative min-h-screen flex items-center px-6 md:px-12 lg:px-[10%] pt-24 overflow-hidden bg-background">
+      {/* Background ambient glow */}
+      <div className="absolute top-1/4 -left-1/4 w-[50vw] h-[50vw] bg-indigo-500/20 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
+      <div className="absolute bottom-0 right-0 w-[40vw] h-[40vw] bg-blue-500/10 rounded-full blur-[100px] pointer-events-none mix-blend-screen" />
 
-      <motion.div 
-        style={{ rotateX, rotateY, x: translateX, y: translateY }}
-        className="max-w-[1400px] mx-auto w-full relative z-10 flex flex-col justify-center transform-style-3d will-change-transform"
-      >
+      <div className="max-w-[1400px] mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center relative z-10">
         
-        {/* TOP META ROW */}
+        {/* LEFT COLUMN: Text Content */}
         <motion.div 
-          variants={metaVariants}
+          variants={containerVariants}
           initial="hidden"
           animate="show"
-          className="flex items-center gap-4 text-xs font-sans tracking-[0.2em] uppercase text-primary mb-12 pl-1 whitespace-nowrap overflow-hidden"
+          className="flex flex-col items-start"
         >
-          <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shrink-0" />
-          <span>Interactive Engineer // 2026</span>
+          <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/50 border border-white/5 mb-8 backdrop-blur-md">
+            <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" />
+            <span className="text-sm font-medium text-gray-300 tracking-wide">Available for new opportunities</span>
+          </motion.div>
+
+          <motion.h1 variants={itemVariants} className="font-sora text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1] mb-6">
+            Frontend Engineer building <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">high-performance</span>, scalable web applications
+          </motion.h1>
+
+          <motion.p variants={itemVariants} className="text-lg sm:text-xl text-gray-400 font-inter mb-10 max-w-[90%] leading-relaxed">
+            I specialize in React, Next.js, and modern UI/UX principles to build seamless digital experiences that prioritize performance and user engagement.
+          </motion.p>
+
+          <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4">
+            <a href="#projects" className="group flex items-center gap-2 bg-white text-background px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 hover:scale-105 active:scale-95 transition-all duration-300">
+              View Projects
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </a>
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 bg-secondary/50 border border-white/10 backdrop-blur-md text-white px-8 py-4 rounded-xl font-semibold hover:bg-secondary/80 hover:scale-105 active:scale-95 transition-all duration-300">
+              <Download className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" />
+              Download Resume
+            </a>
+          </motion.div>
         </motion.div>
 
-        {/* ORGANIC OVERLAPPING TYPOGRAPHY */}
-        <div className="space-y-0 mb-16 relative z-10 select-none">
-          <OrganicText 
-            text="Rachit" 
-            delayOffset={0.2} 
-            className="text-6xl sm:text-[5rem] md:text-[8rem] lg:text-[11rem] font-black tracking-tighter uppercase leading-[0.85] text-foreground mix-blend-difference" 
-          />
-          <OrganicText 
-            text="Digital Product Architect" 
-            delayOffset={0.8} 
-            className="text-xl md:text-3xl lg:text-5xl text-muted-foreground font-light tracking-tight mt-4 ml-1 md:ml-4" 
-          />
-        </div>
-
-        {/* ASYMMETRICAL CONTENT GRID */}
+        {/* RIGHT COLUMN: Visual Element */}
         <motion.div 
-          variants={actionVariants}
-          initial="hidden"
-          animate="show"
-          className="grid grid-cols-1 md:grid-cols-12 gap-12 items-end"
+          initial={{ opacity: 0, scale: 0.95, rotateY: -10 }}
+          animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+          transition={{ duration: 1, delay: 0.3, type: "spring" }}
+          className="relative perspective-[1000px] hidden md:block"
         >
-          
-          <div className="md:col-span-6 lg:col-span-5 text-sm font-sans leading-relaxed text-muted-foreground pr-4">
-            <p className="border-l border-primary/30 pl-6 py-2 relative before:absolute before:left-[-1px] before:top-0 before:w-[2px] before:h-4 before:bg-primary">
-              Crafting fluid algorithmic interfaces and deep machine learning architectures. Moving beyond generic templates to deliver highly sophisticated, humanized web interactions that blur the boundary between software and art.
-            </p>
+          <div className="relative w-full max-w-lg mx-auto bg-[#161616]/80 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden transform hover:-translate-y-2 hover:rotate-1 hover:shadow-indigo-500/20 transition-all duration-500">
+            {/* Mac Window Header */}
+            <div className="flex items-center px-4 py-3 border-b border-white/10 bg-[#1e1e1e]">
+              <div className="flex gap-2">
+                <div className="w-3 h-3 rounded-full bg-red-500/80" />
+                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                <div className="w-3 h-3 rounded-full bg-green-500/80" />
+              </div>
+              <div className="flex-1 flex justify-center text-xs text-gray-500 font-mono items-center gap-2">
+                <Terminal className="w-3 h-3" />
+                rachit.tsx
+              </div>
+            </div>
+            {/* Code Content */}
+            <div className="p-6 text-sm font-mono leading-relaxed overflow-x-auto text-gray-300">
+              <div className="flex">
+                <span className="text-gray-600 select-none pr-4 text-right w-8">1</span>
+                <p><span className="text-purple-400">const</span> <span className="text-blue-400">engineer</span> = {'{'}</p>
+              </div>
+              <div className="flex">
+                <span className="text-gray-600 select-none pr-4 text-right w-8">2</span>
+                <p className="pl-4">name: <span className="text-green-400">'Rachit Tiwari'</span>,</p>
+              </div>
+              <div className="flex">
+                <span className="text-gray-600 select-none pr-4 text-right w-8">3</span>
+                <p className="pl-4">role: <span className="text-green-400">'Frontend Architect'</span>,</p>
+              </div>
+              <div className="flex">
+                <span className="text-gray-600 select-none pr-4 text-right w-8">4</span>
+                <p className="pl-4">skills: [<span className="text-green-400">'React'</span>, <span className="text-green-400">'Next.js'</span>, <span className="text-green-400">'TypeScript'</span>],</p>
+              </div>
+              <div className="flex">
+                <span className="text-gray-600 select-none pr-4 text-right w-8">5</span>
+                <p className="pl-4">passion: <span className="text-green-400">'Building performant UIs'</span>,</p>
+              </div>
+              <div className="flex">
+                <span className="text-gray-600 select-none pr-4 text-right w-8">6</span>
+                <p>{'}'};</p>
+              </div>
+              <div className="flex">
+                <span className="text-gray-600 select-none pr-4 text-right w-8">7</span>
+                <p>&nbsp;</p>
+              </div>
+              <div className="flex">
+                <span className="text-gray-600 select-none pr-4 text-right w-8">8</span>
+                <p><span className="text-purple-400">export default function</span> <span className="text-blue-400">buildFuture</span>() {'{'}</p>
+              </div>
+              <div className="flex">
+                <span className="text-gray-600 select-none pr-4 text-right w-8">9</span>
+                <p className="pl-4"><span className="text-purple-400">return</span> engineer.<span className="text-yellow-300">innovate</span>();</p>
+              </div>
+              <div className="flex">
+                <span className="text-gray-600 select-none pr-4 text-right w-8">10</span>
+                <p>{'}'}</p>
+              </div>
+              <div className="flex">
+                <span className="text-gray-600 select-none pr-4 text-right w-8">11</span>
+                <div className="w-2 h-4 bg-gray-400 animate-pulse mt-1 ml-1" />
+              </div>
+            </div>
           </div>
-
-          <div className="md:col-span-6 lg:col-span-7 flex flex-col sm:flex-row gap-6 md:justify-end border-t border-border/30 pt-8 mt-4 md:mt-0">
-            <a href="#projects" className="group flex items-center justify-center md:justify-start gap-4 bg-foreground text-background px-10 py-5 rounded-full uppercase text-[10px] tracking-widest font-bold hover:bg-primary transition-all duration-500 hover:scale-[1.02] active:scale-[0.98] shadow-lg">
-              Explore Projects
-              <span className="bg-background text-foreground w-6 h-6 rounded-full flex items-center justify-center group-hover:bg-white group-hover:text-primary transition-colors">
-                <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
-              </span>
-            </a>
-            
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center md:justify-start gap-4 border border-border px-10 py-5 rounded-full uppercase text-[10px] tracking-widest font-bold hover:border-primary/50 transition-all duration-500 text-muted-foreground hover:text-foreground hover:scale-[1.02] active:scale-[0.98]">
-              <SquareMenu className="w-4 h-4 text-primary/70 group-hover:text-primary transition-colors" />
-              View Abstract
-            </a>
-          </div>
-
         </motion.div>
-
-      </motion.div>
+        
+      </div>
     </section>
   )
 }
