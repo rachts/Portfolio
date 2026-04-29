@@ -9,8 +9,40 @@ const sora = Sora({ subsets: ["latin"], variable: "--font-sora" })
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 
 export const metadata: Metadata = {
-  title: "Rachit Tiwari | Frontend Developer | React & Next.js",
-  description: "Frontend developer specializing in high-performance web apps using React, Next.js, and modern UI/UX principles.",
+  metadataBase: new URL("https://rachittiwari.com"),
+  title: "Rachit Tiwari | Frontend Architect & Product Engineer",
+  description: "Product-minded frontend engineer specializing in high-performance web apps, AI interfaces, and scalable architectures using React and Next.js.",
+  keywords: ["Frontend Engineer", "React Developer", "Next.js", "TypeScript", "Product Engineer", "AI Interfaces"],
+  authors: [{ name: "Rachit Tiwari" }],
+  creator: "Rachit Tiwari",
+  publisher: "Rachit Tiwari",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://rachittiwari.com",
+    title: "Rachit Tiwari | Frontend Architect",
+    description: "Product-minded frontend engineer building high-performance web applications and AI interfaces.",
+    siteName: "Rachit Tiwari Portfolio",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Rachit Tiwari - Frontend Architect",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Rachit Tiwari | Frontend Architect",
+    description: "Product-minded frontend engineer building high-performance web applications and AI interfaces.",
+    creator: "@rachts",
+    images: ["/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   generator: 'Next.js',
   icons: "/icon.png",
 }

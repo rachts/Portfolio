@@ -27,11 +27,13 @@ function SocialLink({
   icon: React.ReactNode
   label: string
 }) {
+  const isMailto = href.startsWith('mailto:')
+  
   return (
     <a
       href={href}
-      target="_blank"
-      rel="noopener noreferrer"
+      target={isMailto ? undefined : "_blank"}
+      rel={isMailto ? undefined : "noopener noreferrer"}
       aria-label={label}
       className="text-muted-foreground hover:text-foreground hover:scale-110 transition-all duration-300"
     >

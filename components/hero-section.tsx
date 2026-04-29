@@ -51,7 +51,7 @@ export function HeroSection() {
             I specialize in React, Next.js, and modern UI/UX principles to build seamless digital experiences that prioritize performance and user engagement.
           </motion.p>
 
-          <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4">
+          <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4 mb-8">
             <a href="#projects" className="group flex items-center gap-2 bg-white text-background px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 hover:scale-105 active:scale-95 transition-all duration-300">
               View Projects
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -60,6 +60,14 @@ export function HeroSection() {
               <Download className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" />
               Download Resume
             </a>
+          </motion.div>
+
+          <motion.div variants={itemVariants} className="flex items-center gap-3 text-sm text-gray-500 font-mono">
+            <span>Built 5+ production-grade apps</span>
+            <span className="w-1 h-1 rounded-full bg-indigo-500" />
+            <span>AI + Full Stack</span>
+            <span className="w-1 h-1 rounded-full bg-indigo-500" />
+            <span>React / Next.js</span>
           </motion.div>
         </motion.div>
 

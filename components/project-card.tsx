@@ -48,13 +48,20 @@ export function ProjectCard({ project, index = 1 }: ProjectCardProps) {
         {project.description}
       </p>
 
-      {/* Case Study Details */}
-      <div className="space-y-3 mb-8">
-        <div>
-          <span className="text-xs font-bold text-indigo-400 uppercase tracking-wider block mb-1">Problem:</span>
-          <span className="text-sm text-gray-300 line-clamp-2">{project.problem}</span>
+      {/* Impact Section */}
+      {project.impact && (
+        <div className="space-y-3 mb-8">
+          <span className="text-xs font-bold text-indigo-400 uppercase tracking-wider block mb-2">Impact:</span>
+          <ul className="space-y-2">
+            {project.impact.slice(0, 2).map((item, i) => (
+              <li key={i} className="flex items-start gap-2 text-sm text-gray-300 font-inter">
+                <span className="mt-1.5 w-1 h-1 rounded-full bg-indigo-500 shrink-0" />
+                <span className="line-clamp-2">{item}</span>
+              </li>
+            ))}
+          </ul>
         </div>
-      </div>
+      )}
 
       {/* Tech Stack */}
       <div className="flex flex-wrap gap-2 mt-auto">

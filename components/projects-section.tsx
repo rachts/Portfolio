@@ -1,10 +1,13 @@
 "use client"
 
-import { projects } from "@/data/projects"
+import { useState } from "react"
+import { projects, type Project } from "@/data/projects"
 import { ProjectCard } from "@/components/project-card"
+import { ProjectModal } from "@/components/project-modal"
 import { motion } from "framer-motion"
 
 export function ProjectsSection() {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const featuredProjects = projects.filter((p) => p.featured).slice(0, 4)
 
   return (
@@ -47,7 +50,8 @@ export function ProjectsSection() {
                   damping: 20, 
                   delay: index * 0.1 
                 }}
-                className="h-full"
+                className="h-full cursor-pointer"
+                onClick={() => setSelectedProject(project)}
               >
                 <ProjectCard project={project} index={index + 1} />
               </motion.div>
@@ -56,6 +60,11 @@ export function ProjectsSection() {
         </div>
 
       </div>
+
+      <ProjectModal 
+        project={selectedProject} 
+        onClose={() => setSelectedProject(null)} 
+      />
     </section>
   )
 }

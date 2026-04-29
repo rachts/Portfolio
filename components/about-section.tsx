@@ -42,13 +42,13 @@ export function AboutSection() {
 
           <motion.div variants={childVariants} className="space-y-6 text-lg font-inter text-gray-400 leading-relaxed">
             <p>
-              Hi, I'm Rachit. I don't just write code; I build digital ecosystems. My journey in software engineering has been driven by a singular focus: transforming complex technical challenges into fluid, intuitive user experiences.
+              Hi, I'm Rachit. I'm a <strong className="text-gray-200">product-minded engineer</strong> who operates at the intersection of technical architecture and brand perception. I don't just write code; I engineer digital products that convert.
             </p>
             <p>
-              Over the years, I've architected everything from intelligent AI assistants and smart finance tools to comprehensive civic-tech platforms. I believe that the best software feels invisible to the user—it just works, brilliantly and beautifully.
+              My background bridges the gap between marketing mindset and technical execution. I build AI tools, real-time assistants, and scalable platforms with an obsessive focus on <strong className="text-indigo-400 font-medium">performance metrics, seamless UX, and business impact</strong>.
             </p>
             <p>
-              When I'm not optimizing algorithms or polishing UI transitions, you'll probably find me exploring the intersection of artificial intelligence and human-computer interaction, looking for the next paradigm shift in how we use the web.
+              I believe that the best software feels invisible to the user—it solves their problem instantly while maintaining a premium, production-grade feel that builds immediate trust in the brand.
             </p>
           </motion.div>
         </motion.div>

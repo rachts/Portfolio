@@ -32,7 +32,9 @@ export function ContactSection() {
             </p>
             
             <a 
-              href="mailto:tiwari.rachit@gmail.com" 
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=tiwari.rachit@gmail.com" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="group relative inline-flex items-center justify-center gap-3 bg-white text-background px-8 py-4 rounded-xl font-bold hover:scale-105 active:scale-95 transition-all duration-300 overflow-hidden"
             >
               <span className="relative z-10">Send me an email</span>
