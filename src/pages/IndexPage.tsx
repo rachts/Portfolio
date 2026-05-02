@@ -6,6 +6,7 @@ import { AboutSection } from '../components/sections/AboutSection';
 import { ProjectsSection } from '../components/sections/ProjectsSection';
 import { TimelineSection } from '../components/sections/TimelineSection';
 import { StatsSection } from '../components/sections/StatsSection';
+import { GithubSection } from '../components/sections/GithubSection';
 import { FAQSection } from '../components/sections/FAQSection';
 
 export function IndexPage() {
@@ -18,6 +19,7 @@ export function IndexPage() {
         <AboutSection />
         <ProjectsSection />
         <StatsSection />
+        <GithubSection />
         <TimelineSection />
         <FAQSection />
       </main>
