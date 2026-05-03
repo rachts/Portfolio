@@ -14,7 +14,7 @@ export const portfolioData = {
       impact: "Engineered a minimalist 'Wallet-Extension' style vault with Next.js 16 and MongoDB, featuring dynamic investment tiers and AI-driven delta analysis.",
       tags: ["Next.js 16", "MongoDB", "jose JWT", "Recharts"],
       github: "https://github.com/rachts/optrafi",
-      demo: "#"
+      demo: "https://optra-fi.vercel.app/"
     },
     {
       id: "vitamend",
@@ -22,8 +22,8 @@ export const portfolioData = {
       problem: "Manual entry for medicine donations is slow and error-prone, leading to expired medications slipping through.",
       impact: "Automated 95% of manual data entry with Tesseract OCR, validating 10,000+ donations.",
       tags: ["Python", "OCR", "Next.js", "Node.js"],
-      github: "#",
-      demo: "#"
+      github: "https://github.com/rachts/vitamend-official",
+      demo: "vitamend-org.vercel.app"
     },
     {
       id: "vocalis",
@@ -31,8 +31,8 @@ export const portfolioData = {
       problem: "Lack of accessible tools to analyze speech patterns and provide instant feedback for public speakers.",
       impact: "Processed over 500 hours of audio with < 200ms latency.",
       tags: ["Python 3.14", "WebSockets", "React", "FastAPI"],
-      github: "#",
-      demo: "#"
+      github: "https://github.com/rachts/Vocalis",
+      demo: "vocalis-va.vercel.app"
     },
     {
       id: "air-mouse",
@@ -59,7 +59,7 @@ export const portfolioData = {
       impact: "Built a Dijkstra-powered route calculator with interactive SVG maps, covering 6 lines and providing real-time journey breakdowns.",
       tags: ["Next.js 15", "TypeScript", "Dijkstra", "Tailwind CSS"],
       github: "https://github.com/rachts/kolkata-metro",
-      demo: "#"
+      demo: "https://metro-kolkata.vercel.app/"
     },
     {
       id: "kaleshphile",
@@ -68,7 +68,7 @@ export const portfolioData = {
       impact: "Created a 'Kaleshi' AI girlfriend using Vercel AI SDK and OpenAI, featuring a live mood indicator and dramatic Hinglish interactions.",
       tags: ["Next.js 15", "OpenAI", "Vercel AI SDK", "Framer Motion"],
       github: "https://github.com/rachts/kaleshphile",
-      demo: "#"
+      demo: "https://kaleshphile.vercel.app/"
     },
     {
       id: "restaurant-bot",
@@ -76,8 +76,8 @@ export const portfolioData = {
       problem: "Traditional restaurant booking forms are static and often result in high abandonment rates.",
       impact: "Developed a mobile-responsive AI chatbot that handles real-time availability checks and booking confirmations with a focus on UX.",
       tags: ["Next.js 16", "React 19", "TypeScript", "Radix UI"],
-      github: "https://github.com/rachts/restaurant-reservation-bot",
-      demo: "#"
+      github: "https://github.com/rachts/RESTAURANT-RESERVATION-BOT",
+      demo: "https://restaurantreservation-bot.netlify.app/"
     },
     {
       id: "khabri-ai",
@@ -86,7 +86,7 @@ export const portfolioData = {
       impact: "Built a real-time fact-checking platform using Serper.dev API to provide evidence-backed verdicts across multiple languages.",
       tags: ["Next.js 16", "Serper API", "AI Verification", "Tailwind CSS"],
       github: "https://github.com/rachts/khabri.ai",
-      demo: "#"
+      demo: "https://khabriai.vercel.app/"
     },
     {
       id: "privsight",
@@ -95,7 +95,7 @@ export const portfolioData = {
       impact: "Engineered a cross-platform Electron/Python app that uses facial recognition to automatically blur notifications when unauthorized persons are detected.",
       tags: ["Electron", "Python", "OpenCV", "Facial Recognition"],
       github: "https://github.com/rachts/privsight",
-      demo: "#"
+      demo: "https://privsight.vercel.app/"
     },
     {
       id: "doceasy",
@@ -104,7 +104,7 @@ export const portfolioData = {
       impact: "Developed a professional platform for browser-based PDF compression and image processing, integrated with Supabase RLS for secure cloud storage.",
       tags: ["Next.js", "Supabase", "Tailwind CSS", "pdf-lib"],
       github: "https://github.com/rachts/doceasy",
-      demo: "#"
+      demo: "https://doceasy-official.vercel.app/"
     },
     {
       id: "welcometomycity",
@@ -112,8 +112,8 @@ export const portfolioData = {
       problem: "Traditional travel applications treat maps as static widgets rather than immersive canvases, failing to capture the 'vibe' of a city.",
       impact: "Architected a Map-First canvas using MapLibre and Next.js 15, featuring an 'Experience Engine' that maps locations to emotional vectors like Romantic or Peaceful.",
       tags: ["Next.js 15", "MapLibre", "Supabase", "Framer Motion"],
-      github: "#",
-      demo: "#"
+      github: "https://github.com/rachts/welcometomycity",
+      demo: "https://welcometomycity.vercel.app/"
     }
   ],
   timeline: [
