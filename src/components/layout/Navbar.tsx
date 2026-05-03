@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Code2, Menu, X } from 'lucide-react';
 import { Button } from '../ui/Button';
+import { portfolioData } from '../../data/portfolio-data';
 
 const navLinks = [
   { name: 'Home', href: '#hero' },
@@ -84,7 +85,7 @@ export function Navbar() {
                 {link.name}
               </a>
             ))}
-            <Button variant="primary" size="sm" onClick={() => window.open('mailto:rachittiwari@example.com')}>
+            <Button variant="primary" size="sm" onClick={() => window.open(`mailto:${portfolioData.contact.email}`)}>
               Connect
             </Button>
           </nav>

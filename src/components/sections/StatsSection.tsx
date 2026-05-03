@@ -3,7 +3,7 @@ import { motion, animate } from 'framer-motion';
 import { useIntersection } from '../../hooks/use-intersection';
 import { portfolioData } from '../../data/portfolio-data';
 
-function Counter({ from, to }: { from: number; to: number }) {
+function Counter({ from, to, suffix = "" }: { from: number; to: number; suffix?: string }) {
   const [ref, isVisible] = useIntersection<HTMLSpanElement>({ threshold: 0.5, triggerOnce: true });
   const [value, setValue] = useState(from);
 
@@ -20,7 +20,7 @@ function Counter({ from, to }: { from: number; to: number }) {
     }
   }, [isVisible, from, to]);
 
-  return <span ref={ref}>{value.toLocaleString()}{to >= 1000 ? '+' : ''}</span>;
+  return <span ref={ref}>{value.toLocaleString()}{suffix}</span>;
 }
 
 export function StatsSection() {
@@ -39,7 +39,7 @@ export function StatsSection() {
           {portfolioData.stats.map((stat, i) => (
             <div key={i} className="flex flex-col items-center justify-center p-6 rounded-lg bg-slate-900/30 border border-slate-800/30">
               <div className="text-4xl md:text-5xl font-extrabold text-cyan-400 mb-2 font-mono glow-text">
-                <Counter from={0} to={stat.value} />
+                <Counter from={0} to={stat.value} suffix={stat.suffix} />
               </div>
               <div className="text-slate-400 uppercase tracking-widest text-sm font-semibold">
                 {stat.label}

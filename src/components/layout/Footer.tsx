@@ -1,5 +1,6 @@
 
 import { Github, Linkedin, Mail, Twitter } from 'lucide-react';
+import { portfolioData } from '../../data/portfolio-data';
 
 export function Footer() {
   return (
@@ -15,16 +16,16 @@ export function Footer() {
         </div>
         
         <div className="flex items-center space-x-6">
-          <a href="#" className="text-slate-400 hover:text-cyan-400 transition-colors">
+          <a href={portfolioData.contact.github} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-cyan-400 transition-colors">
             <Github className="w-5 h-5" />
           </a>
-          <a href="#" className="text-slate-400 hover:text-cyan-400 transition-colors">
+          <a href={portfolioData.contact.linkedin} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-cyan-400 transition-colors">
             <Linkedin className="w-5 h-5" />
           </a>
           <a href="#" className="text-slate-400 hover:text-cyan-400 transition-colors">
             <Twitter className="w-5 h-5" />
           </a>
-          <a href="mailto:hello@example.com" className="text-slate-400 hover:text-cyan-400 transition-colors">
+          <a href={`mailto:${portfolioData.contact.email}`} className="text-slate-400 hover:text-cyan-400 transition-colors">
             <Mail className="w-5 h-5" />
           </a>
         </div>

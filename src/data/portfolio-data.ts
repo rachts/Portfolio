@@ -9,11 +9,11 @@ export const portfolioData = {
   projects: [
     {
       id: "optrafi",
-      title: "SOLUTION: Decentralized Portfolio Management",
-      problem: "Traditional crypto trackers lack intuitive UX and real-time smart planning for asset allocation.",
-      impact: "Reduced asset tracking latency by 40% and improved onboarding conversion by 25%.",
-      tags: ["React", "TypeScript", "MetaMask", "MongoDB"],
-      github: "#",
+      title: "SOLUTION: Stealth Personal Finance Vault",
+      problem: "Financial dashboards are often cluttered and overwhelming, making it difficult to maintain a hyper-focused view of one's trajectory.",
+      impact: "Engineered a minimalist 'Wallet-Extension' style vault with Next.js 16 and MongoDB, featuring dynamic investment tiers and AI-driven delta analysis.",
+      tags: ["Next.js 16", "MongoDB", "jose JWT", "Recharts"],
+      github: "https://github.com/rachts/optrafi",
       demo: "#"
     },
     {
@@ -33,32 +33,113 @@ export const portfolioData = {
       tags: ["Python 3.14", "WebSockets", "React", "FastAPI"],
       github: "#",
       demo: "#"
+    },
+    {
+      id: "air-mouse",
+      title: "SOLUTION: Gesture-Based AR Interface",
+      problem: "Conventional computer control lacks the immersion and accessibility required for spatial computing and hands-free environments.",
+      impact: "Developed a real-time 21-point hand tracking system with Kalman filtering for jitter-free cursor control and air-drawing.",
+      tags: ["Python", "OpenCV", "MediaPipe", "Kalman Filter"],
+      github: "https://github.com/rachts/Air-mouse",
+      demo: "#"
+    },
+    {
+      id: "gesture-media",
+      title: "SOLUTION: Touchless Media System",
+      problem: "Physically interacting with devices during media playback can be inconvenient or impossible in many real-world scenarios.",
+      impact: "Created an intuitive gesture-controlled system for Spotify and VLC, featuring smooth motion detection and HUD feedback.",
+      tags: ["Python", "MediaPipe", "PyAutoGUI", "OpenCV"],
+      github: "https://github.com/rachts/gesture-media-controller",
+      demo: "#"
+    },
+    {
+      id: "kolkata-metro",
+      title: "SOLUTION: Intelligent Urban Transit Planner",
+      problem: "Navigating complex metro networks like Kolkata's can be confusing for commuters, leading to inefficient travel.",
+      impact: "Built a Dijkstra-powered route calculator with interactive SVG maps, covering 6 lines and providing real-time journey breakdowns.",
+      tags: ["Next.js 15", "TypeScript", "Dijkstra", "Tailwind CSS"],
+      github: "https://github.com/rachts/kolkata-metro",
+      demo: "#"
+    },
+    {
+      id: "kaleshphile",
+      title: "SOLUTION: Satirical AI Companion",
+      problem: "Most AI chatbots are overly polite and lack the personality required for engaging, satirical storytelling.",
+      impact: "Created a 'Kaleshi' AI girlfriend using Vercel AI SDK and OpenAI, featuring a live mood indicator and dramatic Hinglish interactions.",
+      tags: ["Next.js 15", "OpenAI", "Vercel AI SDK", "Framer Motion"],
+      github: "https://github.com/rachts/kaleshphile",
+      demo: "#"
+    },
+    {
+      id: "restaurant-bot",
+      title: "SOLUTION: Conversational Booking Engine",
+      problem: "Traditional restaurant booking forms are static and often result in high abandonment rates.",
+      impact: "Developed a mobile-responsive AI chatbot that handles real-time availability checks and booking confirmations with a focus on UX.",
+      tags: ["Next.js 16", "React 19", "TypeScript", "Radix UI"],
+      github: "https://github.com/rachts/restaurant-reservation-bot",
+      demo: "#"
+    },
+    {
+      id: "khabri-ai",
+      title: "SOLUTION: AI Misinformation Combatant",
+      problem: "The rapid spread of misinformation makes it difficult for users to verify the authenticity of news headlines and social media forwards.",
+      impact: "Built a real-time fact-checking platform using Serper.dev API to provide evidence-backed verdicts across multiple languages.",
+      tags: ["Next.js 16", "Serper API", "AI Verification", "Tailwind CSS"],
+      github: "https://github.com/rachts/khabri.ai",
+      demo: "#"
+    },
+    {
+      id: "privsight",
+      title: "SOLUTION: Computer Vision Privacy Shield",
+      problem: "Sensitive information on desktop screens is often vulnerable to 'shoulder surfing' or unauthorized viewing in public spaces.",
+      impact: "Engineered a cross-platform Electron/Python app that uses facial recognition to automatically blur notifications when unauthorized persons are detected.",
+      tags: ["Electron", "Python", "OpenCV", "Facial Recognition"],
+      github: "https://github.com/rachts/privsight",
+      demo: "#"
+    },
+    {
+      id: "doceasy",
+      title: "SOLUTION: Cloud-Integrated Document Suite",
+      problem: "Online document manipulation tools often lack privacy, feature-depth, or seamless cloud persistence for power users.",
+      impact: "Developed a professional platform for browser-based PDF compression and image processing, integrated with Supabase RLS for secure cloud storage.",
+      tags: ["Next.js", "Supabase", "Tailwind CSS", "pdf-lib"],
+      github: "https://github.com/rachts/doceasy",
+      demo: "#"
+    },
+    {
+      id: "welcometomycity",
+      title: "SOLUTION: Emotion-First Urban OS",
+      problem: "Traditional travel applications treat maps as static widgets rather than immersive canvases, failing to capture the 'vibe' of a city.",
+      impact: "Architected a Map-First canvas using MapLibre and Next.js 15, featuring an 'Experience Engine' that maps locations to emotional vectors like Romantic or Peaceful.",
+      tags: ["Next.js 15", "MapLibre", "Supabase", "Framer Motion"],
+      github: "#",
+      demo: "#"
     }
   ],
   timeline: [
     {
       id: 1,
-      title: "Senior Software Engineer",
-      date: "2024 - Present",
+      title: "VITAMEND Founder and Developer",
+      date: "Since 2025",
       description: "Leading architectural decisions and building high-performance microservices."
     },
     {
       id: 2,
-      title: "Full Stack Developer",
-      date: "2022 - 2024",
-      description: "Developed scalable web applications and established CI/CD pipelines."
+      title: "Web & App Developer",
+      date: "Since 2024",
+      description: "Built responsive, high-performance web and mobile applications using modern frameworks."
     },
     {
       id: 3,
       title: "Open Source Contributor",
-      date: "2021 - 2022",
+      date: "2024-Present",
       description: "Contributed to major open-source repositories and hackathons."
     }
   ],
   stats: [
-    { label: "Projects Deployed", value: 42 },
-    { label: "Contributions", value: 1250 },
-    { label: "Users Impacted", value: 15000 }
+    { label: "Projects Deployed", value: 50, suffix: "+" },
+    { label: "Code Contributions", value: 1500, suffix: "+" },
+    { label: "Users Impacted", value: 100, suffix: "+" }
   ],
   faq: [
     {
@@ -73,5 +154,10 @@ export const portfolioData = {
       question: "What is your approach to performance optimization?",
       answer: "I focus on minimizing re-renders in React, lazy loading components, optimizing assets, and ensuring API responses are cached and swift. My goal is always a Lighthouse score > 90."
     }
-  ]
+  ],
+  contact: {
+    email: "tiwari.rachit@gmail.com",
+    github: "https://github.com/rachts",
+    linkedin: "https://linkedin.com/in/rachts",
+  }
 };
