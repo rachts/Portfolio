@@ -158,6 +158,6 @@ export const portfolioData = {
   contact: {
     email: "tiwari.rachit@gmail.com",
     github: "https://github.com/rachts",
-    linkedin: "https://linkedin.com/in/rachts",
+    linkedin: "https://www.linkedin.com/in/rachitkrtiwari/",
   }
 };

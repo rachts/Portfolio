@@ -85,9 +85,11 @@ export function Navbar() {
                 {link.name}
               </a>
             ))}
-            <Button variant="primary" size="sm" onClick={() => window.location.href = `mailto:${portfolioData.contact.email}`}>
-              Let's Connect
-            </Button>
+            <a href={`mailto:${portfolioData.contact.email}`}>
+              <Button variant="primary" size="sm">
+                Let's Connect
+              </Button>
+            </a>
           </nav>
 
           {/* Mobile Menu Toggle */}
@@ -122,16 +124,17 @@ export function Navbar() {
                   {link.name}
                 </a>
               ))}
-              <Button 
-                variant="primary" 
-                className="w-full justify-center"
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  window.location.href = `mailto:${portfolioData.contact.email}`;
-                }}
+              <a 
+                href={`mailto:${portfolioData.contact.email}`}
+                onClick={() => setMobileMenuOpen(false)}
               >
-                Let's Connect
-              </Button>
+                <Button 
+                  variant="primary" 
+                  className="w-full justify-center"
+                >
+                  Let's Connect
+                </Button>
+              </a>
             </div>
           </motion.div>
         )}
