@@ -32,11 +32,11 @@ export function StatsSection() {
     async function fetchGithubStats() {
       try {
         // Fetch Repo Count
-        const userResponse = await fetch('https://api.github.com/users/rachts');
+        const userResponse = await fetch(`https://api.github.com/users/rachts?t=${Date.now()}`);
         const userData = await userResponse.json();
         
         // Fetch Contributions
-        const contribResponse = await fetch('https://github-contributions-api.deno.dev/rachts.json');
+        const contribResponse = await fetch(`https://github-contributions-api.deno.dev/rachts.json?t=${Date.now()}`);
         const contribData = await contribResponse.json();
 
         setStats(prev => prev.map(stat => {
