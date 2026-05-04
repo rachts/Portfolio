@@ -162,8 +162,8 @@ export const portfolioData = {
     }
   ],
   stats: [
-    { label: "Projects Deployed", value: 50, suffix: "+" },
-    { label: "Code Contributions", value: 1500, suffix: "+" },
+    { label: "Projects Deployed", value: 31, suffix: "+" },
+    { label: "Code Contributions", value: 3308, suffix: "+" },
     { label: "Users Impacted", value: 100, suffix: "+" }
   ],
   faq: [
