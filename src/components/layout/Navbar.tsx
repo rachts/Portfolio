@@ -85,10 +85,13 @@ export function Navbar() {
                 {link.name}
               </a>
             ))}
-            <a href={`mailto:${portfolioData.contact.email}`}>
-              <Button variant="primary" size="sm">
-                Let's Connect
-              </Button>
+            <a 
+              href={`https://mail.google.com/mail/?view=cm&fs=1&to=${portfolioData.contact.email}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan-500 disabled:pointer-events-none disabled:opacity-50 bg-cyan-500/10 text-cyan-400 border border-cyan-500/50 hover:bg-cyan-500/20 hover:border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.15)] hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] h-8 px-3 text-xs"
+            >
+              Let's Connect
             </a>
           </nav>
 
@@ -125,15 +128,13 @@ export function Navbar() {
                 </a>
               ))}
               <a 
-                href={`mailto:${portfolioData.contact.email}`}
+                href={`https://mail.google.com/mail/?view=cm&fs=1&to=${portfolioData.contact.email}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setMobileMenuOpen(false)}
+                className="w-full justify-center inline-flex items-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan-500 disabled:pointer-events-none disabled:opacity-50 bg-cyan-500/10 text-cyan-400 border border-cyan-500/50 hover:bg-cyan-500/20 hover:border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.15)] hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] h-10 px-4 py-2 text-sm"
               >
-                <Button 
-                  variant="primary" 
-                  className="w-full justify-center"
-                >
-                  Let's Connect
-                </Button>
+                Let's Connect
               </a>
             </div>
           </motion.div>
