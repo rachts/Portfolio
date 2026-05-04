@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Code2, Menu, X } from 'lucide-react';
-import { Button } from '../ui/Button';
 import { portfolioData } from '../../data/portfolio-data';
 
 const navLinks = [

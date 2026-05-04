@@ -1,4 +1,55 @@
-export const portfolioData = {
+export interface Project {
+  id: string;
+  title: string;
+  problem: string;
+  impact: string;
+  isFlagship?: boolean;
+  architecture?: string;
+  metrics?: string;
+  tradeoffs?: string;
+  security?: string;
+  tags: string[];
+  github?: string;
+  demo?: string;
+  constraints?: string;
+  hardPart?: string;
+  future?: string;
+  failureHandling?: string;
+  credentials?: string;
+}
+
+export interface PortfolioData {
+  hero: {
+    headline: string;
+    subtext: string;
+  };
+  about: {
+    valueProp: string;
+  };
+  projects: Project[];
+  timeline: {
+    id: number;
+    title: string;
+    date: string;
+    description: string;
+  }[];
+  stats: {
+    label: string;
+    value: number;
+    suffix: string;
+  }[];
+  faq: {
+    question: string;
+    answer: string;
+  }[];
+  contact: {
+    email: string;
+    github: string;
+    linkedin: string;
+  };
+}
+
+export const portfolioData: PortfolioData = {
   hero: {
     headline: "Engineering Scalable Systems.",
     subtext: "I build high-performance applications that solve complex problems, optimizing for speed, resilience, and user experience.",
