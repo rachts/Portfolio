@@ -20,6 +20,7 @@ export interface Project {
 
 export interface PortfolioData {
   hero: {
+    greeting: string;
     headline: string;
     subtext: string;
   };
@@ -52,6 +53,7 @@ export interface PortfolioData {
 
 export const portfolioData: PortfolioData = {
   hero: {
+    greeting: "Hi, I'm Rachit Tiwari.",
     headline: "Engineering Scalable Systems.",
     subtext: "I build high-performance applications that solve complex problems, optimizing for speed, resilience, and user experience.",
   },

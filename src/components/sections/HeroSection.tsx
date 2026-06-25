@@ -34,6 +34,17 @@ export function HeroSection() {
             <span className="text-sm text-slate-300 font-mono">System initialized.</span>
           </motion.div>
 
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="mb-4"
+          >
+            <span className="text-cyan-400 font-mono text-lg md:text-xl font-semibold tracking-wide">
+              {portfolioData.hero.greeting}
+            </span>
+          </motion.div>
+
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
