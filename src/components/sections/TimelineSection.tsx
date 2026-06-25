@@ -1,54 +1,46 @@
-
+import React from 'react';
 import { motion } from 'framer-motion';
-import { useIntersection } from '../../hooks/use-intersection';
 import { portfolioData } from '../../data/portfolio-data';
 
 export function TimelineSection() {
-  const [ref, isVisible] = useIntersection<HTMLDivElement>({ threshold: 0.1 });
-
   return (
-    <section id="timeline" className="py-24 relative bg-brand-darker/50">
-      <div className="container mx-auto px-6 max-w-4xl">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isVisible ? 1 : 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold flex items-center">
-              <span className="text-fuchsia-400 mr-3">03.</span> Execution Timeline
-            </h2>
-          </div>
+    <section id="journey" className="space-y-12 max-w-7xl mx-auto px-6 relative z-10 py-24">
+      <motion.h2 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="font-display text-4xl md:text-5xl font-semibold text-on-surface tracking-tight"
+      >
+        Engineering Journey
+      </motion.h2>
 
-          <div className="relative border-l border-slate-700/50 ml-4 md:ml-0 md:left-1/2 md:-translate-x-1/2 space-y-12">
-            {portfolioData.timeline.map((item, i) => (
-              <motion.div 
-                key={item.id}
-                initial={{ opacity: 0, y: 50 }}
-                animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-                transition={{ duration: 0.5, delay: i * 0.2 }}
-                className={`relative flex flex-col md:flex-row items-center ${
-                  i % 2 === 0 ? 'md:justify-start' : 'md:justify-end'
-                }`}
-              >
-                {/* Node indicator */}
-                <div className="absolute left-[-5px] md:left-1/2 md:-translate-x-1/2 w-3 h-3 bg-fuchsia-500 rounded-full shadow-[0_0_10px_rgba(217,70,239,0.8)]" />
-                
-                {/* Content Card */}
-                <div className={`ml-8 md:ml-0 md:w-[45%] ${
-                  i % 2 === 0 ? 'md:pr-12' : 'md:pl-12'
-                }`}>
-                  <div className="glass-panel p-6 rounded-lg border border-slate-800 hover:border-fuchsia-500/30 transition-colors">
-                    <span className="text-fuchsia-400 font-mono text-sm mb-2 block">{item.date}</span>
-                    <h3 className="text-lg font-bold text-slate-200 mb-2">{item.title}</h3>
-                    <p className="text-slate-400 text-sm">{item.description}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+      <div className="relative border-l border-outline-variant/50 ml-4 md:ml-8 space-y-12 pl-8 md:pl-12">
+        {portfolioData.timeline.map((item, index) => (
+          <motion.div 
+            key={item.id}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5, delay: index * 0.15 }}
+            className="relative"
+          >
+            {/* Timeline Dot */}
+            <div className="absolute -left-[37px] md:-left-[53px] top-6 w-3.5 h-3.5 rounded-full bg-canvas border-[2.5px] border-primary z-10"></div>
+            
+            {/* Timeline Content */}
+            <div className="bg-[#F4F5F7] p-8 md:p-10 rounded-[1.25rem] w-full max-w-2xl border border-transparent hover:border-outline-variant/30 transition-colors duration-300">
+              <span className="text-primary font-semibold text-xs uppercase tracking-wider mb-3 block">
+                {item.date}
+              </span>
+              <h3 className="font-display text-2xl font-semibold mb-3 text-hero-primary">
+                {item.title}
+              </h3>
+              <p className="text-[15px] text-on-surface-variant leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </section>
   );

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Systems &amp; Engineering - Rachit Kumar Tiwari</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#2e3040",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#dcdee4",
+                        "on-tertiary-fixed-variant": "#5b21b6",
+                        "on-surface-variant": "#585a68",
+                        "on-primary-fixed-variant": "#4338ca",
+                        "on-primary-container": "#e0e2ff",
+                        "secondary-fixed-dim": "#b8baca",
+                        "primary-container": "#818cf8",
+                        "on-tertiary-fixed": "#2e1065",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#a5b4fc",
+                        "tertiary": "#7c3aed",
+                        "secondary-container": "#d8dae6",
+                        "surface-container-low": "#e5e7ed",
+                        "on-secondary-fixed": "#1a1b26",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#d6d8de",
+                        "surface-container-lowest": "#f0f2f8",
+                        "error-container": "#fee2e2",
+                        "primary": "#6366f1",
+                        "on-primary-fixed": "#1e1b4b",
+                        "on-error-container": "#991b1b",
+                        "secondary": "#6c6e7e",
+                        "on-background": "#2e3040",
+                        "outline": "#8a8c9a",
+                        "on-secondary-fixed-variant": "#404252",
+                        "surface-container": "#e2e4ea",
+                        "background": "#e8eaf0",
+                        "tertiary-fixed-dim": "#c4b5fd",
+                        "on-tertiary-container": "#3b1f63",
+                        "inverse-surface": "#2e3040",
+                        "tertiary-container": "#a78bfa",
+                        "primary-fixed": "#e0e2ff",
+                        "tertiary-fixed": "#ede9fe",
+                        "on-tertiary": "#ffffff",
+                        "surface": "#e8eaf0",
+                        "secondary-fixed": "#d8dae6",
+                        "on-secondary-container": "#585a68",
+                        "surface-tint": "#6366f1",
+                        "error": "#dc2626",
+                        "surface-dim": "#d4d6dc",
+                        "primary-fixed-dim": "#a5b4fc",
+                        "outline-variant": "#d0d2dc",
+                        "surface-bright": "#edeef4",
+                        "inverse-on-surface": "#e8eaf0",
+                        "surface-container-high": "#dcdee4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "display": ["Plus Jakarta Sans"],
+                        "body": ["Plus Jakarta Sans"],
+                        "label": ["Plus Jakarta Sans"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+
+        /* Neomorphic Styles */
+        .neo-surface {
+            background-color: theme('colors.surface');
+            box-shadow: 6px 6px 12px rgba(0,0,0,0.08), -6px -6px 12px rgba(255,255,255,0.6);
+            border-radius: 1.5rem;
+        }
+
+        .neo-inset {
+            background-color: theme('colors.surface');
+            box-shadow: inset 4px 4px 8px rgba(0,0,0,0.06), inset -4px -4px 8px rgba(255,255,255,0.5);
+            border-radius: 1rem;
+        }
+
+        .neo-button {
+            background-color: theme('colors.surface');
+            box-shadow: 6px 6px 12px rgba(0,0,0,0.08), -6px -6px 12px rgba(255,255,255,0.6);
+            border-radius: 9999px;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .neo-button:active {
+            box-shadow: inset 4px 4px 8px rgba(0,0,0,0.06), inset -4px -4px 8px rgba(255,255,255,0.5);
+        }
+        
+        /* Typography overrides for neomorphic feel */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: theme('fontFamily.display');
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col pt-24">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-background/80 dark:bg-background/80 backdrop-blur-xl shadow-[6px_6px_12px_rgba(0,0,0,0.08),-6px_-6px_12px_rgba(255,255,255,0.6)]">
+<div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+<div class="text-headline-sm font-display font-semibold tracking-tighter text-on-surface dark:text-on-surface">
+                Rachit Kumar Tiwari
+            </div>
+<div class="hidden md:flex space-x-8 font-body font-medium tracking-tight text-label-sm">
+<a class="text-primary dark:text-primary border-b-2 border-primary pb-1 transition-transform scale-95" href="#">Projects</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Stack</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Journey</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Focus</a>
+</div>
+<button class="neo-button px-6 py-2 text-primary font-medium text-sm flex items-center gap-2">
+<span>Connect</span>
+<span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
+</button>
+</div>
+</nav>
+<!-- Main Content: Systems & Engineering Showcase -->
+<main class="flex-grow max-w-7xl mx-auto w-full px-6 py-12 space-y-16">
+<!-- Header Section -->
+<header class="max-w-3xl space-y-4">
+<h1 class="text-5xl font-display font-bold text-on-surface tracking-tight">Systems Architecture</h1>
+<p class="text-lg text-on-surface-variant leading-relaxed">
+                A technical showcase of high-fidelity, scalable systems built for founder-led projects. Focusing on microservices, real-time data processing, and performance optimization.
+            </p>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Project 1: Vitamend (Large Span) -->
+<article class="neo-surface p-8 lg:col-span-8 flex flex-col justify-between space-y-6">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">medical_services</span>
+<h2 class="text-2xl text-on-surface">Vitamend</h2>
+</div>
+<span class="text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full neo-inset">Founder &amp; Lead Engineer</span>
+</div>
+<p class="text-on-surface-variant text-sm">
+<strong class="text-on-surface">Problem:</strong> Manual donation verification processes were slow and error-prone, creating bottlenecks in medical supply chains.<br/>
+<strong class="text-on-surface mt-1 block">Solution:</strong> Architected an AI-powered OCR system to automate receipt and inventory verification, drastically reducing manual processing time.
+                    </p>
+</div>
+<!-- Technical Highlights -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-surface-variant/50">
+<div class="neo-inset p-4 flex flex-col items-center justify-center text-center">
+<span class="text-3xl font-display font-bold text-primary">95%</span>
+<span class="text-xs text-on-surface-variant uppercase tracking-wide mt-1">OCR Accuracy</span>
+</div>
+<div class="neo-inset p-4 flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-tertiary mb-1">account_tree</span>
+<span class="text-sm font-medium text-on-surface">Microservice Arch</span>
+<span class="text-xs text-on-surface-variant mt-1">Scalable deployment</span>
+</div>
+<div class="neo-inset p-4 flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-tertiary mb-1">security</span>
+<span class="text-sm font-medium text-on-surface">Role-based Security</span>
+<span class="text-xs text-on-surface-variant mt-1">Granular access control</span>
+</div>
+</div>
+</article>
+<!-- Project 2: Vocalis (Tall Span) -->
+<article class="neo-surface p-8 lg:col-span-4 flex flex-col justify-between space-y-6">
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">record_voice_over</span>
+<h2 class="text-2xl text-on-surface">Vocalis</h2>
+</div>
+<p class="text-on-surface-variant text-sm">
+                        Real-Time Voice Intelligence platform. Required processing live audio streams for sentiment and intent analysis with minimal delay.
+                    </p>
+</div>
+<div class="space-y-4 flex-grow">
+<h3 class="text-sm font-semibold text-on-surface uppercase tracking-wider mb-2">Architecture</h3>
+<ul class="space-y-3">
+<li class="flex items-center gap-3 p-3 neo-inset">
+<span class="material-symbols-outlined text-tertiary text-sm">bolt</span>
+<span class="text-sm text-on-surface">Event-driven Design</span>
+</li>
+<li class="flex items-center gap-3 p-3 neo-inset">
+<span class="material-symbols-outlined text-tertiary text-sm">sync_alt</span>
+<span class="text-sm text-on-surface">WebSockets</span>
+</li>
+<li class="flex items-center gap-3 p-3 neo-inset">
+<span class="material-symbols-outlined text-tertiary text-sm">api</span>
+<span class="text-sm text-on-surface">FastAPI Backend</span>
+</li>
+</ul>
+</div>
+<div class="mt-auto neo-inset p-4 bg-primary/5 border-l-4 border-primary">
+<div class="text-xs text-on-surface-variant uppercase mb-1">Performance Highlight</div>
+<div class="text-xl font-bold text-primary flex items-end gap-1">
+                        &lt;200ms <span class="text-sm font-normal text-on-surface-variant mb-1">latency</span>
+</div>
+</div>
+</article>
+<!-- Project 3: OptraFi (Medium Span) -->
+<article class="neo-surface p-8 lg:col-span-6 flex flex-col justify-between space-y-6">
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">analytics</span>
+<h2 class="text-2xl text-on-surface">OptraFi</h2>
+</div>
+<h3 class="text-sm font-medium text-tertiary">AI Finance Analytics</h3>
+<p class="text-on-surface-variant text-sm">
+                        Optimized complex financial queries and AI-driven data analysis pipelines to deliver real-time market insights.
+                    </p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="neo-inset p-4">
+<span class="text-xs text-on-surface-variant uppercase tracking-wide block mb-2">Tech Stack</span>
+<span class="text-sm font-medium text-on-surface block">MongoDB Aggregation</span>
+<span class="text-sm font-medium text-on-surface block mt-1">AI Analytics Engine</span>
+</div>
+<div class="neo-inset p-4 flex flex-col justify-center">
+<span class="text-xs text-on-surface-variant uppercase tracking-wide block mb-2">Optimization</span>
+<div class="flex items-center gap-2">
+<span class="text-lg font-bold text-on-surface line-through decoration-error/50">480ms</span>
+<span class="material-symbols-outlined text-surface-variant text-sm">arrow_forward</span>
+<span class="text-xl font-bold text-primary">120ms</span>
+</div>
+<span class="text-xs text-on-surface-variant mt-1">Query Latency Reduction</span>
+</div>
+</div>
+</article>
+<!-- Project 4: WelcomeToMyCity (Medium Span) -->
+<article class="neo-surface p-8 lg:col-span-6 flex flex-col justify-between space-y-6">
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">map</span>
+<h2 class="text-2xl text-on-surface">WelcomeToMyCity</h2>
+</div>
+<h3 class="text-sm font-medium text-tertiary">Emotion Urban Discovery</h3>
+<p class="text-on-surface-variant text-sm">
+                        High-performance mapping application visualizing emotional data across urban landscapes using hardware-accelerated rendering.
+                    </p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<div class="neo-inset p-4 flex-1 space-y-2">
+<span class="text-xs text-on-surface-variant uppercase tracking-wide block">Rendering Engine</span>
+<div class="flex items-center gap-2 text-sm text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-sm">layers</span>
+                            MapLibre
+                        </div>
+<div class="flex items-center gap-2 text-sm text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-sm">3d_rotation</span>
+                            WebGL Custom Layers
+                        </div>
+</div>
+<div class="neo-inset p-4 flex-1 flex flex-col justify-center items-center text-center">
+<span class="text-2xl font-display font-bold text-primary">10k+</span>
+<span class="text-xs font-medium text-on-surface mt-1">Interactive Markers</span>
+<span class="text-xs text-on-surface-variant mt-2 bg-background px-2 py-1 rounded-md">Maintained @ 60fps</span>
+</div>
+</div>
+</article>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 bg-surface dark:bg-surface shadow-[inset_4px_4px_8px_rgba(0,0,0,0.06),inset_-4px_-4px_8px_rgba(255,255,255,0.5)] mt-12">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto space-y-4 md:space-y-0">
+<div class="text-on-surface font-display font-semibold">
+                Rachit Kumar Tiwari
+            </div>
+<div class="flex space-x-6 text-label-sm font-body">
+<a class="text-on-surface-variant hover:text-tertiary transition-all duration-200" href="#">GitHub</a>
+<a class="text-on-surface-variant hover:text-tertiary transition-all duration-200" href="#">LinkedIn</a>
+<a class="text-on-surface-variant hover:text-tertiary transition-all duration-200" href="#">Twitter</a>
+<a class="text-on-surface-variant hover:text-tertiary transition-all duration-200" href="#">Email</a>
+</div>
+<div class="font-body text-label-sm text-on-surface-variant">
+                © 2024 Rachit Kumar Tiwari. Built with systems precision.
+            </div>
+</div>
+</footer>
+</body></html>

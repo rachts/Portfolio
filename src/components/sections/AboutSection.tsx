@@ -1,3 +1,4 @@
+import React from 'react';
 
 import { motion } from 'framer-motion';
 import { useIntersection } from '../../hooks/use-intersection';

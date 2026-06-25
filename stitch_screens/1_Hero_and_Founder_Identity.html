@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Rachit Kumar Tiwari - Portfolio Hero</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#2e3040",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#dcdee4",
+                        "on-tertiary-fixed-variant": "#5b21b6",
+                        "on-surface-variant": "#585a68",
+                        "on-primary-fixed-variant": "#4338ca",
+                        "on-primary-container": "#e0e2ff",
+                        "secondary-fixed-dim": "#b8baca",
+                        "primary-container": "#818cf8",
+                        "on-tertiary-fixed": "#2e1065",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#a5b4fc",
+                        "tertiary": "#7c3aed",
+                        "secondary-container": "#d8dae6",
+                        "surface-container-low": "#e5e7ed",
+                        "on-secondary-fixed": "#1a1b26",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#d6d8de",
+                        "surface-container-lowest": "#f0f2f8",
+                        "error-container": "#fee2e2",
+                        "primary": "#6366f1",
+                        "on-primary-fixed": "#1e1b4b",
+                        "on-error-container": "#991b1b",
+                        "secondary": "#6c6e7e",
+                        "on-background": "#2e3040",
+                        "outline": "#8a8c9a",
+                        "on-secondary-fixed-variant": "#404252",
+                        "surface-container": "#e2e4ea",
+                        "background": "#e8eaf0",
+                        "tertiary-fixed-dim": "#c4b5fd",
+                        "on-tertiary-container": "#3b1f63",
+                        "inverse-surface": "#2e3040",
+                        "tertiary-container": "#a78bfa",
+                        "primary-fixed": "#e0e2ff",
+                        "tertiary-fixed": "#ede9fe",
+                        "on-tertiary": "#ffffff",
+                        "surface": "#e8eaf0",
+                        "secondary-fixed": "#d8dae6",
+                        "on-secondary-container": "#585a68",
+                        "surface-tint": "#6366f1",
+                        "error": "#dc2626",
+                        "surface-dim": "#d4d6dc",
+                        "primary-fixed-dim": "#a5b4fc",
+                        "outline-variant": "#d0d2dc",
+                        "surface-bright": "#edeef4",
+                        "inverse-on-surface": "#e8eaf0",
+                        "surface-container-high": "#dcdee4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans", "sans-serif"],
+                        "display": ["Plus Jakarta Sans", "sans-serif"],
+                        "body": ["Plus Jakarta Sans", "sans-serif"],
+                        "label": ["Plus Jakarta Sans", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #e8eaf0;
+            color: #2e3040;
+            overflow-x: hidden;
+        }
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .neo-raised {
+            box-shadow: 6px 6px 12px rgba(0,0,0,0.08), -6px -6px 12px rgba(255,255,255,0.6);
+            background-color: #e8eaf0;
+            border-radius: 1.5rem;
+        }
+        
+        .neo-inset {
+            box-shadow: inset 4px 4px 8px rgba(0,0,0,0.06), inset -4px -4px 8px rgba(255,255,255,0.5);
+            background-color: #e8eaf0;
+            border-radius: 1.5rem;
+        }
+        
+        .neo-button {
+            box-shadow: 6px 6px 12px rgba(0,0,0,0.08), -6px -6px 12px rgba(255,255,255,0.6);
+            background-color: #e8eaf0;
+            transition: all 0.2s ease-in-out;
+            border-radius: 9999px;
+        }
+        
+        .neo-button:active {
+            box-shadow: inset 4px 4px 8px rgba(0,0,0,0.06), inset -4px -4px 8px rgba(255,255,255,0.5);
+        }
+
+        .glass-panel {
+            background: rgba(232, 234, 240, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-primary/20 selection:text-primary min-h-screen flex flex-col relative">
+<!-- Ambient WebGL Background -->
+<div class="fixed inset-0 z-0 opacity-40 mix-blend-multiply pointer-events-none">
+<!-- STITCH_SHADER_START:ANIMATION_2 class="absolute inset-0 w-full h-full" -->
+<div class="absolute inset-0 w-full h-full" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_2" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_2');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+varying vec2 v_texCoord;
+uniform float u_time;
+uniform vec2 u_resolution;
+uniform vec2 u_mouse;
+
+float noise(vec2 p) {
+    return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453);
+}
+
+void main() {
+    vec2 uv = v_texCoord;
+    vec2 mouse = u_mouse / u_resolution;
+    
+    // Create a fluid, ambient movement
+    float t = u_time * 0.15;
+    
+    // Base dark colors (Obsidian black to deep indigo)
+    vec3 color1 = vec3(0.01, 0.01, 0.02);
+    vec3 color2 = vec3(0.05, 0.05, 0.15); // Electric indigo hint
+    
+    // Noise-based plasma effect
+    float n = 0.0;
+    vec2 p = uv * 3.0;
+    n += 0.5 * sin(p.x + t);
+    n += 0.25 * sin(p.y + t * 1.2);
+    n += 0.125 * sin(p.x + p.y + t * 0.8);
+    
+    // Interaction influence
+    float dist = distance(uv, mouse);
+    float glow = smoothstep(0.4, 0.0, dist) * 0.2;
+    
+    vec3 finalColor = mix(color1, color2, n * 0.5 + 0.5);
+    finalColor += vec3(0.08, 0.1, 0.4) * glow; // Glow follow
+    
+    // Subtle grain
+    float grain = (noise(uv * u_resolution.xy + u_time) - 0.5) * 0.02;
+    finalColor += grain;
+
+    gl_FragColor = vec4(finalColor, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_2 -->
+</div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl shadow-[6px_6px_12px_rgba(0,0,0,0.08),-6px_-6px_12px_rgba(255,255,255,0.6)]">
+<div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+<!-- Brand -->
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg overflow-hidden neo-inset p-1 flex items-center justify-center">
+<img alt="Brand Logo" class="w-full h-full object-contain rounded-DEFAULT" src="data:image/png;base64,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"/>
+</div>
+<span class="text-headline-sm font-display font-semibold tracking-tighter text-on-surface">
+                    Rachit Kumar Tiwari
+                </span>
+</div>
+<!-- Nav Links (Desktop) -->
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-body font-medium tracking-tight text-label-sm text-primary border-b-2 border-primary pb-1 hover:text-primary transition-colors duration-300" href="#">Projects</a>
+<a class="font-body font-medium tracking-tight text-label-sm text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Stack</a>
+<a class="font-body font-medium tracking-tight text-label-sm text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Journey</a>
+<a class="font-body font-medium tracking-tight text-label-sm text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Focus</a>
+</div>
+<!-- Primary Action -->
+<button class="hidden md:flex items-center justify-center px-6 py-2 neo-button font-label text-primary font-semibold hover:text-tertiary">
+                Connect
+                <span class="material-symbols-outlined ml-2 text-[20px]">arrow_forward</span>
+</button>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden neo-button p-2 text-on-surface-variant flex items-center justify-center w-10 h-10">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col justify-center items-center px-6 pt-32 pb-24 relative z-10 max-w-7xl mx-auto w-full">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full items-center">
+<!-- Hero Text Section (Left) -->
+<div class="lg:col-span-7 flex flex-col items-start justify-center space-y-8 z-20">
+<div class="inline-flex items-center gap-2 px-4 py-2 neo-raised text-primary text-label-sm font-semibold mb-2">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                    Available for new opportunities
+                </div>
+<h1 class="text-5xl md:text-6xl lg:text-7xl font-display font-extrabold tracking-tighter leading-tight text-on-surface">
+                    Building products at the intersection of <span class="text-primary relative inline-block">AI
+                        <svg class="absolute w-full h-3 -bottom-1 left-0 text-primary-container/50 -z-10" preserveaspectratio="none" viewbox="0 0 100 20">
+<path d="M0,10 Q50,0 100,10 L100,20 L0,20 Z" fill="currentColor"></path>
+</svg>
+</span>, human interaction, and real-world impact.
+                </h1>
+<p class="text-xl font-body text-on-surface-variant max-w-2xl leading-relaxed">
+                    Founder, Full-Stack Engineer, and Product Builder focused on AI systems, computer vision, and scalable web platforms.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 pt-4">
+<button class="px-8 py-4 neo-button flex items-center justify-center gap-2 text-primary font-bold text-lg group">
+                        Explore My Work
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<button class="px-8 py-4 neo-raised flex items-center justify-center gap-2 text-on-surface-variant font-semibold text-lg hover:text-primary transition-colors">
+                        View Resume
+                        <span class="material-symbols-outlined">description</span>
+</button>
+</div>
+</div>
+<!-- Bento Grid Section (Right) -->
+<div class="lg:col-span-5 grid grid-cols-2 gap-6 w-full mt-12 lg:mt-0 relative z-20">
+<!-- Metric 1: Projects Built -->
+<div class="neo-raised p-6 flex flex-col justify-center items-center text-center group hover:-translate-y-1 transition-transform duration-300">
+<div class="w-12 h-12 rounded-full neo-inset flex items-center justify-center mb-4 text-primary">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+</div>
+<h3 class="text-3xl font-display font-bold text-on-surface group-hover:text-primary transition-colors">31+</h3>
+<p class="text-sm font-body text-on-surface-variant mt-1 font-medium">Projects Built</p>
+</div>
+<!-- Metric 2: Contributions -->
+<div class="neo-raised p-6 flex flex-col justify-center items-center text-center group hover:-translate-y-1 transition-transform duration-300">
+<div class="w-12 h-12 rounded-full neo-inset flex items-center justify-center mb-4 text-tertiary">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">code_blocks</span>
+</div>
+<h3 class="text-3xl font-display font-bold text-on-surface group-hover:text-tertiary transition-colors">3308+</h3>
+<p class="text-sm font-body text-on-surface-variant mt-1 font-medium">Contributions</p>
+</div>
+<!-- Metric 3: Users Impacted -->
+<div class="neo-raised p-6 flex flex-col justify-center items-center text-center group hover:-translate-y-1 transition-transform duration-300">
+<div class="w-12 h-12 rounded-full neo-inset flex items-center justify-center mb-4 text-primary">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">groups</span>
+</div>
+<h3 class="text-3xl font-display font-bold text-on-surface group-hover:text-primary transition-colors">100+</h3>
+<p class="text-sm font-body text-on-surface-variant mt-1 font-medium">Users Impacted</p>
+</div>
+<!-- Metric 4: Startup Products -->
+<div class="neo-raised p-6 flex flex-col justify-center items-center text-center group hover:-translate-y-1 transition-transform duration-300">
+<div class="w-12 h-12 rounded-full neo-inset flex items-center justify-center mb-4 text-tertiary">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">domain</span>
+</div>
+<h3 class="text-3xl font-display font-bold text-on-surface group-hover:text-tertiary transition-colors">3</h3>
+<p class="text-sm font-body text-on-surface-variant mt-1 font-medium">Startup Products</p>
+</div>
+<!-- Founder Statement Card (Spans full width of bento grid) -->
+<div class="col-span-2 neo-inset p-8 relative overflow-hidden group">
+<div class="absolute -right-8 -top-8 w-32 h-32 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition-colors"></div>
+<span class="material-symbols-outlined text-primary/30 text-5xl absolute -left-2 -top-2">format_quote</span>
+<div class="relative z-10 pl-6">
+<p class="font-body text-lg italic text-on-surface-variant leading-relaxed">
+                            "I enjoy designing systems that transform complex problems into intuitive experiences."
+                        </p>
+<div class="mt-4 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden border-2 border-surface flex items-center justify-center shadow-[inset_0_2px_4px_rgba(0,0,0,0.1)]">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of an Indian male in his mid-20s, looking directly at the camera with a subtle smile. He has short dark hair and is wearing a dark, well-fitted t-shirt. The lighting is soft and flattering, creating a high-key, modern aesthetic. The background is a clean, minimal, slightly warm white, complementing a neomorphic light-mode UI design. The mood is confident, approachable, and tech-forward." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCx3LyGAq83Sn-PebV3FPJBb_oLHBEfm9obstTnm1-VXOv3E6MswQsZxl6qz0RuMjy2qyOUxGFGA9ArLHJlv86RuiZDdHoR0dgNTLa_jrxbYCKPBHxENtiWksGlgg1RBFKigjx7RhBcRnbETn9ZoweVwJ7sfU1JglT4Fu0Bgh186tSIGTqcMmz-7mAZEefogMC1WmVc7UoJoL1cpkp2vWeFheOfnSn7hvYwRwpHHR3w5DjZTPVuWKT703oBeSNCw4SCdjEJQrzZ3EZm"/>
+</div>
+<div>
+<h4 class="font-headline font-bold text-on-surface text-sm">Rachit Kumar Tiwari</h4>
+<p class="font-body text-xs text-on-surface-variant">Founder Statement</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 bg-surface shadow-[inset_4px_4px_8px_rgba(0,0,0,0.06),inset_-4px_-4px_8px_rgba(255,255,255,0.5)] z-20 relative">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto space-y-4 md:space-y-0">
+<span class="text-on-surface font-display font-semibold text-lg">Rachit Kumar Tiwari</span>
+<div class="flex space-x-6">
+<a class="text-on-surface-variant hover:text-tertiary transition-all duration-200 font-body text-sm font-medium flex items-center gap-1 group" href="#">
+<span class="material-symbols-outlined text-[18px] group-hover:-translate-y-0.5 transition-transform">terminal</span>
+                    GitHub
+                </a>
+<a class="text-on-surface-variant hover:text-tertiary transition-all duration-200 font-body text-sm font-medium flex items-center gap-1 group" href="#">
+<span class="material-symbols-outlined text-[18px] group-hover:-translate-y-0.5 transition-transform">work</span>
+                    LinkedIn
+                </a>
+<a class="text-on-surface-variant hover:text-tertiary transition-all duration-200 font-body text-sm font-medium flex items-center gap-1 group" href="#">
+<span class="material-symbols-outlined text-[18px] group-hover:-translate-y-0.5 transition-transform">tag</span>
+                    Twitter
+                </a>
+<a class="text-on-surface-variant hover:text-tertiary transition-all duration-200 font-body text-sm font-medium flex items-center gap-1 group" href="#">
+<span class="material-symbols-outlined text-[18px] group-hover:-translate-y-0.5 transition-transform">mail</span>
+                    Email
+                </a>
+</div>
+<p class="font-body text-label-sm text-on-surface-variant">
+                © 2024 Rachit Kumar Tiwari. Built with systems precision.
+            </p>
+</div>
+</footer>
+</body></html>

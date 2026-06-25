@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Terminal } from 'lucide-react';
-import { Button } from '../ui/Button';
+import { ArrowRight } from 'lucide-react';
 import { portfolioData } from '../../data/portfolio-data';
 
 export function HeroSection() {
@@ -16,79 +15,91 @@ export function HeroSection() {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-cyan-900/20 via-brand-dark to-brand-dark pointer-events-none" />
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-fuchsia-500/10 rounded-full blur-[120px] pointer-events-none" />
-
-      <div className="container mx-auto px-6 max-w-6xl relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center space-x-2 bg-slate-800/50 border border-slate-700 rounded-full px-4 py-1.5 mb-8"
-          >
-            <Terminal className="w-4 h-4 text-cyan-400" />
-            <span className="text-sm text-slate-300 font-mono">System initialized.</span>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="mb-4"
-          >
-            <span className="text-cyan-400 font-mono text-lg md:text-xl font-semibold tracking-wide">
-              {portfolioData.hero.greeting}
-            </span>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 text-slate-100"
-          >
-            {portfolioData.hero.headline.split('.').map((part, i, arr) => (
-              <React.Fragment key={i}>
-                {part}{i < arr.length - 1 && <span className="text-cyan-400">.</span>}
-              </React.Fragment>
-            ))}
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            className="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed"
-          >
-            {portfolioData.hero.subtext}
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.6 }}
-            className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6"
-          >
-            <Button size="lg" className="w-full sm:w-auto group" onClick={() => scrollToSection('projects')}>
-              View Architecture
-              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <motion.a 
-              href="/resume.pdf" 
-              download="Rachit_Tiwari_Resume.pdf"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan-500 border border-slate-700 bg-transparent hover:bg-slate-800 text-slate-300 h-12 px-8 text-base w-full sm:w-auto"
+    <main className="pt-32 pb-24 min-h-screen flex items-center">
+      <div className="max-w-[1200px] mx-auto px-5 md:px-6 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+          
+          {/* Left Column: Copy */}
+          <div className="md:col-span-7 flex flex-col gap-8 pr-0 md:pr-12 z-10">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="space-y-6"
             >
-              Download Resume
-            </motion.a>
-          </motion.div>
+              <div className="space-y-4">
+                <p className="text-primary font-bold tracking-widest uppercase text-sm md:text-base">
+                  {portfolioData.hero.greeting}
+                </p>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight text-hero-primary max-w-2xl leading-tight">
+                  {portfolioData.hero.headline}
+                </h1>
+              </div>
+              <p className="text-lg font-body text-on-surface-variant max-w-xl">
+                {portfolioData.hero.subtext}
+              </p>
+              <blockquote className="pl-4 border-l-2 border-outline-variant italic text-base font-body text-on-surface-variant">
+                "I enjoy designing systems that transform complex problems into intuitive experiences."
+              </blockquote>
+            </motion.div>
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="flex items-center gap-4 pt-4"
+            >
+              <button 
+                onClick={() => scrollToSection('projects')}
+                className="bg-button-primary text-on-primary px-8 py-3 rounded-lg font-semibold text-sm hover:opacity-90 transition-opacity flex items-center gap-2 active:scale-95 duration-200"
+              >
+                View Work
+                <ArrowRight className="w-4 h-4 ml-1" />
+              </button>
+              <a 
+                href="#contact"
+                className="bg-card-surface text-primary card-border px-8 py-3 rounded-lg font-semibold text-sm hover:bg-surface transition-colors flex items-center gap-2 active:scale-95 duration-200 cursor-pointer"
+              >
+                Connect
+              </a>
+            </motion.div>
+          </div>
+
+          {/* Right Column: Visuals & Metrics */}
+          <div className="md:col-span-5 flex flex-col gap-6 relative mt-12 md:mt-0">
+            {/* Headshot Card */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6 }}
+              className="bg-card-surface rounded-xl overflow-hidden card-border micro-shadow aspect-[4/5] md:aspect-square relative group"
+            >
+              <img 
+                alt="Rachit Kumar Tiwari" 
+                className="w-full h-full object-cover object-center filter grayscale contrast-125 transition-all duration-700 group-hover:grayscale-0" 
+                src="/hero-profile.jpg"
+              />
+              <div className="absolute inset-0 border border-black/5 rounded-xl pointer-events-none"></div>
+            </motion.div>
+            
+            {/* Metrics Bento Grid */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="grid grid-cols-2 gap-4"
+            >
+              {portfolioData.stats.map((stat, idx) => (
+                <div key={idx} className="bg-card-surface p-6 rounded-xl card-border micro-shadow flex flex-col justify-center">
+                  <span className="text-2xl font-bold font-display text-hero-primary">{stat.value}{stat.suffix}</span>
+                  <span className="text-xs font-semibold text-on-surface-variant uppercase tracking-widest mt-1">{stat.label}</span>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+          
         </div>
       </div>
-    </section>
+    </main>
   );
 }

@@ -39,6 +39,23 @@ export interface PortfolioData {
     value: number;
     suffix: string;
   }[];
+  beyond?: {
+    vectorsOfInterest: string[];
+    writing: {
+      title: string;
+      description: string;
+      imageUrl: string;
+      imageAlt: string;
+    };
+    travel: {
+      title: string;
+      description: string;
+    };
+    buildingInPublic: {
+      title: string;
+      description: string;
+    };
+  };
   faq: {
     question: string;
     answer: string;
@@ -154,13 +171,13 @@ export const portfolioData: PortfolioData = {
       demo: "https://restaurantreservation-bot.netlify.app/"
     },
     {
-      id: "khabri-ai",
+      id: "kredai",
       title: "SOLUTION: AI Misinformation Combatant",
       problem: "The rapid spread of misinformation makes it difficult for users to verify the authenticity of news headlines and social media forwards.",
       impact: "Built a real-time fact-checking platform using Serper.dev API to provide evidence-backed verdicts across multiple languages.",
       tags: ["Next.js 16", "Serper API", "AI Verification", "Tailwind CSS"],
       github: "https://github.com/rachts/khabri.ai",
-      demo: "https://khabriai.vercel.app/"
+      demo: "https://kredai.vercel.app/"
     },
     {
       id: "privsight",
@@ -220,6 +237,28 @@ export const portfolioData: PortfolioData = {
     { label: "Code Contributions", value: 3308, suffix: "+" },
     { label: "Users Impacted", value: 100, suffix: "+" }
   ],
+  beyond: {
+    vectorsOfInterest: [
+      "AI Agents",
+      "HCI",
+      "Social Impact Tech",
+      "Distributed Systems"
+    ],
+    writing: {
+      title: "Writing & Thoughts",
+      description: "Documenting the journey of building software, exploring technical architecture, and sharing thoughts on the intersection of technology and human experience. Writing is my way of debugging ideas.",
+      imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuDhuXhNcle3bfvNl5VevPvWltAKworGD3qOf5arZdA_eO8Y2Fa744qfRz7PZD46tjZY4bH9HiO7SGzTBTEzZrJ7uX5rXKv0Jp7CT2o5-3ecyMOEmpQPDOvJ0E7BazLko8YgrG1TJnvA6evV54rbKWOyGLX-n2YsWLk5oW7pFCEm7ns8w5hXpBWeRBdLieJz7ryfQc-_g9tzwu98q1pB7YujO6uDptxc8N18qc_h_oUV4sp5FnB4FLrh0hMwL0i05tG2tS_zdYegmkRN",
+      imageAlt: "A sleek laptop on a cool gray desk next to a minimal coffee cup in soft lighting."
+    },
+    travel: {
+      title: "Travel",
+      description: "Gaining new perspectives through global exploration. Understanding different cultures shapes how I design user experiences for a worldwide audience."
+    },
+    buildingInPublic: {
+      title: "Building in Public",
+      description: "Radical transparency in the development process. Sharing wins, failures, and the messy reality of shipping products."
+    }
+  },
   faq: [
     {
       question: "What is your primary tech stack?",
