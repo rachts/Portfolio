@@ -46,6 +46,7 @@ export interface PortfolioData {
     email: string;
     github: string;
     linkedin: string;
+    twitter: string;
   };
 }
 
@@ -235,5 +236,6 @@ export const portfolioData: PortfolioData = {
     email: "tiwari.rachit@gmail.com",
     github: "https://github.com/rachts",
     linkedin: "https://www.linkedin.com/in/rachitkrtiwari/",
+    twitter: "https://x.com/rachtss",
   }
 };

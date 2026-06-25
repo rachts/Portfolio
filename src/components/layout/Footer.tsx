@@ -22,7 +22,7 @@ export function Footer() {
           <a href={portfolioData.contact.linkedin} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-cyan-400 transition-colors">
             <Linkedin className="w-5 h-5" />
           </a>
-          <a href="#" className="text-slate-400 hover:text-cyan-400 transition-colors">
+          <a href={portfolioData.contact.twitter} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-cyan-400 transition-colors">
             <Twitter className="w-5 h-5" />
           </a>
           <a href={`https://mail.google.com/mail/?view=cm&fs=1&to=${portfolioData.contact.email}`} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-cyan-400 transition-colors">
