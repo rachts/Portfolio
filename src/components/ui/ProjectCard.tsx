@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronUp, ChevronDown, Brain, Component, AlertTriangle, Wrench, Github, ExternalLink } from 'lucide-react';
 import { Project } from '../../data/portfolio-data';
+import PixelTransition from '../reactbits/PixelTransition';
 
 interface ProjectCardProps {
   project: Project;
@@ -59,6 +60,25 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </div>
 
       <div className="flex-grow">
+        <div className="mb-6 rounded-xl overflow-hidden h-32 relative">
+          <PixelTransition
+            firstContent={
+              <div className="w-full h-full bg-primary/5 flex items-center justify-center p-4">
+                <span className={`text-2xl font-display font-bold ${categoryColorClass} opacity-80 uppercase tracking-widest`}>{primaryTag}</span>
+              </div>
+            }
+            secondContent={
+              <div className="w-full h-full bg-surface-variant flex items-center justify-center p-4">
+                <p className="text-on-surface-variant text-center text-sm font-medium">{project.impact || "Impact driven engineering."}</p>
+              </div>
+            }
+            gridSize={12}
+            pixelColor="#ffffff"
+            animationStepDuration={0.03}
+            className="w-full h-full"
+            style={{ width: '100%', height: '100%' }}
+          />
+        </div>
         <h3 className="text-2xl font-display font-semibold text-hero-primary mb-2">{project.title.replace('SOLUTION: ', '')}</h3>
         <p className="text-on-surface-variant text-sm line-clamp-2">{project.problem}</p>
       </div>

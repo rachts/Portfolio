@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Download } from 'lucide-react';
 import { portfolioData } from '../../data/portfolio-data';
 
 export function HeroSection() {
@@ -47,7 +47,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="flex items-center gap-4 pt-4"
+              className="flex flex-wrap items-center gap-4 pt-4"
             >
               <button 
                 onClick={() => scrollToSection('projects')}
@@ -61,6 +61,15 @@ export function HeroSection() {
                 className="bg-card-surface text-primary card-border px-8 py-3 rounded-lg font-semibold text-sm hover:bg-surface transition-colors flex items-center gap-2 active:scale-95 duration-200 cursor-pointer"
               >
                 Connect
+              </a>
+              <a 
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-card-surface text-on-surface-variant card-border px-8 py-3 rounded-lg font-semibold text-sm hover:text-primary hover:bg-surface transition-colors flex items-center gap-2 active:scale-95 duration-200 cursor-pointer"
+              >
+                Resume
+                <Download className="w-4 h-4 ml-1" />
               </a>
             </motion.div>
           </div>

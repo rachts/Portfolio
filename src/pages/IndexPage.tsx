@@ -9,20 +9,32 @@ import { ProjectExplorer } from '../components/sections/ProjectExplorer';
 import { TimelineSection } from '../components/sections/TimelineSection';
 import { BeyondEngineeringSection } from '../components/sections/BeyondEngineeringSection';
 import { ContactSection } from '../components/sections/ContactSection';
-import { ShaderBackground } from '../components/ui/ShaderBackground';
+import SplashCursor from '../components/reactbits/SplashCursor';
+import CurvedLoop from '../components/reactbits/CurvedLoop';
+import DomeGallery from '../components/reactbits/DomeGallery';
+import FlowingMenu from '../components/reactbits/FlowingMenu';
 
 export function IndexPage() {
+  const flowingMenuItems = [
+    { link: 'https://optra-fi.vercel.app/', text: 'Optrafi', image: '/project1.png' },
+    { link: 'https://doceasy.vercel.app/', text: 'DocEasy', image: '/project6.png' },
+    { link: 'https://kred-ai.vercel.app/', text: 'Kred.ai', image: '/project5.png' },
+    { link: 'https://vitamend-org.vercel.app', text: 'Vitamend', image: '/project4.png' }
+  ];
   return (
     <div className="min-h-screen bg-background text-on-surface font-body antialiased selection:bg-primary/20 selection:text-primary flex flex-col relative overflow-hidden">
-      {/* Background Shader Component (Removed for flat light design) */}
+      <div className="fixed inset-0 z-[-1] pointer-events-none">
+        <SplashCursor />
+      </div>
       
       <Navbar />
       
       <main className="flex-grow pt-32 pb-24 relative z-10">
         <HeroSection />
         
-        {/* Separator / Spacer */}
-        <div className="h-24"></div>
+        <div className="my-16 flex justify-center">
+          <CurvedLoop marqueeText="INNOVATION IN EVENT TECH - " className="text-on-surface uppercase font-display font-bold" />
+        </div>
         
         <FlagshipSystems />
         
@@ -35,7 +47,20 @@ export function IndexPage() {
         <ProjectExplorer />
         <TimelineSection />
         <BeyondEngineeringSection />
+
+        <section className="py-24 relative w-full overflow-hidden flex flex-col items-center">
+          <h2 className="text-4xl md:text-5xl font-display font-semibold text-hero-primary tracking-tight mb-12 relative z-10 text-center">Visual Gallery</h2>
+          <div className="w-full h-[500px] md:h-[700px] relative z-10">
+             <DomeGallery />
+          </div>
+        </section>
+
         <ContactSection />
+        
+        <section className="h-[400px] w-full mt-12 bg-surface border-t border-outline-variant/30 pt-12 relative z-10">
+          <h2 className="text-3xl md:text-4xl font-display font-semibold text-hero-primary tracking-tight mb-8 text-center">Where to Next?</h2>
+          <FlowingMenu items={flowingMenuItems} />
+        </section>
       </main>
 
       <Footer />
