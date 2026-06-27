@@ -1,11 +1,16 @@
-import React from 'react';
-
-import { IndexPage } from './pages/IndexPage'
+import React, { useState } from 'react';
+import { IndexPage } from './pages/IndexPage';
+import { LoadingScreen } from './components/ui/LoadingScreen';
 
 function App() {
+  const [loadingComplete, setLoadingComplete] = useState(false);
+
   return (
-    <IndexPage />
-  )
+    <>
+      <LoadingScreen onComplete={() => setLoadingComplete(true)} />
+      {loadingComplete && <IndexPage />}
+    </>
+  );
 }
 
-export default App
+export default App;

@@ -11,7 +11,7 @@ import { BeyondEngineeringSection } from '../components/sections/BeyondEngineeri
 import { ContactSection } from '../components/sections/ContactSection';
 import SplashCursor from '../components/reactbits/SplashCursor';
 import CurvedLoop from '../components/reactbits/CurvedLoop';
-import DomeGallery from '../components/reactbits/DomeGallery';
+import { PhotoPause } from '../components/ui/PhotoPause';
 import FlowingMenu from '../components/reactbits/FlowingMenu';
 
 export function IndexPage() {
@@ -32,8 +32,19 @@ export function IndexPage() {
       <main className="flex-grow pt-32 pb-24 relative z-10">
         <HeroSection />
         
+        <PhotoPause 
+          src="IMG_20260524_101641.jpg" 
+          alt="Atmosphere" 
+          containerClass="w-full aspect-video md:aspect-[21/9]" 
+          imageClass="object-cover object-[center_70%]"
+        />
+        
         <div className="my-16 flex justify-center">
-          <CurvedLoop marqueeText="INNOVATION IN EVENT TECH - " className="text-on-surface uppercase font-display font-bold" />
+          <CurvedLoop 
+            marqueeText="BUILD • DESIGN • SHIP • REPEAT • " 
+            speed={1} 
+            className="text-on-surface uppercase font-display font-bold tracking-widest"
+          />
         </div>
         
         <FlagshipSystems />
@@ -46,14 +57,8 @@ export function IndexPage() {
 
         <ProjectExplorer />
         <TimelineSection />
+        
         <BeyondEngineeringSection />
-
-        <section className="py-24 relative w-full overflow-hidden flex flex-col items-center">
-          <h2 className="text-4xl md:text-5xl font-display font-semibold text-hero-primary tracking-tight mb-12 relative z-10 text-center">Visual Gallery</h2>
-          <div className="w-full h-[500px] md:h-[700px] relative z-10">
-             <DomeGallery />
-          </div>
-        </section>
 
         <ContactSection />
         

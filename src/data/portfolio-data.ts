@@ -23,6 +23,7 @@ export interface PortfolioData {
     greeting: string;
     headline: string;
     subtext: string;
+    quote: string;
   };
   about: {
     valueProp: string;
@@ -70,9 +71,10 @@ export interface PortfolioData {
 
 export const portfolioData: PortfolioData = {
   hero: {
-    greeting: "Hi, I'm Rachit Tiwari.",
-    headline: "Engineering Scalable Systems.",
-    subtext: "I build high-performance applications that solve complex problems, optimizing for speed, resilience, and user experience.",
+    greeting: "HI, I'M RACHIT TIWARI.",
+    headline: "Turning ideas into products.",
+    subtext: "From AI experiments to production-ready applications, I enjoy building products that are fast, intuitive, and designed to solve real-world problems.",
+    quote: "Curiosity starts the project. Craftsmanship finishes it."
   },
   about: {
     valueProp: "More than just writing code, I design systems. With a strong engineering mindset, I focus on architecture, performance, and delivering measurable impact. From deep technical problem-solving to crafting pixel-perfect interfaces, I bridge the gap between robust backends and engaging user experiences."
@@ -239,10 +241,11 @@ export const portfolioData: PortfolioData = {
   ],
   beyond: {
     vectorsOfInterest: [
-      "AI Agents",
-      "HCI",
-      "Social Impact Tech",
-      "Distributed Systems"
+      "Applied AI & Computer Vision",
+      "Real-Time Streaming Systems",
+      "Human-Computer Interaction (HCI)",
+      "Spatial & Interactive Interfaces",
+      "Full-Stack System Architecture"
     ],
     writing: {
       title: "Writing & Thoughts",

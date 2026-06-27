@@ -82,73 +82,36 @@ export function BeyondEngineeringSection() {
           Beyond The Code
         </motion.h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* Large Feature */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-8 bg-[#F4F5F7] rounded-[1.5rem] overflow-hidden group flex flex-col border border-transparent hover:border-outline-variant/30 transition-colors"
+            className="w-full max-w-[450px] mx-auto md:max-w-none aspect-[3/4] rounded-[2rem] overflow-hidden bg-surface-variant"
           >
-            <div className="h-64 md:h-[22rem] w-full relative">
-              <img 
-                src={beyond.writing.imageUrl} 
-                alt={beyond.writing.imageAlt}
-                className="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 transition-all duration-700" 
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#F4F5F7] via-[#F4F5F7]/40 to-transparent"></div>
-            </div>
-            <div className="p-8 md:p-10 -mt-24 md:-mt-28 relative z-10 flex-grow">
-              <span className="inline-block px-3 py-1 bg-canvas border border-outline-variant/30 rounded-full text-[11px] font-bold text-primary mb-4 shadow-sm uppercase tracking-widest">
-                
-              </span>
-              <h3 className="font-display text-2xl md:text-3xl font-semibold mb-3 text-hero-primary">
-                {beyond.writing.title}
-              </h3>
-              <p className="text-[15px] text-on-surface-variant leading-relaxed max-w-2xl">
-                {beyond.writing.description}
-              </p>
-            </div>
+            <img 
+              src="/visuals/IMG_20260518_072615.jpg" 
+              alt="Perspective"
+              className="w-full h-full object-cover grayscale-[15%] hover:grayscale-0 transition-all duration-700" 
+            />
           </motion.div>
 
-          {/* Side Stack */}
-          <div className="lg:col-span-4 flex flex-col gap-8">
-            <motion.div 
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="bg-[#F4F5F7] rounded-[1.25rem] p-8 flex-1 border border-transparent hover:border-outline-variant/30 transition-colors"
-            >
-              <div className="w-10 h-10 bg-canvas border border-outline-variant/30 shadow-sm rounded-full flex items-center justify-center mb-5 text-tertiary">
-                <Plane className="w-4 h-4" />
-              </div>
-              <h3 className="font-display text-xl font-semibold mb-2 text-hero-primary">
-                {beyond.travel.title}
-              </h3>
-              <p className="text-[14px] text-on-surface-variant leading-relaxed">
-                {beyond.travel.description}
-              </p>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="bg-[#F4F5F7] rounded-[1.25rem] p-8 flex-1 border border-transparent hover:border-outline-variant/30 transition-colors"
-            >
-              <div className="w-10 h-10 bg-canvas border border-outline-variant/30 shadow-sm rounded-full flex items-center justify-center mb-5 text-primary">
-                <Hammer className="w-4 h-4" />
-              </div>
-              <h3 className="font-display text-xl font-semibold mb-2 text-hero-primary">
-                {beyond.buildingInPublic.title}
-              </h3>
-              <p className="text-[14px] text-on-surface-variant leading-relaxed">
-                {beyond.buildingInPublic.description}
-              </p>
-            </motion.div>
-          </div>
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="space-y-6 md:pr-8"
+          >
+            <p className="text-xl md:text-2xl text-on-surface leading-relaxed font-medium">
+              I spend most of my days building digital experiences. When I step away from the screen, I look for stories in places, people, and light.
+            </p>
+            <p className="text-lg text-on-surface-variant leading-relaxed">
+              Photography is a quiet hobby that forces me to slow down and observe the world instead of trying to optimize it. 
+            </p>
+            <p className="text-lg text-on-surface-variant leading-relaxed">
+              Whether I'm writing code, reading about infrastructure, or exploring a new city, I'm always looking for the underlying structure of how things work.
+            </p>
+          </motion.div>
         </div>
       </div>
     </section>

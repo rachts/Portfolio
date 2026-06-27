@@ -31,9 +31,14 @@ export function ProjectCard({ project }: ProjectCardProps) {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.3 }}
-      className="project-card bg-card-surface border border-outline-variant card-shadow rounded-[2rem] p-6 flex flex-col gap-6 transition-all duration-300"
+      className="project-card relative group bg-card-surface border border-outline-variant card-shadow rounded-[2rem] p-6 flex flex-col gap-6 transition-all duration-500 overflow-hidden"
     >
-      <div className="flex justify-between items-start">
+      {/* Blurred Photography Hover Texture */}
+      <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-[0.08] transition-opacity duration-700 pointer-events-none">
+        <img src="/visuals/IMG_20260521_103517.jpg" alt="Texture" className="w-full h-full object-cover blur-xl scale-110 grayscale" />
+      </div>
+
+      <div className="flex justify-between items-start relative z-10">
         <span className={`text-xs font-bold uppercase tracking-wider ${categoryColorClass} px-3 py-1 bg-canvas border border-outline-variant/50 rounded-lg`}>
           {primaryTag}
         </span>
@@ -59,7 +64,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
       </div>
 
-      <div className="flex-grow">
+      <div className="flex-grow relative z-10">
         <div className="mb-6 rounded-xl overflow-hidden h-32 relative">
           <PixelTransition
             firstContent={
@@ -90,7 +95,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="overflow-hidden"
+            className="overflow-hidden relative z-10"
           >
             <div className="space-y-4 pt-4 border-t border-surface-container-highest mt-2">
               

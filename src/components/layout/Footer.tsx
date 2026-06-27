@@ -6,8 +6,8 @@ export function Footer() {
   const { contact } = portfolioData;
 
   return (
-    <footer className="w-full py-16 md:py-24 bg-surface border-t border-outline-variant/30 mt-auto relative z-10">
-      <div className="max-w-[1200px] mx-auto px-5 md:px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+    <footer className="w-full bg-surface border-t border-outline-variant/30 mt-auto relative z-10 flex flex-col">
+      <div className="w-full py-16 md:py-24 max-w-[1200px] mx-auto px-5 md:px-6 flex flex-col md:flex-row justify-between items-center gap-4">
         
         {/* Brand */}
         <div className="font-headline-md text-headline-md text-primary flex items-center gap-2">

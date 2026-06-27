@@ -54,4 +54,10 @@ next-env.d.ts
 coverage/
 
 # Agent Skills
-.agent/skills
+.agent/
+
+# Stitch
+stitch_screens/
+
+# Unsynced Source Images
+PORTFOLIO IMAGES/

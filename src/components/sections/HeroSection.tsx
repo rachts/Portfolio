@@ -15,8 +15,14 @@ export function HeroSection() {
   };
 
   return (
-    <main className="pt-32 pb-24 min-h-screen flex items-center">
-      <div className="max-w-[1200px] mx-auto px-5 md:px-6 w-full">
+    <main className="pt-32 pb-24 min-h-screen flex items-center relative overflow-hidden">
+      {/* Subtle Ambient Photography Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.04] select-none mix-blend-screen">
+        <img src="/visuals/IMG_20260521_162331.jpg" alt="" className="w-full h-full object-cover blur-[100px] scale-125 grayscale" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background"></div>
+      </div>
+
+      <div className="max-w-[1200px] mx-auto px-5 md:px-6 w-full relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           
           {/* Left Column: Copy */}
@@ -39,7 +45,7 @@ export function HeroSection() {
                 {portfolioData.hero.subtext}
               </p>
               <blockquote className="pl-4 border-l-2 border-outline-variant italic text-base font-body text-on-surface-variant">
-                "I enjoy designing systems that transform complex problems into intuitive experiences."
+                "{portfolioData.hero.quote}"
               </blockquote>
             </motion.div>
             
