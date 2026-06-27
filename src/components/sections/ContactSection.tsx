@@ -8,8 +8,8 @@ export function ContactSection() {
 
   const handleContactClick = () => {
     try {
-      // Attempt to open default mail client
-      window.location.href = `mailto:${contact.email}`;
+      // Attempt to open Gmail directly
+      window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${contact.email}`, '_blank');
     } catch (e) {
       console.error("Mailto failed", e);
     }

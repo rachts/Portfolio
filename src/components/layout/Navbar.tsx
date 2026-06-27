@@ -21,7 +21,9 @@ export function Navbar() {
         
         {/* Trailing Action */}
         <a 
-          href="#contact"
+          href="https://mail.google.com/mail/?view=cm&fs=1&to=tiwari.rachit@gmail.com"
+          target="_blank"
+          rel="noopener noreferrer"
           className="bg-button-primary text-on-primary px-6 py-2 rounded-lg font-label-sm text-sm hover:opacity-90 transition-opacity active:scale-95 duration-200"
         >
           Connect

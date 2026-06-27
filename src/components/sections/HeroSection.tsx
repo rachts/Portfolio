@@ -63,7 +63,9 @@ export function HeroSection() {
                 <ArrowRight className="w-4 h-4 ml-1" />
               </button>
               <a 
-                href="#contact"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=tiwari.rachit@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-card-surface text-primary card-border px-8 py-3 rounded-lg font-semibold text-sm hover:bg-surface transition-colors flex items-center gap-2 active:scale-95 duration-200 cursor-pointer"
               >
                 Connect
