@@ -4,7 +4,7 @@ export function Navbar() {
   return (
     <nav className="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-md border-b border-outline-variant/30 shadow-sm transition-all duration-300">
       <div className="flex justify-between items-center max-w-[1200px] mx-auto px-margin-mobile md:px-gutter h-16">
-        <a href="#" className="font-headline-md text-headline-md tracking-tighter text-primary dark:text-on-primary">
+        <a href="#" className="font-headline-md text-headline-md tracking-tighter text-on-surface">
           Rachit Kumar Tiwari
         </a>
         <div className="hidden md:flex items-center gap-8">

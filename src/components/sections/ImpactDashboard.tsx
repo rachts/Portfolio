@@ -1,22 +1,56 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { GitHubCalendar } from 'react-github-calendar';
+import { ActivityCalendar } from 'react-activity-calendar';
 import { portfolioData } from '../../data/portfolio-data';
 import { Trophy, Code2, Users, Activity } from 'lucide-react';
 
+interface GitHubData {
+  date: string;
+  count: number;
+  level: number;
+}
+
 export function ImpactDashboard() {
   const [totalContributions, setTotalContributions] = useState<number | null>(null);
+  const [graphData, setGraphData] = useState<GitHubData[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function fetchLiveContribs() {
       try {
         const response = await fetch(`https://github-contributions-api.deno.dev/rachts.json?t=${Date.now()}`);
         const data = await response.json();
+        
         if (data.totalContributions) {
           setTotalContributions(data.totalContributions);
         }
+        
+        if (data.contributions) {
+          const mapLevel = (level: string) => {
+            switch (level) {
+              case 'NONE': return 0;
+              case 'FIRST_QUARTILE': return 1;
+              case 'SECOND_QUARTILE': return 2;
+              case 'THIRD_QUARTILE': return 3;
+              case 'FOURTH_QUARTILE': return 4;
+              default: return 0;
+            }
+          };
+
+          const formattedData = data.contributions.flatMap((week: any[]) => 
+            week.map(day => ({
+              date: day.date,
+              count: day.contributionCount,
+              level: mapLevel(day.contributionLevel)
+            }))
+          );
+          
+          setGraphData(formattedData);
+        }
       } catch (error) {
         console.error('Error fetching live contributions:', error);
+      } finally {
+        setIsLoading(false);
       }
     }
     fetchLiveContribs();
@@ -93,15 +127,24 @@ export function ImpactDashboard() {
           </div>
 
           <div className="w-full overflow-x-auto no-scrollbar pb-4 flex justify-center">
-            <GitHubCalendar 
-              username="rachts" 
-              year={`last&t=${Date.now()}` as any}
-              blockSize={13}
-              blockMargin={5}
-              fontSize={14}
-              theme={githubTheme}
-              colorScheme="light"
-            />
+            {isLoading ? (
+              <div className="h-[120px] w-full flex items-center justify-center text-on-surface-variant font-label-sm">
+                Loading graph...
+              </div>
+            ) : graphData.length > 0 ? (
+              <ActivityCalendar 
+                data={graphData}
+                blockSize={13}
+                blockMargin={5}
+                fontSize={14}
+                theme={githubTheme}
+                colorScheme="light"
+              />
+            ) : (
+              <div className="h-[120px] w-full flex items-center justify-center text-on-surface-variant font-label-sm">
+                Unable to load graph data
+              </div>
+            )}
           </div>
         </motion.div>
       </div>

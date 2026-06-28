@@ -33,7 +33,7 @@ export function IndexPage() {
         
         <PhotoPause 
           src="IMG_20260524_101641.jpg" 
-          alt="Atmosphere" 
+          alt="Rachit Tiwari - Software Engineer and Systems Architect" 
           containerClass="w-full aspect-video md:aspect-[21/9]" 
           imageClass="object-cover object-[center_70%]"
         />

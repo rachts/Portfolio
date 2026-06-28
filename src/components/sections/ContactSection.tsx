@@ -61,27 +61,6 @@ export function ContactSection() {
         </motion.div>
       </div>
 
-      <div className="w-full py-8 bg-surface-container-lowest border-t border-outline-variant">
-        <div className="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto space-y-4 md:space-y-0">
-          <div className="text-on-surface font-headline-md text-sm font-semibold">
-            Rachit Kumar Tiwari
-          </div>
-          <div className="flex gap-6">
-            <a href={contact.github} target="_blank" rel="noreferrer" className="text-on-surface-variant font-label-sm text-xs hover:text-primary transition-colors">
-              GitHub
-            </a>
-            <a href={contact.linkedin} target="_blank" rel="noreferrer" className="text-on-surface-variant font-label-sm text-xs hover:text-primary transition-colors">
-              LinkedIn
-            </a>
-            <a href={contact.twitter} target="_blank" rel="noreferrer" className="text-on-surface-variant font-label-sm text-xs hover:text-primary transition-colors">
-              Twitter
-            </a>
-          </div>
-          <div className="font-body-md text-xs text-on-surface-variant">
-            © {new Date().getFullYear()} Rachit Kumar Tiwari. Built with systems precision.
-          </div>
-        </div>
-      </div>
     </footer>
   );
 }
