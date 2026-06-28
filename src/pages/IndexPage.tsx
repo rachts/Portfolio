@@ -8,7 +8,7 @@ import { ArchitectureShowcase } from '../components/sections/ArchitectureShowcas
 import { ProjectExplorer } from '../components/sections/ProjectExplorer';
 import { TimelineSection } from '../components/sections/TimelineSection';
 import { BeyondEngineeringSection } from '../components/sections/BeyondEngineeringSection';
-import { ImpactDashboard } from '../components/sections/ImpactDashboard';
+
 import { ContactSection } from '../components/sections/ContactSection';
 import { ShaderBackground } from '../components/ui/ShaderBackground';
 import CurvedLoop from '../components/reactbits/CurvedLoop';
@@ -54,13 +54,10 @@ export function IndexPage() {
           <ArchitectureShowcase />
         </section>
 
-        <ProjectExplorer />
-        <TimelineSection />
-        
-        <BeyondEngineeringSection />
-        
         <div className="max-w-7xl mx-auto w-full px-6">
-          <ImpactDashboard />
+          <ProjectExplorer />
+          <TimelineSection />
+          <BeyondEngineeringSection />
         </div>
 
         <ContactSection />
