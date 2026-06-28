@@ -15,15 +15,9 @@ export function HeroSection() {
   };
 
   return (
-    <main className="pt-32 pb-24 min-h-screen flex items-center relative overflow-hidden">
-      {/* Subtle Ambient Photography Background */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.04] select-none mix-blend-screen">
-        <img src="/visuals/IMG_20260521_162331.jpg" alt="" className="w-full h-full object-cover blur-[100px] scale-125 grayscale" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background"></div>
-      </div>
-
-      <div className="max-w-[1200px] mx-auto px-5 md:px-6 w-full relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+    <div className="pt-32 pb-section-gap-desktop min-h-screen flex items-center">
+      <div className="max-w-[1200px] mx-auto px-margin-mobile md:px-gutter w-full">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
           
           {/* Left Column: Copy */}
           <div className="md:col-span-7 flex flex-col gap-8 pr-0 md:pr-12 z-10">
@@ -33,18 +27,13 @@ export function HeroSection() {
               transition={{ duration: 0.5 }}
               className="space-y-6"
             >
-              <div className="space-y-4">
-                <p className="text-primary font-bold tracking-widest uppercase text-sm md:text-base">
-                  {portfolioData.hero.greeting}
-                </p>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight text-hero-primary max-w-2xl leading-tight">
-                  {portfolioData.hero.headline}
-                </h1>
-              </div>
-              <p className="text-lg font-body text-on-surface-variant max-w-xl">
+              <h1 className="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-hero-primary max-w-2xl">
+                {portfolioData.hero.headline}
+              </h1>
+              <p className="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
                 {portfolioData.hero.subtext}
               </p>
-              <blockquote className="pl-4 border-l-2 border-outline-variant italic text-base font-body text-on-surface-variant">
+              <blockquote className="pl-4 border-l-2 border-outline-variant italic font-body-md text-body-md text-on-surface-variant">
                 "{portfolioData.hero.quote}"
               </blockquote>
             </motion.div>
@@ -53,31 +42,22 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="flex flex-wrap items-center gap-4 pt-4"
+              className="flex items-center gap-4 pt-4"
             >
               <button 
                 onClick={() => scrollToSection('projects')}
-                className="bg-button-primary text-on-primary px-8 py-3 rounded-lg font-semibold text-sm hover:opacity-90 transition-opacity flex items-center gap-2 active:scale-95 duration-200"
+                className="bg-button-primary text-on-primary px-8 py-3 rounded-lg font-label-sm text-label-sm hover:opacity-90 transition-opacity flex items-center gap-2"
               >
                 View Work
-                <ArrowRight className="w-4 h-4 ml-1" />
+                <ArrowRight size={16} />
               </button>
               <a 
                 href="https://mail.google.com/mail/?view=cm&fs=1&to=tiwari.rachit@gmail.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-card-surface text-primary card-border px-8 py-3 rounded-lg font-semibold text-sm hover:bg-surface transition-colors flex items-center gap-2 active:scale-95 duration-200 cursor-pointer"
+                className="bg-card-surface text-primary card-border px-8 py-3 rounded-lg font-label-sm text-label-sm hover:bg-surface transition-colors flex items-center gap-2 cursor-pointer"
               >
                 Connect
-              </a>
-              <a 
-                href="/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-card-surface text-on-surface-variant card-border px-8 py-3 rounded-lg font-semibold text-sm hover:text-primary hover:bg-surface transition-colors flex items-center gap-2 active:scale-95 duration-200 cursor-pointer"
-              >
-                Resume
-                <Download className="w-4 h-4 ml-1" />
               </a>
             </motion.div>
           </div>
@@ -108,8 +88,8 @@ export function HeroSection() {
             >
               {portfolioData.stats.map((stat, idx) => (
                 <div key={idx} className="bg-card-surface p-6 rounded-xl card-border micro-shadow flex flex-col justify-center">
-                  <span className="text-2xl font-bold font-display text-hero-primary">{stat.value}{stat.suffix}</span>
-                  <span className="text-xs font-semibold text-on-surface-variant uppercase tracking-widest mt-1">{stat.label}</span>
+                  <span className="font-headline-md text-headline-md text-hero-primary">{stat.value}{stat.suffix}</span>
+                  <span className="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mt-1">{stat.label}</span>
                 </div>
               ))}
             </motion.div>
@@ -117,6 +97,6 @@ export function HeroSection() {
           
         </div>
       </div>
-    </main>
+    </div>
   );
 }

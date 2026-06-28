@@ -49,15 +49,57 @@
   --color-outline: #747878;
   --color-secondary-fixed: #d9e3f9;
 
+  --spacing-unit: 8px;
+  --spacing-gutter: 24px;
+  --spacing-container-max: 1200px;
+  --spacing-section-gap-mobile: 64px;
+  --spacing-margin-mobile: 20px;
+  --spacing-section-gap-desktop: 120px;
+
+  --font-display-lg-mobile: 'Plus Jakarta Sans', sans-serif;
+  --font-label-sm: 'Plus Jakarta Sans', sans-serif;
+  --font-body-md: 'Plus Jakarta Sans', sans-serif;
+  --font-body-lg: 'Plus Jakarta Sans', sans-serif;
+  --font-headline-md: 'Plus Jakarta Sans', sans-serif;
+  --font-display-lg: 'Plus Jakarta Sans', sans-serif;
+
   --font-headline: 'Plus Jakarta Sans', sans-serif;
   --font-display: 'Plus Jakarta Sans', sans-serif;
   --font-body: 'Plus Jakarta Sans', sans-serif;
   --font-label: 'Plus Jakarta Sans', sans-serif;
+  
+  --text-display-lg-mobile: 32px;
+  --text-display-lg-mobile--line-height: 1.2;
+  --text-display-lg-mobile--letter-spacing: -0.01em;
+  --text-display-lg-mobile--font-weight: 700;
+
+  --text-label-sm: 13px;
+  --text-label-sm--line-height: 1;
+  --text-label-sm--letter-spacing: 0.02em;
+  --text-label-sm--font-weight: 600;
+
+  --text-body-md: 16px;
+  --text-body-md--line-height: 1.6;
+  --text-body-md--font-weight: 400;
+
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 1.6;
+  --text-body-lg--font-weight: 400;
+
+  --text-headline-md: 24px;
+  --text-headline-md--line-height: 1.3;
+  --text-headline-md--letter-spacing: -0.01em;
+  --text-headline-md--font-weight: 600;
+
+  --text-display-lg: 48px;
+  --text-display-lg--line-height: 1.1;
+  --text-display-lg--letter-spacing: -0.02em;
+  --text-display-lg--font-weight: 700;
 }
 
 @layer base {
   body {
-    background-color: #EAEAEA;
+    background-color: var(--color-background);
     color: var(--color-on-surface);
     overflow-x: hidden;
     font-family: var(--font-body);
@@ -66,7 +108,6 @@
 
 @layer utilities {
   .micro-shadow { box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
-  .card-shadow { box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
   .card-border { border: 1px solid #D0D0D0; }
   .bg-canvas { background-color: #EAEAEA; }
   .bg-card-surface { background-color: #FFFFFF; }

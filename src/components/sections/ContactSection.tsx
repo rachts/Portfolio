@@ -8,13 +8,11 @@ export function ContactSection() {
 
   const handleContactClick = () => {
     try {
-      // Attempt to open Gmail directly
       window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${contact.email}`, '_blank');
     } catch (e) {
       console.error("Mailto failed", e);
     }
     
-    // Always copy to clipboard as a reliable fallback
     try {
       navigator.clipboard.writeText(contact.email);
       setCopied(true);
@@ -25,54 +23,65 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="space-y-16 max-w-4xl mx-auto px-6 py-32 relative z-10 text-center">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="space-y-6"
-      >
-        <h2 className="font-display text-4xl md:text-5xl font-bold text-hero-primary tracking-tight">
-          Let's Build Something
-        </h2>
-        <p className="text-lg text-on-surface-variant font-medium max-w-2xl mx-auto">
-          I'm currently open for new opportunities or exciting side projects. Whether you have a question or just want to say hi, I'll try my best to get back to you!
-        </p>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.2 }}
-        className="pt-8 pb-12"
-      >
-        <button 
-          onClick={handleContactClick}
-          className="inline-flex flex-col items-center gap-2 cursor-pointer relative z-50 group"
+    <footer id="contact" className="w-full relative z-10 pt-32 bg-surface-bright border-t border-outline-variant/30">
+      <div className="max-w-4xl mx-auto px-6 text-center space-y-12 pb-24">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="space-y-6"
         >
-          <span className="font-bold text-hero-primary text-xl group-hover:opacity-70 transition-opacity">
-            Say Hello
-          </span>
-          {copied && (
-            <span className="text-sm font-medium text-primary animate-pulse absolute -bottom-8 whitespace-nowrap">
-              {contact.email} copied!
+          <h2 className="font-display-lg text-4xl md:text-5xl text-primary tracking-tight">
+            Let's Build Something
+          </h2>
+          <p className="font-body-lg text-lg text-on-surface-variant max-w-2xl mx-auto">
+            I'm currently open for new opportunities or exciting side projects. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+        >
+          <button 
+            onClick={handleContactClick}
+            className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-on-primary rounded-full hover:bg-on-surface transition-colors card-shadow"
+          >
+            <span className="font-label-sm text-[13px] tracking-wider uppercase font-semibold">
+              Say Hello
             </span>
-          )}
-        </button>
-      </motion.div>
-      
-      <div className="flex justify-center gap-12 pt-8">
-        <a href={contact.github} target="_blank" rel="noreferrer" className="text-on-surface-variant hover:text-hero-primary transition-colors font-bold text-sm tracking-wide">
-           GH
-        </a>
-        <a href={contact.linkedin} target="_blank" rel="noreferrer" className="text-on-surface-variant hover:text-hero-primary transition-colors font-bold text-sm tracking-wide">
-           IN
-        </a>
-        <a href={contact.twitter} target="_blank" rel="noreferrer" className="text-on-surface-variant hover:text-hero-primary transition-colors font-bold text-sm tracking-wide">
-           X
-        </a>
+            {copied && (
+              <span className="absolute -bottom-8 font-label-sm text-[11px] text-primary bg-surface-container-highest px-3 py-1 rounded-full animate-pulse whitespace-nowrap">
+                {contact.email} copied!
+              </span>
+            )}
+          </button>
+        </motion.div>
       </div>
-    </section>
+
+      <div className="w-full py-8 bg-surface-container-lowest border-t border-outline-variant">
+        <div className="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto space-y-4 md:space-y-0">
+          <div className="text-on-surface font-headline-md text-sm font-semibold">
+            Rachit Kumar Tiwari
+          </div>
+          <div className="flex gap-6">
+            <a href={contact.github} target="_blank" rel="noreferrer" className="text-on-surface-variant font-label-sm text-xs hover:text-primary transition-colors">
+              GitHub
+            </a>
+            <a href={contact.linkedin} target="_blank" rel="noreferrer" className="text-on-surface-variant font-label-sm text-xs hover:text-primary transition-colors">
+              LinkedIn
+            </a>
+            <a href={contact.twitter} target="_blank" rel="noreferrer" className="text-on-surface-variant font-label-sm text-xs hover:text-primary transition-colors">
+              Twitter
+            </a>
+          </div>
+          <div className="font-body-md text-xs text-on-surface-variant">
+            © {new Date().getFullYear()} Rachit Kumar Tiwari. Built with systems precision.
+          </div>
+        </div>
+      </div>
+    </footer>
   );
 }

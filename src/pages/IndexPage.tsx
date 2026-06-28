@@ -8,8 +8,9 @@ import { ArchitectureShowcase } from '../components/sections/ArchitectureShowcas
 import { ProjectExplorer } from '../components/sections/ProjectExplorer';
 import { TimelineSection } from '../components/sections/TimelineSection';
 import { BeyondEngineeringSection } from '../components/sections/BeyondEngineeringSection';
+import { ImpactDashboard } from '../components/sections/ImpactDashboard';
 import { ContactSection } from '../components/sections/ContactSection';
-import SplashCursor from '../components/reactbits/SplashCursor';
+import { ShaderBackground } from '../components/ui/ShaderBackground';
 import CurvedLoop from '../components/reactbits/CurvedLoop';
 import { PhotoPause } from '../components/ui/PhotoPause';
 import FlowingMenu from '../components/reactbits/FlowingMenu';
@@ -23,9 +24,7 @@ export function IndexPage() {
   ];
   return (
     <div className="min-h-screen bg-background text-on-surface font-body antialiased selection:bg-primary/20 selection:text-primary flex flex-col relative overflow-hidden">
-      <div className="fixed inset-0 z-[-1] pointer-events-none">
-        <SplashCursor />
-      </div>
+      <ShaderBackground />
       
       <Navbar />
       
@@ -59,6 +58,10 @@ export function IndexPage() {
         <TimelineSection />
         
         <BeyondEngineeringSection />
+        
+        <div className="max-w-7xl mx-auto w-full px-6">
+          <ImpactDashboard />
+        </div>
 
         <ContactSection />
         

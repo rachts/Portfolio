@@ -49,6 +49,12 @@ next-env.d.ts
 # React Bits
 .react-bits-tmp
 
+# Python / Scripts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
 # Misc
 .cache/
 coverage/
