@@ -66,9 +66,7 @@ export function BeyondEngineeringSection() {
               <div className="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/20 to-transparent"></div>
             </div>
             <div className="p-8 md:p-10 -mt-12 relative z-10 flex-grow bg-surface-container-lowest">
-              <span className="inline-block px-3 py-1 bg-surface-container-high border border-outline-variant/50 rounded-full font-label-sm text-[11px] font-bold text-primary mb-4 uppercase tracking-wider">
-                ruhsazzz
-              </span>
+
               <h3 className="font-headline-md text-3xl mb-4 text-primary">{beyond.writing.title}</h3>
               <p className="font-body-md text-on-surface-variant leading-relaxed max-w-2xl">
                 {beyond.writing.description}
