@@ -52,6 +52,15 @@ export function HeroSection() {
                 <ArrowRight size={16} />
               </button>
               <a 
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-card-surface text-primary card-border px-8 py-3 rounded-lg font-label-sm text-label-sm hover:bg-surface transition-colors flex items-center gap-2 cursor-pointer"
+              >
+                Resume
+                <Download size={16} />
+              </a>
+              <a 
                 href="https://mail.google.com/mail/?view=cm&fs=1&to=tiwari.rachit@gmail.com"
                 target="_blank"
                 rel="noopener noreferrer"
