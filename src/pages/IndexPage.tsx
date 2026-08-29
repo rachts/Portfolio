@@ -17,10 +17,10 @@ import FlowingMenu from '../components/reactbits/FlowingMenu';
 
 export function IndexPage() {
   const flowingMenuItems = [
-    { link: 'https://optra-fi.vercel.app/', text: 'Optrafi', image: '/project1.png' },
-    { link: 'https://vitals-io.onrender.com/', text: 'VITALS.IO', image: '/project2.png' },
-    { link: 'https://medcheck-official.vercel.app/', text: 'MEDCHECK', image: '/project3.png' },
-    { link: 'https://vitamend-ngo.vercel.app/', text: 'Vitamend', image: '/project4.png' }
+    { link: 'https://optra-fi.vercel.app/', text: 'Optrafi', image: '/project1.png?v=2' },
+    { link: 'https://vitals-io.onrender.com/', text: 'VITALS.IO', image: '/project2.png?v=2' },
+    { link: 'https://medcheck-official.vercel.app/', text: 'MEDCHECK', image: '/project3.png?v=2' },
+    { link: 'https://vitamend-ngo.vercel.app/', text: 'Vitamend', image: '/project4.png?v=2' }
   ];
   return (
     <div className="min-h-screen bg-background text-on-surface font-body antialiased selection:bg-primary/20 selection:text-primary flex flex-col relative overflow-hidden">

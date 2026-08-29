@@ -42,7 +42,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="flex items-center gap-4 pt-4"
+              className="flex flex-wrap items-center gap-4 pt-4"
             >
               <button 
                 onClick={() => scrollToSection('projects')}
@@ -58,6 +58,15 @@ export function HeroSection() {
                 className="bg-card-surface text-primary card-border px-8 py-3 rounded-lg font-label-sm text-label-sm hover:bg-surface transition-colors flex items-center gap-2 cursor-pointer"
               >
                 Resume
+                <Download size={16} />
+              </a>
+              <a 
+                href="/cv.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-card-surface text-primary card-border px-8 py-3 rounded-lg font-label-sm text-label-sm hover:bg-surface transition-colors flex items-center gap-2 cursor-pointer"
+              >
+                CV
                 <Download size={16} />
               </a>
               <a 
