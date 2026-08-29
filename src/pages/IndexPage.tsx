@@ -1,74 +1,43 @@
-import React from 'react';
-import { Navbar } from '../components/layout/Navbar';
-import { Footer } from '../components/layout/Footer';
-import { HeroSection } from '../components/sections/HeroSection';
-import { FlagshipSystems } from '../components/sections/FlagshipSystems';
-import { EngineeringPrinciples } from '../components/sections/EngineeringPrinciples';
-import { ArchitectureShowcase } from '../components/sections/ArchitectureShowcase';
-import { ProjectExplorer } from '../components/sections/ProjectExplorer';
-import { TimelineSection } from '../components/sections/TimelineSection';
-import { BeyondEngineeringSection } from '../components/sections/BeyondEngineeringSection';
-
-import { ContactSection } from '../components/sections/ContactSection';
-import { ShaderBackground } from '../components/ui/ShaderBackground';
-import CurvedLoop from '../components/reactbits/CurvedLoop';
-import { PhotoPause } from '../components/ui/PhotoPause';
-import FlowingMenu from '../components/reactbits/FlowingMenu';
+import React from "react";
+import { Navbar } from "../components/navbar";
+import { HeroSection } from "../components/hero-section";
+import { ProjectsSection } from "../components/projects-section";
+import { AboutSection } from "../components/about-section";
+import { SkillsSection } from "../components/skills-section";
+import { ExperienceSection } from "../components/experience-section";
+import { ContactSection } from "../components/contact-section";
+import { Footer } from "../components/footer";
 
 export function IndexPage() {
-  const flowingMenuItems = [
-    { link: 'https://optra-fi.vercel.app/', text: 'Optrafi', image: '/project1.png?v=2' },
-    { link: 'https://vitals-io.onrender.com/', text: 'VITALS.IO', image: '/project2.png?v=2' },
-    { link: 'https://medcheck-official.vercel.app/', text: 'MEDCHECK', image: '/project3.png?v=2' },
-    { link: 'https://vitamend-ngo.vercel.app/', text: 'Vitamend', image: '/project4.png?v=2' }
-  ];
   return (
-    <div className="min-h-screen bg-background text-on-surface font-body antialiased selection:bg-primary/20 selection:text-primary flex flex-col relative overflow-hidden">
-      <ShaderBackground />
-      
+    <div className="min-h-screen bg-[var(--bg-page)] text-[var(--text-primary)] font-sans antialiased selection:bg-black selection:text-white flex flex-col relative">
+      {/* Navigation Header */}
       <Navbar />
-      
-      <main className="flex-grow pt-32 pb-24 relative z-10">
+
+      <main className="flex-grow">
+        {/* Hero Section */}
         <HeroSection />
-        
-        <PhotoPause 
-          src="IMG_20260524_101641.jpg" 
-          alt="Rachit Tiwari - Software Engineer and Systems Architect" 
-          containerClass="w-full aspect-video md:aspect-[21/9]" 
-          imageClass="object-cover object-[center_70%]"
-        />
-        
-        <div className="my-16 flex justify-center">
-          <CurvedLoop 
-            marqueeText="BUILD • DESIGN • SHIP • REPEAT • " 
-            speed={1} 
-            className="text-on-surface uppercase font-display font-bold tracking-widest"
-          />
-        </div>
-        
-        <FlagshipSystems />
-        
-        {/* Systems Thinking Section Wrapper */}
-        <section className="max-w-7xl mx-auto w-full px-6 py-24">
-          <EngineeringPrinciples />
-          <ArchitectureShowcase />
-        </section>
 
-        <div className="max-w-7xl mx-auto w-full px-6">
-          <ProjectExplorer />
-          <TimelineSection />
-          <BeyondEngineeringSection />
-        </div>
+        {/* Systems Architecture & Project Archives (All 13 Projects) */}
+        <ProjectsSection />
 
+        {/* About Section */}
+        <AboutSection />
+
+        {/* Technologies & Skills */}
+        <SkillsSection />
+
+        {/* Experience Timeline */}
+        <ExperienceSection />
+
+        {/* Contact Information */}
         <ContactSection />
-        
-        <section className="h-[400px] w-full mt-12 bg-surface border-t border-outline-variant/30 pt-12 relative z-10">
-          <h2 className="text-3xl md:text-4xl font-display font-semibold text-hero-primary tracking-tight mb-8 text-center">Where to Next?</h2>
-          <FlowingMenu items={flowingMenuItems} />
-        </section>
       </main>
 
+      {/* Minimal Footer */}
       <Footer />
     </div>
   );
 }
+
+export default IndexPage;

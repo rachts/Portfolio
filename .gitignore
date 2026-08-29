@@ -1,63 +1,71 @@
-# ─── Dependencies ───
-node_modules
-.pnp
+# === DEPENDENCIES ===
+/node_modules
+/.pnp
 .pnp.js
-package-lock.json       # pnpm project — ignore npm's lockfile
+.yarn/install-state.gz
 
-# ─── Build Output ───
-dist
-dist-ssr
-build
-out
-*.tsbuildinfo
+# === NEXT.JS / VITE ===
+/.next/
+/out/
+.next/
 
-# ─── Environment ───
+# === PRODUCTION BUILDS ===
+/build
+/dist
+
+# === ENVIRONMENT FILES ===
 .env
-.env.*
-!.env.example
-*.local
+.env.local
+.env.*.local
+.env.development
+.env.test
+.env.production
 
-# ─── IDE / OS ───
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+# === VERCEL ===
+.vercel
 
-# ─── Logs ───
-logs
-*.log
+# === TYPESCRIPT ===
+*.tsbuildinfo
+next-env.d.ts
+
+# === TESTING ===
+/coverage
+.nyc_output
+
+# === LOGS ===
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# ─── Testing / Coverage ───
-coverage
-.cache
+# === IDE / EDITORS ===
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
-# ─── Vercel ───
-.vercel
+# === OS FILES ===
+.DS_Store
+Thumbs.db
+*.pem
 
-# ─── React Bits ───
-.react-bits-tmp
-
-# ─── Python (from .agent scripts) ───
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-
-# ─── Project-specific artifacts ───
+# === MISC ===
+*.log
+*.tmp
+*.temp
+.cache/
+.eslintcache
+.stylelintcache
 .agent/
 stitch_screens/
 PORTFOLIO IMAGES/
 
-# ─── Optional: large raw assets ───
-# Uncomment if you move visuals to Git LFS or a CDN
-# public/visuals/
+# === LOCKFILES ===
+yarn.lock
+pnpm-lock.yaml
