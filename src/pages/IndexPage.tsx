@@ -18,9 +18,9 @@ import FlowingMenu from '../components/reactbits/FlowingMenu';
 export function IndexPage() {
   const flowingMenuItems = [
     { link: 'https://optra-fi.vercel.app/', text: 'Optrafi', image: '/project1.png' },
-    { link: 'https://doceasy.vercel.app/', text: 'DocEasy', image: '/project6.png' },
-    { link: 'https://kred-ai.vercel.app/', text: 'Kred.ai', image: '/project5.png' },
-    { link: 'https://vitamend-org.vercel.app', text: 'Vitamend', image: '/project4.png' }
+    { link: 'https://vitals-io.onrender.com/', text: 'VITALS.IO', image: '/project2.png' },
+    { link: 'https://medcheck-official.vercel.app/', text: 'MEDCHECK', image: '/project3.png' },
+    { link: 'https://vitamend-ngo.vercel.app/', text: 'Vitamend', image: '/project4.png' }
   ];
   return (
     <div className="min-h-screen bg-background text-on-surface font-body antialiased selection:bg-primary/20 selection:text-primary flex flex-col relative overflow-hidden">
