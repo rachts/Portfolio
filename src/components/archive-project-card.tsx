@@ -1,7 +1,9 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useId, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { Project } from "../data/projects";
 import { PixelReveal } from "./pixel-reveal";
+import { PanelReveal } from "./motion-reveal";
+import { motionTransition } from "../lib/motion";
 
 interface ArchiveProjectCardProps {
   project: Project;
@@ -9,13 +11,15 @@ interface ArchiveProjectCardProps {
 
 export function ArchiveProjectCard({ project }: ArchiveProjectCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
+  const detailsId = useId();
 
   return (
-    <div className="bg-white rounded-2xl border border-[#E8E8E8] overflow-hidden hover:shadow-md transition-shadow duration-300 flex flex-col justify-between">
+    <PanelReveal className="project-card-lift bg-white rounded-2xl overflow-hidden flex flex-col justify-between">
       <div>
         {/* Card Header */}
         <div className="flex items-center justify-between p-5 pb-0">
-          <span className="px-3 py-1.5 bg-[#F2F2F2] rounded-full text-xs font-semibold tracking-wide text-[#525252] uppercase">
+          <span className="px-3 py-1.5 bg-[#F2F2F2] rounded-full text-xs font-medium tracking-wide text-[#525252] uppercase">
             {project.category}
           </span>
           
@@ -49,13 +53,15 @@ export function ArchiveProjectCard({ project }: ArchiveProjectCardProps) {
             )}
             
             {/* Expand chevron - toggles description visibility */}
-            <button 
-              onClick={() => setIsExpanded(!isExpanded)}
-              className="p-2 hover:bg-[#F2F2F2] rounded-full transition-colors cursor-pointer"
-              aria-label="Toggle details"
-            >
+             <button
+               onClick={() => setIsExpanded(!isExpanded)}
+               className="p-2 hover:bg-[#F2F2F2] rounded-full transition-colors cursor-pointer"
+               aria-label="Toggle details"
+               aria-expanded={isExpanded}
+               aria-controls={detailsId}
+             >
               <svg 
-                className={`w-5 h-5 text-[#525252] transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} 
+                className={`project-details-chevron w-5 h-5 text-[#525252] ${isExpanded ? 'rotate-180' : ''}`}
                 fill="none" 
                 stroke="currentColor" 
                 viewBox="0 0 24 24"
@@ -78,7 +84,7 @@ export function ArchiveProjectCard({ project }: ArchiveProjectCardProps) {
             {/* This content is revealed on hover */}
             <div className="h-full flex flex-col justify-between">
               <div className="space-y-2">
-                <h4 className="text-xs font-semibold tracking-[0.08em] uppercase text-[#A3A3A3]">
+                <h4 className="text-xs font-medium tracking-[0.08em] uppercase text-[#A3A3A3]">
                   Overview
                 </h4>
                 <p className="text-xs sm:text-sm text-[#D4D4D4] leading-relaxed line-clamp-3">
@@ -135,19 +141,18 @@ export function ArchiveProjectCard({ project }: ArchiveProjectCardProps) {
 
         {/* Card Body */}
         <div className="px-5 pb-5">
-          <h3 className="text-xl font-bold text-black mb-2 tracking-tight">
+          <h3 className="text-xl font-medium text-black mb-2 tracking-tight">
             {project.title}
           </h3>
           
-          <AnimatePresence initial={false}>
+          <div id={detailsId}>
             {isExpanded ? (
               <motion.p 
                 key="full"
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: "auto", opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="text-sm text-[#525252] leading-relaxed overflow-hidden"
+                initial={prefersReducedMotion ? false : { opacity: 0, y: -6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={prefersReducedMotion ? { duration: 0 } : motionTransition()}
+                className="text-sm text-[#525252] leading-relaxed"
               >
                 {project.description}
               </motion.p>
@@ -156,10 +161,10 @@ export function ArchiveProjectCard({ project }: ArchiveProjectCardProps) {
                 {project.shortDescription}
               </p>
             )}
-          </AnimatePresence>
+          </div>
         </div>
       </div>
-    </div>
+    </PanelReveal>
   );
 }
 

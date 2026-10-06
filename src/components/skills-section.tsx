@@ -1,4 +1,5 @@
 import React from "react";
+import { Reveal, RevealGroup } from "./motion-reveal";
 
 const SKILL_GROUPS = [
   {
@@ -23,19 +24,19 @@ export function SkillsSection() {
   return (
     <section id="skills" className="py-20 border-t border-[#E5E5E5]">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-        <div className="mb-12">
-          <span className="text-xs font-semibold uppercase tracking-[0.08em] text-[#737373] block mb-3">
+        <Reveal className="mb-12">
+          <span className="text-xs font-medium uppercase tracking-[0.08em] text-[#737373] block mb-3">
             Technologies
           </span>
-          <h2 className="text-[36px] md:text-[42px] font-bold tracking-tight text-black">
+          <h2 className="text-[36px] md:text-[42px] font-medium tracking-tight text-black">
             Tools I work with
           </h2>
-        </div>
+        </Reveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <RevealGroup className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {SKILL_GROUPS.map((group) => (
-            <div key={group.category} className="space-y-4">
-              <h3 className="text-xs font-semibold uppercase tracking-widest text-[#737373] pb-2 border-b border-[#E5E5E5]">
+            <Reveal key={group.category} className="space-y-4">
+              <h3 className="text-xs font-medium uppercase tracking-widest text-[#737373] pb-2 border-b border-[#E5E5E5]">
                 {group.category}
               </h3>
               <ul className="space-y-2">
@@ -45,9 +46,9 @@ export function SkillsSection() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </Reveal>
           ))}
-        </div>
+        </RevealGroup>
       </div>
     </section>
   );

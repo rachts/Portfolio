@@ -1,8 +1,6 @@
 @import "tailwindcss";
 @import "@fontsource/inter/400.css";
 @import "@fontsource/inter/500.css";
-@import "@fontsource/inter/600.css";
-@import "@fontsource/inter/700.css";
 
 :root {
   --bg-page: #F5F5F7;
@@ -56,7 +54,7 @@
 /* Typography Scale */
 .page-title {
   font-size: 42px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: -0.02em;
   color: var(--text-primary);
   line-height: 1.15;
@@ -72,7 +70,7 @@
 
 .card-title {
   font-size: 28px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: -0.01em;
   color: var(--text-primary);
   line-height: 1.2;
@@ -80,7 +78,7 @@
 
 .section-label {
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-primary);
@@ -95,7 +93,7 @@
 
 .metric-number {
   font-size: 32px;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--text-primary);
   letter-spacing: -0.02em;
 }
@@ -107,4 +105,130 @@
   background-color: var(--bg-muted);
   border-radius: 9999px;
   padding: 6px 12px;
+}
+
+@layer components {
+  .skip-link {
+    position: fixed;
+    left: 1rem;
+    top: 1rem;
+    z-index: 200;
+    transform: translateY(-160%);
+    background: #0A0A0A;
+    color: #FFFFFF;
+    padding: 0.65rem 0.9rem;
+    font-size: 0.875rem;
+    transition: transform 0.5s var(--motion-ease);
+  }
+
+  .skip-link:focus-visible { transform: translateY(0); }
+
+  :where(a, button, [tabindex]:not([tabindex="-1"])):focus-visible {
+    outline: 2px solid #ff5a1f;
+    outline-offset: 4px;
+  }
+
+  .project-card-lift {
+    transition: transform 0.5s var(--motion-ease);
+  }
+
+  .project-card-lift:hover,
+  .project-card-lift:focus-within {
+    transform: translateY(-4px);
+  }
+
+  .motion-link {
+    position: relative;
+    transition: opacity 0.5s var(--motion-ease), transform 0.5s var(--motion-ease);
+  }
+
+  .motion-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -3px;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s var(--motion-ease);
+  }
+
+  .motion-link:hover::after,
+  .motion-link:focus-visible::after {
+    transform: scaleX(1);
+  }
+
+  .motion-button {
+    position: relative;
+    transition: transform 0.5s var(--motion-ease);
+  }
+
+  .motion-button:hover,
+  .motion-button:focus-visible {
+    transform: translate(2px, -2px);
+  }
+
+  .motion-button::before,
+  .motion-button::after {
+    content: "";
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-color: currentColor;
+    border-style: solid;
+    opacity: 0;
+    transform: scale(0.7);
+    transition: opacity 0.5s var(--motion-ease), transform 0.5s var(--motion-ease);
+  }
+
+  .motion-button::before {
+    top: 3px;
+    left: 3px;
+    border-width: 1px 0 0 1px;
+  }
+
+  .motion-button::after {
+    right: 3px;
+    bottom: 3px;
+    border-width: 0 1px 1px 0;
+  }
+
+  .motion-button:hover::before,
+  .motion-button:hover::after,
+  .motion-button:focus-visible::before,
+  .motion-button:focus-visible::after {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+:root { --motion-ease: cubic-bezier(0.22, 1, 0.36, 1); }
+
+.hero-gauge-path {
+  stroke-dashoffset: 1;
+  animation: hero-gauge-draw 0.9s var(--motion-ease) forwards;
+}
+
+@keyframes hero-gauge-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .project-card-lift:hover,
+  .project-card-lift:focus-within,
+  .motion-button:hover,
+  .motion-button:focus-visible {
+    transform: none;
+  }
+
+  .hero-gauge-path { animation: none; stroke-dashoffset: 0; }
 }

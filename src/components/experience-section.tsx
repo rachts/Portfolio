@@ -1,23 +1,24 @@
 import React from "react";
 import { experienceData, ExperienceItem } from "../data/experience";
+import { Reveal, RevealGroup } from "./motion-reveal";
 
 export function ExperienceSection() {
   return (
     <section id="experience" className="py-20 border-t border-[#E5E5E5]">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-        <div className="mb-14">
-          <span className="text-xs font-semibold uppercase tracking-[0.08em] text-[#737373] block mb-3">
+        <Reveal className="mb-14">
+          <span className="text-xs font-medium uppercase tracking-[0.08em] text-[#737373] block mb-3">
             Experience
           </span>
-          <h2 className="text-[36px] md:text-[42px] font-bold tracking-tight text-black">
+          <h2 className="text-[36px] md:text-[42px] font-medium tracking-tight text-black">
             Where I've worked
           </h2>
-        </div>
+        </Reveal>
 
         {/* Timeline */}
-        <div className="relative border-l border-[#E5E5E5] pl-6 sm:pl-8 space-y-12 ml-2">
+        <RevealGroup className="relative border-l border-[#E5E5E5] pl-6 sm:pl-8 space-y-12 ml-2">
           {experienceData.map((role: ExperienceItem) => (
-            <div key={role.id} className="relative">
+            <Reveal key={role.id} className="relative">
               {/* Timeline dot */}
               <div className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-3 h-3 rounded-full bg-black border-2 border-white" />
 
@@ -29,7 +30,7 @@ export function ExperienceSection() {
 
                 {/* Role + Company + Description on Right */}
                 <div className="md:col-span-9 space-y-2">
-                  <h3 className="text-xl font-bold text-black tracking-tight">
+                  <h3 className="text-xl font-medium text-black tracking-tight">
                     {role.role}
                   </h3>
                   <div className="text-base font-medium text-[#525252]">
@@ -47,9 +48,9 @@ export function ExperienceSection() {
                   )}
                 </div>
               </div>
-            </div>
+            </Reveal>
           ))}
-        </div>
+        </RevealGroup>
       </div>
     </section>
   );

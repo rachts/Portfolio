@@ -9,7 +9,7 @@ export function Footer() {
     <footer className="border-t border-[#E5E5E5] py-16 bg-[#F5F5F7] text-black">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div className="space-y-1">
-          <p className="text-base font-bold tracking-tight">
+          <p className="text-base font-medium tracking-tight">
             Rachit Kumar Tiwari
           </p>
           <p className="text-xs text-[#737373]">

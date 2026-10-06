@@ -1,5 +1,6 @@
 import React from "react";
 import { Project } from "../data/projects";
+import { PanelReveal } from "./motion-reveal";
 
 interface FeaturedProjectCardProps {
   project: Project;
@@ -7,10 +8,10 @@ interface FeaturedProjectCardProps {
 
 export function FeaturedProjectCard({ project }: FeaturedProjectCardProps) {
   return (
-    <div className="bg-white rounded-2xl border border-[#E8E8E8] p-8 md:p-10 shadow-sm transition-shadow duration-300 hover:shadow-md">
+    <PanelReveal className="project-card-lift bg-white rounded-2xl p-8 md:p-10">
       {/* Card Header */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8 pb-6 border-b border-[#E8E8E8]">
-        <h3 className="text-[28px] font-bold tracking-tight text-black">
+        <h3 className="text-[28px] font-medium tracking-tight text-black">
           {project.title}
         </h3>
         <div className="flex flex-wrap gap-2">
@@ -31,7 +32,7 @@ export function FeaturedProjectCard({ project }: FeaturedProjectCardProps) {
         {/* LEFT COLUMN: Architecture Details */}
         <div className="space-y-8">
           <div>
-            <h4 className="text-xs font-semibold tracking-[0.08em] uppercase text-black mb-3 pb-2 border-b border-[#E5E5E5]">
+            <h4 className="text-xs font-medium tracking-[0.08em] uppercase text-black mb-3 pb-2 border-b border-[#E5E5E5]">
               The Problem
             </h4>
             <p className="text-base text-[#525252] leading-relaxed">
@@ -41,7 +42,7 @@ export function FeaturedProjectCard({ project }: FeaturedProjectCardProps) {
 
           {project.tradeoffs && (
             <div>
-              <h4 className="text-xs font-semibold tracking-[0.08em] uppercase text-black mb-3 pb-2 border-b border-[#E5E5E5]">
+              <h4 className="text-xs font-medium tracking-[0.08em] uppercase text-black mb-3 pb-2 border-b border-[#E5E5E5]">
                 Tradeoffs
               </h4>
               <p className="text-base text-[#525252] leading-relaxed">
@@ -52,7 +53,7 @@ export function FeaturedProjectCard({ project }: FeaturedProjectCardProps) {
 
           {project.security && (
             <div>
-              <h4 className="text-xs font-semibold tracking-[0.08em] uppercase text-black mb-3 pb-2 border-b border-[#E5E5E5]">
+              <h4 className="text-xs font-medium tracking-[0.08em] uppercase text-black mb-3 pb-2 border-b border-[#E5E5E5]">
                 Security
               </h4>
               <p className="text-base text-[#525252] leading-relaxed">
@@ -62,7 +63,7 @@ export function FeaturedProjectCard({ project }: FeaturedProjectCardProps) {
           )}
 
           <div>
-            <h4 className="text-xs font-semibold tracking-[0.08em] uppercase text-black mb-3 pb-2 border-b border-[#E5E5E5]">
+            <h4 className="text-xs font-medium tracking-[0.08em] uppercase text-black mb-3 pb-2 border-b border-[#E5E5E5]">
               Architecture & Solution
             </h4>
             <p className="text-base text-[#525252] leading-relaxed">
@@ -73,7 +74,7 @@ export function FeaturedProjectCard({ project }: FeaturedProjectCardProps) {
 
         {/* RIGHT COLUMN: Impact & Metrics */}
         <div className="bg-[#F8F8F8] rounded-xl p-6 md:p-8 h-fit">
-          <h4 className="text-xs font-semibold tracking-[0.08em] uppercase text-black mb-4 pb-2 border-b border-[#E5E5E5]">
+          <h4 className="text-xs font-medium tracking-[0.08em] uppercase text-black mb-4 pb-2 border-b border-[#E5E5E5]">
             Impact & Metrics
           </h4>
           
@@ -84,7 +85,7 @@ export function FeaturedProjectCard({ project }: FeaturedProjectCardProps) {
           <div className="space-y-6 mb-10">
             {project.metrics.map((metric, i) => (
               <div key={i}>
-                <div className="text-[32px] font-bold text-black tracking-tight">
+                <div className="text-[32px] font-medium text-black tracking-tight">
                   {metric.before && <span>{metric.before} → </span>}
                   {metric.after}
                 </div>
@@ -101,7 +102,7 @@ export function FeaturedProjectCard({ project }: FeaturedProjectCardProps) {
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between w-full bg-black text-white px-5 py-3.5 rounded-xl text-sm font-medium hover:bg-[#1a1a1a] transition-colors"
+                className="motion-button flex items-center justify-between w-full bg-black text-white px-5 py-3.5 rounded-xl text-sm font-medium hover:bg-[#1a1a1a] transition-colors"
               >
                 <span>LIVE DEMO</span>
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -115,7 +116,7 @@ export function FeaturedProjectCard({ project }: FeaturedProjectCardProps) {
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between w-full bg-[#E8E8E8] text-black px-5 py-3.5 rounded-xl text-sm font-medium hover:bg-[#D4D4D4] transition-colors"
+                className="motion-button flex items-center justify-between w-full bg-[#E8E8E8] text-black px-5 py-3.5 rounded-xl text-sm font-medium hover:bg-[#D4D4D4] transition-colors"
               >
                 <span>SOURCE CODE</span>
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -126,7 +127,7 @@ export function FeaturedProjectCard({ project }: FeaturedProjectCardProps) {
           </div>
         </div>
       </div>
-    </div>
+    </PanelReveal>
   );
 }
 

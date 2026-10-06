@@ -7,14 +7,19 @@ import { SkillsSection } from "../components/skills-section";
 import { ExperienceSection } from "../components/experience-section";
 import { ContactSection } from "../components/contact-section";
 import { Footer } from "../components/footer";
+import { TechMarquee } from "../components/tech-marquee";
+import { BootIntro } from "../components/boot-intro";
+import { BarcodeDivider } from "../components/motion-reveal";
 
 export function IndexPage() {
   return (
     <div className="min-h-screen bg-[var(--bg-page)] text-[var(--text-primary)] font-sans antialiased selection:bg-black selection:text-white flex flex-col relative">
+      <BootIntro />
+      <a href="#main-content" className="skip-link">Skip to content</a>
       {/* Navigation Header */}
       <Navbar />
 
-      <main className="flex-grow">
+      <main id="main-content" tabIndex={-1} className="flex-grow">
         {/* Hero Section */}
         <HeroSection />
 
@@ -24,8 +29,14 @@ export function IndexPage() {
         {/* About Section */}
         <AboutSection />
 
+        <BarcodeDivider className="mx-6 md:mx-12 lg:mx-20" />
+
         {/* Technologies & Skills */}
         <SkillsSection />
+
+        <TechMarquee />
+
+        <BarcodeDivider className="mx-6 md:mx-12 lg:mx-20" />
 
         {/* Experience Timeline */}
         <ExperienceSection />

@@ -1,5 +1,6 @@
-import React, { useState, useMemo } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import React, { useRef, useState, useMemo } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { MOTION_DURATION, MOTION_EASE, MOTION_STAGGER } from "../lib/motion";
 
 interface PixelRevealProps {
   children: React.ReactNode;
@@ -19,37 +20,70 @@ export function PixelReveal({
   className = "",
 }: PixelRevealProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+  const isRevealed = isHovered || isFocused;
   const prefersReducedMotion = useReducedMotion();
+  const frameRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: frameRef,
+    offset: ["start end", "end start"],
+  });
+  const imageY = useTransform(scrollYProgress, [0, 1], ["8%", "-8%"]);
+  const gridRows = Math.max(1, Math.min(rows, 6));
+  const gridCols = Math.max(1, Math.min(cols, 8));
 
   // Generate pixel grid data once
   const pixels = useMemo(() => {
-    return Array.from({ length: rows * cols }, (_, i) => ({
+    // Keep the reveal legible without starting hundreds of simultaneous animations.
+    const pixelCount = gridRows * gridCols;
+    return Array.from({ length: pixelCount }, (_, i) => ({
       id: i,
-      row: Math.floor(i / cols),
-      col: i % cols,
-      delay: Math.random() * 0.4,
+      row: Math.floor(i / gridCols),
+      col: i % gridCols,
+      delay: ((i * 37) % 5) * MOTION_STAGGER,
     }));
-  }, [rows, cols]);
+  }, [gridRows, gridCols]);
+
+  const setReveal = (visible: boolean) => setIsHovered(visible);
 
   return (
     <div
+      ref={frameRef}
       className={`relative overflow-hidden select-none ${className}`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      tabIndex={0}
+      aria-label={category ? `${category} project preview` : "Project preview"}
+      onMouseEnter={() => setReveal(true)}
+      onMouseLeave={() => setReveal(false)}
+      onFocus={() => setIsFocused(true)}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setIsFocused(false);
+      }}
     >
+      {image && (
+        <motion.div
+          aria-hidden="true"
+          className="absolute inset-[-8%] z-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${image})`, y: prefersReducedMotion ? 0 : imageY }}
+        />
+      )}
       {/* Revealed Content (Sits underneath in dark #0A0A0A panel) */}
-      <div className="absolute inset-0 z-0 bg-[#0A0A0A] text-white p-5 flex flex-col justify-between overflow-hidden">
+      <motion.div
+        className="absolute inset-0 z-[1] bg-[#0A0A0A] text-white p-5 flex flex-col justify-between overflow-hidden"
+        initial={false}
+        animate={{ opacity: isRevealed ? 1 : 0 }}
+        transition={{ duration: prefersReducedMotion ? 0 : MOTION_DURATION.fast, ease: MOTION_EASE }}
+      >
         {children}
-      </div>
+      </motion.div>
 
       {/* Fallback Watermark Text for placeholder cards when not hovered */}
       {!image && category && (
         <div
           className={`absolute inset-0 z-[5] flex items-center justify-center pointer-events-none transition-opacity duration-300 ${
-            isHovered ? "opacity-0" : "opacity-100"
+             isRevealed ? "opacity-0" : "opacity-100"
           }`}
         >
-          <span className="text-2xl font-bold text-[#A3A3A3] tracking-widest uppercase">
+          <span className="text-2xl font-medium text-[#A3A3A3] tracking-widest uppercase">
             {category}
           </span>
         </div>
@@ -59,8 +93,8 @@ export function PixelReveal({
       <div
         className="absolute inset-0 z-10 grid pointer-events-none"
         style={{
-          gridTemplateColumns: `repeat(${cols}, 1fr)`,
-          gridTemplateRows: `repeat(${rows}, 1fr)`,
+          gridTemplateColumns: `repeat(${gridCols}, 1fr)`,
+          gridTemplateRows: `repeat(${gridRows}, 1fr)`,
           gap: 0,
         }}
       >
@@ -70,32 +104,21 @@ export function PixelReveal({
           return (
             <motion.div
               key={pixel.id}
-              className="w-full h-full"
-              initial={{ opacity: 1, scale: 1 }}
-              animate={{
-                opacity: isHovered ? 0 : 1,
-                scale: isHovered ? 0 : 1,
-              }}
+              className="relative w-full h-full overflow-hidden"
+              initial={false}
+              animate={{ opacity: isRevealed ? 0 : 1 }}
               transition={{
-                duration: prefersReducedMotion ? 0.15 : 0.3,
+                duration: prefersReducedMotion ? 0 : MOTION_DURATION.fast,
                 delay: prefersReducedMotion
                   ? 0
-                  : isHovered
+                  : isRevealed
                   ? pixel.delay
                   : pixel.delay * 0.3,
-                ease: [0.22, 1, 0.36, 1],
+                ease: MOTION_EASE,
               }}
               style={{
-                willChange: "transform, opacity",
                 ...(isImagePixel
-                  ? {
-                      backgroundImage: `url(${image})`,
-                      backgroundSize: `${cols * 100}% ${rows * 100}%`,
-                      backgroundPosition: `${(pixel.col / (cols - 1)) * 100}% ${
-                        (pixel.row / (rows - 1)) * 100
-                      }%`,
-                      backgroundRepeat: "no-repeat",
-                    }
+                  ? {}
                   : {
                       backgroundColor:
                         pixel.id % 3 === 0
@@ -105,10 +128,18 @@ export function PixelReveal({
                           : "#E8E8E8",
                     }),
               }}
-            />
+            >
+            </motion.div>
           );
         })}
       </div>
+      <motion.div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-y-0 left-0 z-20 w-1/4 bg-[#F97316]/20"
+        initial={{ x: "-120%", opacity: 0 }}
+        animate={isRevealed && !prefersReducedMotion ? { x: "520%", opacity: [0, 1, 0] } : { x: "-120%", opacity: 0 }}
+        transition={{ duration: MOTION_DURATION.normal, ease: MOTION_EASE }}
+      />
     </div>
   );
 }

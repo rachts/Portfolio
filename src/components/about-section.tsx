@@ -1,4 +1,5 @@
 import React from "react";
+import { Reveal, RevealGroup } from "./motion-reveal";
 
 export function AboutSection() {
   return (
@@ -7,17 +8,17 @@ export function AboutSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
           
           {/* Left Column (Columns 1-5) */}
-          <div className="lg:col-span-5 space-y-4">
-            <span className="text-xs font-semibold uppercase tracking-[0.08em] text-[#737373] block">
+          <Reveal className="lg:col-span-5 space-y-4">
+            <span className="text-xs font-medium uppercase tracking-[0.08em] text-[#737373] block">
               About
             </span>
-            <h2 className="text-[36px] md:text-[42px] font-bold tracking-tight text-black leading-tight">
+            <h2 className="text-[36px] md:text-[42px] font-medium tracking-tight text-black leading-tight">
               I build systems that scale.
             </h2>
-          </div>
+          </Reveal>
 
           {/* Right Column (Columns 6-12) */}
-          <div className="lg:col-span-7 space-y-6">
+          <RevealGroup className="lg:col-span-7 space-y-6">
             <p className="text-lg text-[#525252] leading-relaxed">
               I am a software engineer focused on architecting deterministic backend services, low-latency distributed APIs, and reliable frontend applications. I approach engineering through the lens of performance, modular architecture, and human ergonomics.
             </p>
@@ -27,7 +28,7 @@ export function AboutSection() {
             <p className="text-lg text-[#525252] leading-relaxed">
               Whether writing high-throughput FastAPI services in Python, structuring state pipelines in TypeScript and React 19, or tuning database query latencies down to sub-millisecond bounds, my focus is always clarity, speed, and enduring craftsmanship.
             </p>
-          </div>
+          </RevealGroup>
 
         </div>
       </div>

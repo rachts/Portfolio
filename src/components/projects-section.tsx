@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { projects } from "../data/projects";
 import { FeaturedProjectCard } from "./featured-project-card";
 import { ArchiveProjectCard } from "./archive-project-card";
 import { ProjectFilters } from "./project-filters";
+import { Reveal, PanelReveal } from "./motion-reveal";
 
 export function ProjectsSection() {
   const featuredProjects = projects.filter((p) => p.featured);
@@ -11,6 +12,7 @@ export function ProjectsSection() {
   // Extract all unique categories
   const categories = ["ALL", ...Array.from(new Set(projects.map((p) => p.category.toUpperCase())))];
   const [activeCategory, setActiveCategory] = useState("ALL");
+  const reduced = useReducedMotion();
 
   const filteredProjects =
     activeCategory === "ALL"
@@ -22,20 +24,20 @@ export function ProjectsSection() {
       {/* 1. SYSTEMS ARCHITECTURE (FEATURED DEEP DIVES) */}
       <section className="py-12 md:py-20">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <div className="mb-4">
-            <h2 className="text-[42px] font-bold tracking-tight text-black mb-4">
+          <Reveal className="mb-4">
+            <h2 className="text-[42px] font-medium tracking-tight text-black mb-4">
               Systems Architecture
             </h2>
             <p className="text-lg text-[#525252] max-w-[600px] leading-relaxed">
               Deep dives into flagship engineering problems, architectural decisions, and the 
               resulting impact. Built for scale, resilience, and user experience.
             </p>
-          </div>
+          </Reveal>
 
           {/* Featured Projects Stack */}
           <div className="space-y-8 mt-12">
             {featuredProjects.map((project) => (
-              <FeaturedProjectCard key={project.id} project={project} />
+              <PanelReveal key={project.id}><FeaturedProjectCard project={project} /></PanelReveal>
             ))}
           </div>
         </div>
@@ -45,14 +47,14 @@ export function ProjectsSection() {
       <section className="py-12 md:py-20 border-t border-[#E5E5E5]">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-10">
-            <div>
-              <h2 className="text-[42px] font-bold tracking-tight text-black mb-4">
+             <Reveal>
+              <h2 className="text-[42px] font-medium tracking-tight text-black mb-4">
                 Project Archives
               </h2>
               <p className="text-lg text-[#525252] max-w-[500px] leading-relaxed">
                 A comprehensive overview of systems built, algorithms optimized, and products delivered.
               </p>
-            </div>
+             </Reveal>
           </div>
           
           {/* Filter Pills */}
@@ -63,19 +65,17 @@ export function ProjectsSection() {
           />
           
           {/* Grid */}
-          <motion.div 
-            layout
+          <motion.div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
           >
-            <AnimatePresence>
+            <AnimatePresence initial={false}>
               {filteredProjects.map((project) => (
                 <motion.div
                   key={project.id}
-                  layout
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
-                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  initial={reduced ? false : { opacity: 0, y: 15 }}
+                  animate={reduced ? undefined : { opacity: 1, y: 0 }}
+                  exit={reduced ? undefined : { opacity: 0, scale: 0.98 }}
+                  transition={reduced ? { duration: 0 } : { duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <ArchiveProjectCard project={project} />
                 </motion.div>

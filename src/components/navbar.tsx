@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const NAV_ITEMS = [
@@ -10,37 +10,18 @@ const NAV_ITEMS = [
 ];
 
 export function Navbar() {
-  const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY && currentScrollY > 80) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
-      }
-      setLastScrollY(currentScrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 h-16 transition-transform duration-300 ${
-          isVisible ? "translate-y-0" : "-translate-y-full"
-        } bg-white/80 backdrop-blur-sm border-b border-[#E5E5E5]`}
+        className="fixed top-0 left-0 right-0 z-50 h-16 bg-white/80 backdrop-blur-sm border-b border-[#E5E5E5]"
       >
         <div className="max-w-7xl h-full mx-auto px-6 md:px-12 lg:px-20 flex items-center justify-between">
           {/* Name */}
           <a
             href="#"
-            className="font-semibold text-base text-black tracking-tight hover:opacity-75 transition-opacity"
+            className="font-medium text-base text-black tracking-tight hover:opacity-75 transition-opacity"
           >
             Rachit Kumar Tiwari
           </a>
@@ -51,7 +32,7 @@ export function Navbar() {
               <a
                 key={item.label}
                 href={item.href}
-                className="text-sm font-medium text-[#525252] hover:text-black transition-colors"
+                className="motion-link text-sm font-medium text-[#525252] hover:text-black transition-colors"
               >
                 {item.label}
               </a>
@@ -61,7 +42,7 @@ export function Navbar() {
               href="https://mail.google.com/mail/?view=cm&fs=1&to=tiwari.rachit@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-black text-white text-xs font-medium px-4 py-2 rounded-xl hover:bg-[#1a1a1a] transition-colors"
+              className="motion-button bg-black text-white text-xs font-medium px-4 py-2 rounded-xl hover:bg-[#1a1a1a] transition-colors"
             >
               Get in Touch
             </a>
@@ -69,7 +50,9 @@ export function Navbar() {
 
           {/* Mobile Hamburger Button */}
           <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation"
             className="md:hidden p-2 text-black hover:opacity-75 transition-opacity cursor-pointer"
             aria-label="Toggle navigation menu"
           >
@@ -93,9 +76,10 @@ export function Navbar() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
             className="fixed inset-0 z-40 bg-white flex flex-col justify-between pt-28 pb-12 px-8 md:hidden"
+            id="mobile-navigation"
           >
             <div className="flex flex-col space-y-6">
-              <span className="text-xs font-semibold uppercase tracking-widest text-[#737373]">
+              <span className="text-xs font-medium uppercase tracking-widest text-[#737373]">
                 Navigation
               </span>
               {NAV_ITEMS.map((item, idx) => (
@@ -106,7 +90,7 @@ export function Navbar() {
                   transition={{ delay: idx * 0.06 }}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-3xl font-bold text-black hover:text-[#525252] transition-colors"
+                  className="text-3xl font-medium text-black hover:text-[#525252] transition-colors"
                 >
                   {item.label}
                 </motion.a>
@@ -114,7 +98,7 @@ export function Navbar() {
             </div>
 
             <div className="pt-8 border-t border-[#E5E5E5] space-y-3">
-              <span className="text-xs font-semibold uppercase tracking-widest text-[#737373] block">
+              <span className="text-xs font-medium uppercase tracking-widest text-[#737373] block">
                 Direct Contact
               </span>
               <a
