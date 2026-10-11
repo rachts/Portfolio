@@ -1,34 +1,16 @@
 import React, { Suspense } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { Magnetic } from "./magnetic";
-import { projects } from "../data/projects";
 
-const HeroScene = React.lazy(() => import("./hero-scene").then((module) => ({ default: module.HeroScene })));
+const InfinityHero = React.lazy(() => import("./infinity-hero").then((module) => ({ default: module.InfinityHero })));
 
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const [sceneActive, setSceneActive] = useState(true);
-  const [desktopScene, setDesktopScene] = useState(false);
-  const reducedMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
   const headlineY = useTransform(scrollYProgress, [0, 1], [0, -52]);
   const headlineOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
   const sceneOpacity = useTransform(scrollYProgress, [0, 0.85, 1], [0.48, 0.2, 0]);
-  useEffect(() => {
-    const element = sectionRef.current;
-    if (!element) return;
-    const observer = new IntersectionObserver(([entry]) => setSceneActive(entry.isIntersecting), { rootMargin: "120px" });
-    observer.observe(element);
-    return () => observer.disconnect();
-  }, []);
-  useEffect(() => {
-    const query = window.matchMedia("(min-width: 768px) and (prefers-reduced-motion: no-preference)");
-    const update = () => setDesktopScene(query.matches);
-    update();
-    query.addEventListener("change", update);
-    return () => query.removeEventListener("change", update);
-  }, []);
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
@@ -41,15 +23,18 @@ export function HeroSection() {
 
   return (
     <section ref={sectionRef} className="relative min-h-[85vh] overflow-hidden pt-32 pb-16 flex flex-col justify-between max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-       <motion.div className="pointer-events-none absolute inset-y-12 right-0 hidden min-h-[26rem] w-[48%] md:block" style={{ opacity: sceneOpacity }} aria-hidden="true">
-         {desktopScene && !reducedMotion && sceneActive && (
-           <Suspense fallback={<div className="h-full w-full bg-[radial-gradient(circle_at_center,#262626_0%,transparent_62%)]" />}>
-             <HeroScene progress={scrollYProgress} active />
-           </Suspense>
-         )}
-       </motion.div>
-      <motion.div className="relative z-10 my-auto space-y-8" style={{ y: headlineY, opacity: headlineOpacity }}>
-        <div className="space-y-3">
+       <motion.div className="absolute right-[2%] top-24 hidden min-h-[26rem] w-[39%] md:block" style={{ opacity: sceneOpacity }}>
+         <Suspense fallback={<div className="h-full w-full rounded-[2rem] bg-[#0A0A0A]" />}>
+           <InfinityHero />
+         </Suspense>
+        </motion.div>
+       <div className="relative z-10 mt-8 md:hidden">
+         <Suspense fallback={<div className="h-80 rounded-[2rem] bg-[#0A0A0A]" />}>
+           <InfinityHero />
+         </Suspense>
+       </div>
+       <motion.div className="relative z-10 my-auto max-w-full space-y-8 md:max-w-[58%]" style={{ y: headlineY, opacity: headlineOpacity }}>
+         <div className="space-y-3">
           <span className="text-xs font-medium uppercase tracking-[0.08em] text-[#737373] block">
             Software Engineer & Systems Architect
           </span>
@@ -58,9 +43,9 @@ export function HeroSection() {
           </h1>
          </div>
          <div className="mt-8 flex flex-wrap items-end gap-8 font-mono text-[11px] uppercase tracking-[0.18em] text-[#666]" aria-label="Portfolio telemetry">
-           <span><strong className="font-normal text-[#ff5a1f]">{projects.length}</strong> projects</span>
-           <span><strong className="font-normal text-[#ff5a1f]">31+</strong> public repos</span>
-           <span><strong className="font-normal text-[#ff5a1f]">3,300+</strong> contributions</span>
+           <span><strong className="font-normal text-[#ff5a1f]">48</strong> public repos</span>
+           <span><strong className="font-normal text-[#ff5a1f]">3,859</strong> contributions</span>
+           <span><strong className="font-normal text-[#ff5a1f]">1</strong> star received</span>
          </div>
          <svg className="mt-8 h-16 w-56 text-[#ff5a1f]" viewBox="0 0 224 64" fill="none" aria-hidden="true">
            <path d="M4 52H220M16 52A100 100 0 0 1 208 52" stroke="currentColor" strokeWidth="1" strokeDasharray="3 5" pathLength="1" className="hero-gauge-path" />

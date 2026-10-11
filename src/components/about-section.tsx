@@ -23,7 +23,7 @@ export function AboutSection() {
               I am a software engineer focused on architecting deterministic backend services, low-latency distributed APIs, and reliable frontend applications. I approach engineering through the lens of performance, modular architecture, and human ergonomics.
             </p>
             <p className="text-lg text-[#525252] leading-relaxed">
-              Over the past four years, I've designed and deployed production systems across healthcare pharmacology, SaaS financial solvency, real-time audio analytics, and computer vision. I prioritize deterministic engines over unconstrained models, ensuring absolute reliability for mission-critical workflows.
+              Over the past two years, I've designed and deployed production systems across healthcare pharmacology, SaaS financial solvency, real-time audio analytics, and computer vision. I prioritize deterministic engines over unconstrained models, ensuring absolute reliability for mission-critical workflows.
             </p>
             <p className="text-lg text-[#525252] leading-relaxed">
               Whether writing high-throughput FastAPI services in Python, structuring state pipelines in TypeScript and React 19, or tuning database query latencies down to sub-millisecond bounds, my focus is always clarity, speed, and enduring craftsmanship.

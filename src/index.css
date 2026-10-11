@@ -206,6 +206,16 @@
 
 :root { --motion-ease: cubic-bezier(0.22, 1, 0.36, 1); }
 
+.infinity-mark {
+  filter: drop-shadow(0 16px 12px rgba(88, 26, 10, 0.18));
+  transform: perspective(900px) rotateX(12deg) rotateY(-8deg);
+  transform-origin: center;
+}
+
+@media (max-width: 767px) {
+  .infinity-mark { transform: none; }
+}
+
 .hero-gauge-path {
   stroke-dashoffset: 1;
   animation: hero-gauge-draw 0.9s var(--motion-ease) forwards;

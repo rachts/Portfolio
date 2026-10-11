@@ -14,7 +14,7 @@ export interface ExperienceItem {
 
 export const experiencesData: ExperienceItem[] = [
   {
-    id: "vitamend",
+    id: "VITAMEND",
     role: "Founder & Lead Systems Architect",
     company: "Vitamend",
     period: "2024 — Present",
@@ -33,8 +33,8 @@ export const experiencesData: ExperienceItem[] = [
   {
     id: "systems-eng",
     role: "Full-Stack Systems Engineer & Product Builder",
-    company: "Independent / Stealth Projects",
-    period: "2024 — Present",
+    company: "Independent / Freelance Projects",
+    period: "2025 — Present",
     location: "Remote",
     current: true,
     summary: "Building high-performance SaaS tools and clinical pharmacology intelligence engines.",

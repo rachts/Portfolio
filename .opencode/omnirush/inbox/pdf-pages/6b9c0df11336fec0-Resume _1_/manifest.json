@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "sha256": "6b9c0df11336fec08fea9de64d28c27ca3b5ac5280e67669773d3afb903cf978",
+  "filename": "Resume _1_.pdf",
+  "pageCount": 1,
+  "textPages": 1,
+  "textBudgetExhausted": false,
+  "pagesWithoutText": [],
+  "renderedPages": [
+    {
+      "page": 1,
+      "width": 1108,
+      "height": 1566,
+      "bytes": 311842,
+      "mime": "image/png",
+      "fileName": "page-001.png"
+    }
+  ],
+  "renderBudgetExhausted": false
+}
