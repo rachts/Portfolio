@@ -19,8 +19,8 @@ export function AboutSection() {
 
           {/* Right Column (Columns 6-12) */}
           <RevealGroup className="lg:col-span-7 space-y-6">
-            <p className="text-lg text-[#525252] leading-relaxed">
-              I am a software engineer focused on architecting deterministic backend services, low-latency distributed APIs, and reliable frontend applications. I approach engineering through the lens of performance, modular architecture, and human ergonomics.
+           <p className="text-lg text-[#525252] leading-relaxed">
+              I'm Rachit Tiwari, a software developer in Kolkata and B.Tech CSE student at MCKV Institute of Engineering. I build full-stack web apps and take on freelance web development projects.
             </p>
             <p className="text-lg text-[#525252] leading-relaxed">
               Over the past two years, I've designed and deployed production systems across healthcare pharmacology, SaaS financial solvency, real-time audio analytics, and computer vision. I prioritize deterministic engines over unconstrained models, ensuring absolute reliability for mission-critical workflows.

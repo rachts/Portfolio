@@ -38,9 +38,10 @@ export function HeroSection() {
           <span className="text-xs font-medium uppercase tracking-[0.08em] text-[#737373] block">
             Software Engineer & Systems Architect
           </span>
-          <h1 className="text-[clamp(3rem,8vw,6.5rem)] font-medium tracking-tight text-black leading-[1.02]">
-            Rachit Kumar Tiwari
-          </h1>
+           <h1 className="text-[clamp(3rem,8vw,6.5rem)] font-medium tracking-tight text-black leading-[1.02]">
+             Rachit Tiwari
+           </h1>
+           <p className="text-base text-[#525252]">Software developer in Kolkata building full-stack web apps.</p>
          </div>
          <div className="mt-8 flex flex-wrap items-end gap-8 font-mono text-[11px] uppercase tracking-[0.18em] text-[#666]" aria-label="Portfolio telemetry">
            <span><strong className="font-normal text-[#ff5a1f]">48</strong> public repos</span>
@@ -71,7 +72,7 @@ export function HeroSection() {
           </button>
 
           <a
-            href="/resume.pdf"
+            href="https://drive.google.com/file/d/1VZ8CnQdSzF9B3DEpfSfJLlMGEvfP-CiC/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="motion-button bg-white text-black border border-[#D4D4D4] px-5 py-3 rounded-xl text-sm font-medium hover:bg-[#F5F5F5] transition-colors"

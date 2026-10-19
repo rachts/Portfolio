@@ -5,48 +5,79 @@
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0A0A0A" />
-    <title>Rachit Kumar Tiwari | Full-Stack Developer Portfolio</title>
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Rachit Kumar Tiwari" />
+    <title>Rachit Tiwari | Software Developer in Kolkata</title>
     
     <!-- Primary Meta Tags -->
-    <meta name="description" content="Rachit Tiwari is a full-stack developer from Kolkata and B.Tech CSE student, building products with React, TypeScript, and Node. Explore his portfolio work." />
+    <meta name="description" content="Rachit Kumar Tiwari (Rachit Developer) is a software developer in Kolkata building full-stack apps with React and Node.js. Explore projects and freelance work." />
     <link rel="canonical" href="https://portfolio-rachts.vercel.app/" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_IN" />
     <meta property="og:url" content="https://portfolio-rachts.vercel.app/" />
-    <meta property="og:title" content="Rachit Kumar Tiwari | Full-Stack Developer Portfolio" />
-    <meta property="og:description" content="Rachit Tiwari is a full-stack developer from Kolkata and B.Tech CSE student, building products with React, TypeScript, and Node. Explore his portfolio work." />
+    <meta property="og:title" content="Rachit Tiwari | Software Developer in Kolkata" />
+    <meta property="og:description" content="Software developer in Kolkata building full-stack web apps. Projects, freelance work and hackathon wins." />
     <meta property="og:image" content="https://portfolio-rachts.vercel.app/og.png" />
     <meta property="og:image:alt" content="Rachit Kumar Tiwari | Full-Stack Developer Portfolio" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://portfolio-rachts.vercel.app/" />
-    <meta name="twitter:title" content="Rachit Kumar Tiwari | Full-Stack Developer Portfolio" />
-    <meta name="twitter:description" content="Rachit Tiwari is a full-stack developer from Kolkata and B.Tech CSE student, building products with React, TypeScript, and Node. Explore his portfolio work." />
+    <meta name="twitter:title" content="Rachit Tiwari | Software Developer in Kolkata" />
+    <meta name="twitter:description" content="Software developer in Kolkata building full-stack web apps. Projects, freelance work and hackathon wins." />
     <meta name="twitter:image" content="https://portfolio-rachts.vercel.app/og.png" />
+    <meta name="twitter:creator" content="@rachts" />
 
     <!-- Schema.org Markup -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Rachit Kumar Tiwari",
-      "alternateName": "Rachit Tiwari",
-      "url": "https://portfolio-rachts.vercel.app/",
-      "jobTitle": "Full-Stack Developer",
-      "alumniOf": {
-        "@type": "CollegeOrUniversity",
-        "name": "MCKV Institute of Engineering"
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Kolkata",
-        "addressCountry": "IN"
-      },
-      "sameAs": [
-        "https://github.com/rachts",
-        "https://www.linkedin.com/in/rachitkrtiwari"
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://portfolio-rachts.vercel.app/#website",
+          "name": "Rachit Tiwari | Software Developer in Kolkata",
+          "url": "https://portfolio-rachts.vercel.app/",
+          "inLanguage": "en-IN",
+          "publisher": { "@id": "https://portfolio-rachts.vercel.app/#person" }
+        },
+        {
+          "@type": "ProfilePage",
+          "@id": "https://portfolio-rachts.vercel.app/#profile",
+          "url": "https://portfolio-rachts.vercel.app/",
+          "name": "Rachit Tiwari | Software Developer in Kolkata",
+          "isPartOf": { "@id": "https://portfolio-rachts.vercel.app/#website" },
+          "mainEntity": { "@id": "https://portfolio-rachts.vercel.app/#person" }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://portfolio-rachts.vercel.app/#person",
+          "name": "Rachit Kumar Tiwari",
+          "alternateName": ["Rachit Tiwari", "Rachit Developer", "rachts"],
+          "url": "https://portfolio-rachts.vercel.app/",
+          "jobTitle": "Software Developer",
+          "description": "Software developer in Kolkata and B.Tech CSE student building full-stack web apps with React and Node.js.",
+          "image": "https://portfolio-rachts.vercel.app/hero-profile.jpg",
+          "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "MCKV Institute of Engineering"
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Kolkata",
+            "addressRegion": "West Bengal",
+            "addressCountry": "IN"
+          },
+          "sameAs": [
+            "https://github.com/rachts",
+            "https://www.linkedin.com/in/rachitkrtiwari"
+          ],
+          "knowsAbout": ["React", "Node.js", "TypeScript", "FastAPI", "Full-stack web development"]
+        }
       ]
     }
     </script>
@@ -55,6 +86,15 @@
   </head>
   <body class="bg-[#f9f9f9] text-[#1a1c1c] antialiased">
     <div id="root"></div>
+    <noscript>
+      <main>
+        <h1>Rachit Tiwari</h1>
+        <p>Rachit Kumar Tiwari is a software developer in Kolkata and B.Tech CSE student at MCKV Institute of Engineering. He builds full-stack web apps with React, TypeScript, Node.js and FastAPI, and takes on freelance web development projects.</p>
+        <h2>Software development portfolio</h2>
+        <p>Explore Rachit Tiwari&apos;s projects, software engineering work, freelance web development and hackathon wins.</p>
+        <p><a href="https://github.com/rachts">GitHub profile</a> · <a href="https://www.linkedin.com/in/rachitkrtiwari">LinkedIn profile</a> · <a href="/resume.pdf">Resume</a></p>
+      </main>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

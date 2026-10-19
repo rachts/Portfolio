@@ -10,7 +10,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div className="space-y-1">
           <p className="text-base font-medium tracking-tight">
-             Rachit Kumar Tiwari (Rachit Tiwari)
+             © Rachit Tiwari · Rachit Kumar Tiwari
           </p>
           <p className="text-xs text-[#737373]">
             © {new Date().getFullYear()} All rights reserved. Built with Next.js 15 & React 19.
@@ -19,7 +19,7 @@ export function Footer() {
 
         <div className="flex items-center gap-6 text-sm text-[#525252]">
           <a
-            href="/resume.pdf"
+             href="https://drive.google.com/file/d/1VZ8CnQdSzF9B3DEpfSfJLlMGEvfP-CiC/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-black transition-colors"

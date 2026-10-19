@@ -1,0 +1,17 @@
+# Rachit Tiwari — Software Developer in Kolkata
+
+> Rachit Kumar Tiwari (Rachit Tiwari, Rachit Developer, GitHub: rachts) is a software developer in Kolkata and B.Tech CSE student at MCKV Institute of Engineering. He builds full-stack web apps with React, TypeScript, Node.js and FastAPI.
+
+## Portfolio
+- [Homepage](https://portfolio-rachts.vercel.app/): Portfolio of Rachit Tiwari, including software development projects, freelance web development work and contact details.
+- [GitHub](https://github.com/rachts): Public repositories and recent software development activity.
+- [LinkedIn](https://www.linkedin.com/in/rachitkrtiwari): Professional profile.
+- [Resume](https://portfolio-rachts.vercel.app/resume.pdf): Current resume with skills, project experience and education.
+
+## Key facts
+- Name: Rachit Kumar Tiwari
+- Alternate names: Rachit Tiwari, Rachit Developer, rachts
+- Role: Software Developer / Full-Stack Developer
+- Location: Kolkata, West Bengal, India
+- Education: B.Tech in Computer Science & Engineering, MCKV Institute of Engineering
+- Core technologies: React, TypeScript, Node.js, FastAPI, Python, PostgreSQL, MongoDB, Docker

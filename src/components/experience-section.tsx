@@ -39,6 +39,11 @@ export function ExperienceSection() {
                   <p className="text-base text-[#525252] leading-relaxed pt-1">
                     {role.description || role.summary}
                   </p>
+                  {role.tech.length > 0 && (
+                    <p className="text-sm text-[#737373] leading-relaxed pt-1">
+                      <span className="font-medium text-[#525252]">Skills:</span> {role.tech.join(", ")}
+                    </p>
+                  )}
                   {role.achievements && role.achievements.length > 0 && (
                     <ul className="space-y-1 text-sm text-[#737373] list-disc list-inside pt-1">
                       {role.achievements.map((item: string, aIdx: number) => (
