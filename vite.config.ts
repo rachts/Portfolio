@@ -2,7 +2,7 @@ import { defineConfig, loadEnv, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import tailwindcss from '@tailwindcss/vite';
 import path from 'path';
-import chatHandler from './api/chat';
+import { handleChatRequest } from './api/chat';
 
 function localChatApi(): Plugin {
   return {
@@ -31,32 +31,24 @@ function localChatApi(): Plugin {
         request.on('end', async () => {
           if (bodyTooLarge || response.writableEnded) return;
 
-          let body: unknown;
           try {
-            body = JSON.parse(rawBody);
-          } catch {
-            response.statusCode = 400;
-            response.setHeader('Content-Type', 'application/json');
-            response.end(JSON.stringify({ error: 'Invalid JSON body.' }));
-            return;
-          }
+            const headers = new Headers();
+            for (const [name, value] of Object.entries(request.headers)) {
+              if (typeof value === 'string') headers.set(name, value);
+              else if (Array.isArray(value)) headers.set(name, value.join(', '));
+            }
 
-          const requestWithBody = Object.assign(request, { body });
-          const responseAdapter = {
-            setHeader: response.setHeader.bind(response),
-            status(code: number) {
-              response.statusCode = code;
-              return responseAdapter;
-            },
-            json(payload: unknown) {
-              response.setHeader('Content-Type', 'application/json');
-              response.end(JSON.stringify(payload));
-              return responseAdapter;
-            },
-          };
+            const requestUrl = `http://${request.headers.host ?? 'localhost'}${request.url ?? '/api/chat'}`;
+            const webRequest = new Request(requestUrl, {
+              method: 'POST',
+              headers,
+              body: rawBody,
+            });
+            const webResponse = await handleChatRequest(webRequest);
 
-          try {
-            await chatHandler(requestWithBody, responseAdapter);
+            response.statusCode = webResponse.status;
+            webResponse.headers.forEach((value, name) => response.setHeader(name, value));
+            response.end(Buffer.from(await webResponse.arrayBuffer()));
           } catch (error) {
             console.error('Local chat API failed', error);
             if (!response.writableEnded) {

@@ -57,7 +57,7 @@ The assistant should answer as a grounded portfolio representative for Rachit Ti
 - For medical topics, describe VitaMend/MEDCHECK as software projects only; do not provide medical advice.
 - For contact or hiring questions, direct visitors to the visible contact section and published profile links.
 
-The implementation is in `api/chat.ts`. It applies a small per-instance rate limit, validates messages, injects the grounded portfolio persona, and forwards requests to Groq using `openai/gpt-oss-120b`.
+The implementation is in `api/chat.ts`. It exports Vercel's standard `fetch` handler, applies a small per-instance rate limit, validates messages, injects the grounded portfolio persona, and forwards requests to Groq using `openai/gpt-oss-120b`.
 
 ## Local testing
 

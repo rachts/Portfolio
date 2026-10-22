@@ -58,13 +58,13 @@ Rules:
 Portfolio context:
 ${portfolioContext}`;
 
-function getClientKey(request: any): string {
-  const forwardedFor = request.headers?.["x-forwarded-for"];
-  if (typeof forwardedFor === "string" && forwardedFor.length > 0) {
+function getClientKey(request: Request): string {
+  const forwardedFor = request.headers.get("x-forwarded-for");
+  if (forwardedFor) {
     return forwardedFor.split(",")[0].trim();
   }
 
-  return request.headers?.["x-real-ip"] ?? "unknown-client";
+  return request.headers.get("x-real-ip") ?? "unknown-client";
 }
 
 function isRateLimited(clientKey: string): boolean {
@@ -110,24 +110,33 @@ function normalizeMessages(value: unknown): ChatMessage[] | null {
   return normalized;
 }
 
-export default async function handler(request: any, response: any) {
+export async function handleChatRequest(request: Request): Promise<Response> {
   if (request.method !== "POST") {
-    response.setHeader("Allow", "POST");
-    return response.status(405).json({ error: "Method not allowed." });
+    return Response.json(
+      { error: "Method not allowed." },
+      { status: 405, headers: { Allow: "POST" } },
+    );
   }
 
   if (isRateLimited(getClientKey(request))) {
-    return response.status(429).json({ error: "Too many requests. Please try again shortly." });
+    return Response.json({ error: "Too many requests. Please try again shortly." }, { status: 429 });
   }
 
   const apiKey = process.env.GROQ_API_KEY;
   if (!apiKey) {
-    return response.status(503).json({ error: "Chat service is not configured." });
+    return Response.json({ error: "Chat service is not configured." }, { status: 503 });
   }
 
-  const messages = normalizeMessages(request.body?.messages);
+  let body: { messages?: unknown };
+  try {
+    body = (await request.json()) as { messages?: unknown };
+  } catch {
+    return Response.json({ error: "Invalid JSON body." }, { status: 400 });
+  }
+
+  const messages = normalizeMessages(body.messages);
   if (!messages) {
-    return response.status(400).json({ error: "Invalid messages payload." });
+    return Response.json({ error: "Invalid messages payload." }, { status: 400 });
   }
 
   try {
@@ -149,18 +158,22 @@ export default async function handler(request: any, response: any) {
     const payload = await groqResponse.json().catch(() => null);
     if (!groqResponse.ok) {
       console.error("Groq chat request failed", groqResponse.status, payload?.error?.message ?? "unknown error");
-      return response.status(502).json({ error: "The assistant is temporarily unavailable." });
+      return Response.json({ error: "The assistant is temporarily unavailable." }, { status: 502 });
     }
 
     const reply = payload?.choices?.[0]?.message?.content;
     if (typeof reply !== "string" || !reply.trim()) {
       console.error("Groq chat response did not include text content");
-      return response.status(502).json({ error: "The assistant returned an invalid response." });
+      return Response.json({ error: "The assistant returned an invalid response." }, { status: 502 });
     }
 
-    return response.status(200).json({ reply: reply.trim() });
+    return Response.json({ reply: reply.trim() });
   } catch (error) {
     console.error("Groq chat request failed", error instanceof Error ? error.message : "unknown error");
-    return response.status(502).json({ error: "The assistant is temporarily unavailable." });
+    return Response.json({ error: "The assistant is temporarily unavailable." }, { status: 502 });
   }
 }
+
+export const runtime = "nodejs";
+
+export default { fetch: handleChatRequest };
