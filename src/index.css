@@ -40,7 +40,7 @@
     color: var(--text-primary);
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+    overflow-x: clip;
     margin: 0;
     padding: 0;
   }
@@ -50,6 +50,29 @@
     color: #FFFFFF;
   }
 }
+
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.75'/%3E%3C/svg%3E");
+}
+
+.hero-aurora {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 75% 24%, rgba(255, 90, 31, 0.12), transparent 24%), radial-gradient(circle at 50% 70%, rgba(10, 10, 10, 0.05), transparent 28%);
+  filter: blur(24px);
+  animation: aurora-drift 12s ease-in-out infinite alternate;
+}
+
+.tech-pill { transition: transform 180ms var(--motion-ease), box-shadow 180ms var(--motion-ease), color 180ms var(--motion-ease); }
+.tech-pill:hover { transform: translateY(-2px) scale(1.04); box-shadow: 0 5px 16px rgba(255, 90, 31, 0.18); color: #ff5a1f; }
+
+@keyframes aurora-drift { from { transform: translate3d(-1%, -1%, 0) scale(1); } to { transform: translate3d(1%, 2%, 0) scale(1.06); } }
 
 /* Typography Scale */
 .page-title {
@@ -241,4 +264,6 @@
   }
 
   .hero-gauge-path { animation: none; stroke-dashoffset: 0; }
+  .hero-aurora { animation: none; }
+  .tech-pill:hover { transform: none; box-shadow: none; }
 }

@@ -9,10 +9,15 @@ export function TechMarquee() {
   const reduced = useReducedMotion();
   const [paused, setPaused] = useState(false);
   const copy = [...STACK, ...STACK];
-  return <div ref={ref} className="overflow-hidden border-y border-[#E5E5E5] py-3" aria-label="Technology stack">
-    <motion.div onHoverStart={() => setPaused(true)} onHoverEnd={() => setPaused(false)} className="flex w-max whitespace-nowrap font-mono text-[11px] uppercase tracking-[0.18em] text-[#737373]" style={{ willChange: active && !reduced && !paused ? "transform" : undefined }} animate={active && !reduced && !paused ? { x: ["0%", "-50%"] } : { x: 0 }} transition={active && !reduced && !paused ? { duration: 28, ease: MOTION_EASE, repeat: Infinity } : { duration: 0 }}>
-      {copy.map((name, index) => <React.Fragment key={`${name}-${index}`}><span aria-hidden={index >= STACK.length} className="px-4">{name}</span><span aria-hidden>/</span></React.Fragment>)}
-    </motion.div>
-    <style>{`@media (prefers-reduced-motion: reduce){.tech-marquee-track{animation:none!important}}`}</style>
+  const row = (direction: "forward" | "reverse") => <motion.div
+    onHoverStart={() => setPaused(true)} onHoverEnd={() => setPaused(false)}
+    className="flex w-max whitespace-nowrap font-mono text-[11px] uppercase tracking-[0.18em] text-[#737373]"
+    style={{ willChange: active && !reduced && !paused ? "transform" : undefined }}
+    animate={active && !reduced && !paused ? { x: direction === "forward" ? ["0%", "-50%"] : ["-50%", "0%"] } : { x: direction === "forward" ? 0 : "-50%" }}
+    transition={active && !reduced && !paused ? { duration: direction === "forward" ? 28 : 34, ease: MOTION_EASE, repeat: Infinity } : { duration: 0 }}
+  >{copy.map((name, index) => <React.Fragment key={`${direction}-${name}-${index}`}><span aria-hidden={index >= STACK.length} className="px-4">{name}</span><span aria-hidden>/</span></React.Fragment>)}</motion.div>;
+  return <div ref={ref} className="overflow-hidden border-y border-[#E5E5E5] py-3 space-y-2" aria-label="Technology stack">
+    {row("forward")}
+    {row("reverse")}
   </div>;
 }

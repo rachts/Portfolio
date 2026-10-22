@@ -2,6 +2,8 @@ import React, { Suspense } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Magnetic } from "./magnetic";
+import { HeroTerminal } from "./hero-terminal";
+import { ContributionGraph } from "./contribution-graph";
 
 const InfinityHero = React.lazy(() => import("./infinity-hero").then((module) => ({ default: module.InfinityHero })));
 
@@ -23,17 +25,22 @@ export function HeroSection() {
 
   return (
     <section ref={sectionRef} className="relative min-h-[85vh] overflow-hidden pt-32 pb-16 flex flex-col justify-between max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-       <motion.div className="absolute right-[2%] top-24 hidden min-h-[26rem] w-[39%] md:block" style={{ opacity: sceneOpacity }}>
-         <Suspense fallback={<div className="h-full w-full rounded-[2rem] bg-[#0A0A0A]" />}>
-           <InfinityHero />
-         </Suspense>
-        </motion.div>
-       <div className="relative z-10 mt-8 md:hidden">
-         <Suspense fallback={<div className="h-80 rounded-[2rem] bg-[#0A0A0A]" />}>
-           <InfinityHero />
-         </Suspense>
-       </div>
-       <motion.div className="relative z-10 my-auto max-w-full space-y-8 md:max-w-[58%]" style={{ y: headlineY, opacity: headlineOpacity }}>
+       <div className="hero-aurora" aria-hidden="true" />
+         <div className="absolute right-[2%] top-20 hidden w-[39%] max-w-[38rem] flex-col gap-4 md:flex">
+           <motion.div className="w-full" style={{ opacity: sceneOpacity }}>
+             <Suspense fallback={<div className="h-full w-full rounded-[2rem] bg-[#0A0A0A]" />}>
+               <InfinityHero />
+             </Suspense>
+           </motion.div>
+           <HeroTerminal className="w-full" />
+         </div>
+        <div className="relative z-10 mx-auto mt-8 w-full md:hidden">
+          <Suspense fallback={<div className="h-80 rounded-[2rem] bg-[#0A0A0A]" />}>
+            <InfinityHero />
+          </Suspense>
+          <HeroTerminal className="mx-auto mt-4 w-full max-w-[38rem]" />
+        </div>
+       <motion.div className="relative z-10 mt-10 max-w-full space-y-8 md:my-auto md:mt-0 md:max-w-[58%]" style={{ y: headlineY, opacity: headlineOpacity }}>
          <div className="space-y-3">
           <span className="text-xs font-medium uppercase tracking-[0.08em] text-[#737373] block">
             Software Engineer & Systems Architect
@@ -43,11 +50,14 @@ export function HeroSection() {
            </h1>
            <p className="text-base text-[#525252]">Software developer in Kolkata building full-stack web apps.</p>
          </div>
-         <div className="mt-8 flex flex-wrap items-end gap-8 font-mono text-[11px] uppercase tracking-[0.18em] text-[#666]" aria-label="Portfolio telemetry">
+          <div className="mt-8 flex flex-wrap items-end gap-8 font-mono text-[11px] uppercase tracking-[0.18em] text-[#666]" aria-label="Portfolio telemetry">
            <span><strong className="font-normal text-[#ff5a1f]">48</strong> public repos</span>
            <span><strong className="font-normal text-[#ff5a1f]">3,859</strong> contributions</span>
            <span><strong className="font-normal text-[#ff5a1f]">1</strong> star received</span>
-         </div>
+          </div>
+          <div className="mt-5 flex flex-col gap-4 sm:flex-row sm:items-start">
+            <ContributionGraph />
+          </div>
          <svg className="mt-8 h-16 w-56 text-[#ff5a1f]" viewBox="0 0 224 64" fill="none" aria-hidden="true">
            <path d="M4 52H220M16 52A100 100 0 0 1 208 52" stroke="currentColor" strokeWidth="1" strokeDasharray="3 5" pathLength="1" className="hero-gauge-path" />
            <path d="M112 52V44" stroke="currentColor" strokeWidth="1" />
@@ -64,30 +74,25 @@ export function HeroSection() {
             <button onClick={() => scrollToSection("work")} className="motion-button bg-black text-white px-6 py-3 rounded-xl text-sm font-medium hover:bg-[#1a1a1a] transition-colors cursor-pointer">View Projects</button>
           </Magnetic>
 
-          <button
-            onClick={() => scrollToSection("contact")}
-            className="motion-button bg-white text-black border border-[#D4D4D4] px-6 py-3 rounded-xl text-sm font-medium hover:bg-[#F5F5F5] transition-colors cursor-pointer"
-          >
-            Contact
-          </button>
+           <Magnetic><button onClick={() => scrollToSection("contact")} className="motion-button bg-white text-black border border-[#D4D4D4] px-6 py-3 rounded-xl text-sm font-medium hover:bg-[#F5F5F5] transition-colors cursor-pointer">Contact</button></Magnetic>
 
-          <a
+           <Magnetic><a
             href="https://drive.google.com/file/d/1VZ8CnQdSzF9B3DEpfSfJLlMGEvfP-CiC/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="motion-button bg-white text-black border border-[#D4D4D4] px-5 py-3 rounded-xl text-sm font-medium hover:bg-[#F5F5F5] transition-colors"
           >
             Resume (PDF)
-          </a>
+           </a></Magnetic>
 
-          <a
+           <Magnetic><a
             href="/cv.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="motion-button bg-white text-black border border-[#D4D4D4] px-5 py-3 rounded-xl text-sm font-medium hover:bg-[#F5F5F5] transition-colors"
           >
             CV (PDF)
-          </a>
+           </a></Magnetic>
         </div>
       </motion.div>
 

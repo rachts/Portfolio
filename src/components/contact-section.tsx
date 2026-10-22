@@ -5,10 +5,14 @@ import { Reveal, RevealGroup } from "./motion-reveal";
 export function ContactSection() {
   const [copied, setCopied] = useState(false);
 
-  const copyEmail = () => {
-    navigator.clipboard.writeText("tiwari.rachit@gmail.com");
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2500);
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText("tiwari.rachit@gmail.com");
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2500);
+    } catch {
+      setCopied(false);
+    }
   };
 
   return (
@@ -36,10 +40,11 @@ export function ContactSection() {
             className="motion-link text-[24px] sm:text-[32px] font-medium text-black hover:opacity-75 transition-opacity flex items-center gap-3 cursor-pointer text-left"
           >
             <span>tiwari.rachit@gmail.com</span>
-            <span className="text-xs font-medium px-3 py-1 bg-[#F2F2F2] rounded-full text-[#525252]">
-              {copied ? "Copied!" : "Copy"}
+            <span className="text-xs font-medium px-3 py-1 bg-[#F2F2F2] rounded-full text-[#525252] inline-flex items-center gap-1.5 min-w-[4.5rem] justify-center">
+              {copied ? <><svg className="w-3.5 h-3.5 text-[#ff5a1f]" viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true"><path d="m4 10 4 4 8-8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>Copied!</> : "Copy"}
             </span>
           </button></Magnetic>
+          <div role="status" aria-live="polite" className={`text-xs text-[#737373] transition-opacity ${copied ? "opacity-100" : "opacity-0"}`}>Email copied to clipboard.</div>
         </Reveal>
 
         {/* Social Links */}

@@ -25,9 +25,11 @@ export const experiencesData: ExperienceItem[] = [
     achievements: [
       "Researching and reaching out to prospective clients for software and IT services.",
       "Translating technical capabilities into clear pitches and proposals for non-technical decision-makers.",
-      "Working with the tech team to understand project scope, strengthening my view of how software is scoped and sold.",
+      "Working with the tech team to understand project scope, which strengthens my view of how software is scoped and sold.",
+      "Helping prospective clients turn ideas into MVPs by defining core features, prioritizing what to build first, and mapping a lean path from concept to a working product.",
+      "Building and demoing quick prototypes (React, full-stack web apps) to help clients visualize solutions before committing to full development",
     ],
-    tech: ["Business Development", "Client Communication", "Market Research"],
+    tech: ["Business Development", "Client Communication", "Market Research","MVP Development","Rapid Prototyping","Full-Stack Web Development","Product Scoping"],
     technologies: ["Business Development", "Client Communication", "Market Research"],
   },
   {

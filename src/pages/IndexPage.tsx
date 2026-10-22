@@ -10,11 +10,19 @@ import { Footer } from "../components/footer";
 import { TechMarquee } from "../components/tech-marquee";
 import { BootIntro } from "../components/boot-intro";
 import { BarcodeDivider } from "../components/motion-reveal";
+import { ScrollChrome } from "../components/scroll-chrome";
+import { CommandPalette } from "../components/command-palette";
+import { CustomCursor } from "../components/custom-cursor";
+import { ChatWidget } from "../components/chat-widget";
 
 export function IndexPage() {
   return (
     <div className="min-h-screen bg-[var(--bg-page)] text-[var(--text-primary)] font-sans antialiased selection:bg-black selection:text-white flex flex-col relative">
+      <div className="grain-overlay" aria-hidden="true" />
+      <CustomCursor />
       <BootIntro />
+      <ScrollChrome />
+      <CommandPalette />
       <a href="#main-content" className="skip-link">Skip to content</a>
       {/* Navigation Header */}
       <Navbar />
@@ -47,6 +55,7 @@ export function IndexPage() {
 
       {/* Minimal Footer */}
       <Footer />
+      <ChatWidget />
     </div>
   );
 }

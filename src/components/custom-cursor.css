@@ -1,0 +1,29 @@
+.custom-cursor {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  pointer-events: none;
+}
+
+.custom-cursor__dot,
+.custom-cursor__ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 999px;
+  transform: translate3d(-50%, -50%, 0);
+  pointer-events: none;
+}
+
+.custom-cursor__dot { width: 6px; height: 6px; background: #ff5a1f; }
+.custom-cursor__ring { width: 34px; height: 34px; border: 1px solid rgba(255, 90, 31, 0.55); }
+
+@media (pointer: fine) {
+  body:has(.custom-cursor) { cursor: none; }
+  body:has(.custom-cursor) a,
+  body:has(.custom-cursor) button { cursor: none; }
+}
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .custom-cursor { display: none; }
+}

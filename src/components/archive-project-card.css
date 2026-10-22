@@ -1,0 +1,36 @@
+.archive-card-tilt {
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  --highlight-x: 50%;
+  --highlight-y: 50%;
+  transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) translateY(0);
+  transform-style: preserve-3d;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.archive-card-tilt:hover,
+.archive-card-tilt:focus-within {
+  transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) translateY(-4px);
+}
+
+.archive-card-highlight {
+  background: radial-gradient(circle at var(--highlight-x) var(--highlight-y), rgba(255, 255, 255, 0.2), transparent 42%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.archive-card-tilt:hover .archive-card-highlight,
+.archive-card-tilt:focus-within .archive-card-highlight {
+  opacity: 1;
+}
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .archive-card-tilt,
+  .archive-card-tilt:hover,
+  .archive-card-tilt:focus-within {
+    transform: none;
+  }
+
+  .archive-card-highlight { display: none; }
+}

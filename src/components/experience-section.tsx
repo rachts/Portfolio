@@ -1,10 +1,36 @@
-import React from "react";
+import React, { useRef } from "react";
+import { motion, useReducedMotion, useScroll } from "framer-motion";
 import { experienceData, ExperienceItem } from "../data/experience";
 import { Reveal, RevealGroup } from "./motion-reveal";
 
-export function ExperienceSection() {
+function renderAchievement(item: string) {
+  const repository = "github.com/rachts/vitamend-org";
+  const repositoryIndex = item.indexOf(repository);
+
+  if (repositoryIndex === -1) return item;
+
   return (
-    <section id="experience" className="py-20 border-t border-[#E5E5E5]">
+    <>
+      {item.slice(0, repositoryIndex)}
+      <a
+        href={`https://${repository}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-medium text-[#ff5a1f] underline decoration-[#ffb08e] underline-offset-4 transition-colors hover:text-[#c43f12]"
+      >
+        {repository}
+      </a>
+      {item.slice(repositoryIndex + repository.length)}
+    </>
+  );
+}
+
+export function ExperienceSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const reduced = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start 70%", "end 70%"] });
+  return (
+    <section ref={sectionRef} id="experience" className="py-20 border-t border-[#E5E5E5]">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
         <Reveal className="mb-14">
           <span className="text-xs font-medium uppercase tracking-[0.08em] text-[#737373] block mb-3">
@@ -16,7 +42,9 @@ export function ExperienceSection() {
         </Reveal>
 
         {/* Timeline */}
-        <RevealGroup className="relative border-l border-[#E5E5E5] pl-6 sm:pl-8 space-y-12 ml-2">
+        <RevealGroup className="relative pl-6 sm:pl-8 space-y-12 ml-2">
+          <div className="absolute bottom-0 left-0 top-0 w-px bg-[#E5E5E5]" aria-hidden="true" />
+          <motion.div className="absolute left-0 top-0 w-px origin-top bg-[#ff5a1f]" style={{ height: "100%", scaleY: reduced ? 1 : scrollYProgress }} aria-hidden="true" />
           {experienceData.map((role: ExperienceItem) => (
             <Reveal key={role.id} className="relative">
               {/* Timeline dot */}
@@ -47,7 +75,7 @@ export function ExperienceSection() {
                   {role.achievements && role.achievements.length > 0 && (
                     <ul className="space-y-1 text-sm text-[#737373] list-disc list-inside pt-1">
                       {role.achievements.map((item: string, aIdx: number) => (
-                        <li key={aIdx}>{item}</li>
+                        <li key={aIdx}>{renderAchievement(item)}</li>
                       ))}
                     </ul>
                   )}

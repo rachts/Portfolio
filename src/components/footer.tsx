@@ -15,6 +15,9 @@ export function Footer() {
           <p className="text-xs text-[#737373]">
             © {new Date().getFullYear()} All rights reserved. Built with Next.js 15 & React 19.
           </p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#A3A3A3]">
+            Motion budget · transform / opacity first
+          </p>
         </div>
 
         <div className="flex items-center gap-6 text-sm text-[#525252]">
