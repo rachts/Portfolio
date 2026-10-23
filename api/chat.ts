@@ -1,6 +1,6 @@
-import { experiencesData } from "../src/data/experience";
-import { projects } from "../src/data/projects";
-import { skillsData } from "../src/data/skills";
+import { experiencesData } from "../src/data/experience.js";
+import { projects } from "../src/data/projects.js";
+import { skillsData } from "../src/data/skills.js";
 
 const MODEL = "openai/gpt-oss-120b";
 const GROQ_CHAT_URL = "https://api.groq.com/openai/v1/chat/completions";
