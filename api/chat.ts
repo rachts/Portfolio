@@ -1,7 +1,3 @@
-import { experiencesData } from "../src/data/experience.js";
-import { projects } from "../src/data/projects.js";
-import { skillsData } from "../src/data/skills.js";
-
 const MODEL = "openai/gpt-oss-120b";
 const GROQ_CHAT_URL = "https://api.groq.com/openai/v1/chat/completions";
 const MAX_MESSAGES = 12;
@@ -27,22 +23,32 @@ type RateLimitBucket = {
 
 const rateLimitBuckets = new Map<string, RateLimitBucket>();
 
-const portfolioContext = [
-  "Identity: Rachit Kumar Tiwari, also known as Rachit Tiwari or Rachit Developer.",
-  "Location and education: Software developer in Kolkata, India; B.Tech CSE student at MCKV Institute of Engineering.",
-  "About: Rachit builds full-stack systems with React, TypeScript, Node.js, Python, FastAPI, Next.js, databases, WebSockets, Git, CI/CD, and Docker. He favors clarity, speed, deterministic systems, and dependable craftsmanship.",
-  `Skills: ${skillsData.map((skill) => skill.name).join(", ")}.`,
-  "Experience:",
-  ...experiencesData.map(
-    (experience) =>
-      `- ${experience.role} at ${experience.company} (${experience.period}): ${experience.summary} Technologies and skills: ${experience.tech.join(", ")}. Highlights: ${experience.achievements.join(" ")}`,
-  ),
-  "Projects:",
-  ...projects.map(
-    (project) =>
-      `- ${project.title}: ${project.shortDescription} Architecture: ${project.architecture} Impact: ${project.impact} Technologies: ${project.tags.join(", ")}. GitHub: ${project.github ?? "not listed"}. Live site: ${project.liveUrl ?? "not listed"}.`,
-  ),
-].join("\n").slice(0, MAX_CONTEXT_LENGTH);
+const portfolioContext = `
+Identity: Rachit Kumar Tiwari, also known as Rachit Tiwari or Rachit Developer.
+Location and education: Software developer in Kolkata, India; B.Tech CSE student at MCKV Institute of Engineering.
+About: Rachit builds full-stack systems with React, TypeScript, Node.js, Python, FastAPI, Next.js, databases, WebSockets, Git, CI/CD, and Docker. He favors clarity, speed, deterministic systems, and dependable craftsmanship.
+Skills: TypeScript, React 19 / 18, Python 3.14, Node.js, FastAPI, Next.js, Tailwind CSS v4, PostgreSQL, SQLite (WAL), MongoDB, Docker, WebSockets, Git & CI/CD.
+
+Experience:
+- Business Development Intern at ByteHint IT Solutions · Internship (Oct 2026 — Present): Supporting business development for an IT services company, with a focus on understanding client needs in technology projects. Skills include business development, client communication, market research, MVP development, rapid prototyping, full-stack web development, and product scoping.
+- Freelance Web Developer at Freelancer.com · Freelance (Oct 2026 — Present): Building production websites for real clients, handling requirements, design, payments and delivery. Built a student-welfare NGO website covering membership, donations, scholarship and competition applications across 13 content sections; designed a 30-screen UI system; replaced a payment gateway with direct UPI and net-banking flows; built a Google Sheets and Apps Script backend for automated receipts.
+- Founder & Full-Stack Developer at VitaMend · Self-employed (Oct 2025 — Present): Founded and built an AI-assisted platform that lets people donate unused medicines safely, so they reach people in need instead of going to waste. Built the product end to end with FastAPI, OpenAI API, React and Next.js; developed OCR and AI verification for medicine details and expiry dates; designed donor, volunteer, NGO and admin workflows; open-sourced at github.com/rachts/vitamend-org.
+
+Projects:
+- Optrafi — Personal Finance Vault: Minimalist wealth dashboard with dynamic investment tiers and AI-driven delta analysis. Technologies: Next.js 15, MongoDB, jose JWT, Recharts, TypeScript. GitHub: https://github.com/rachts/optrafi. Live site: https://optra-fi.vercel.app/.
+- MEDCHECK — Clinical Pharmacology Engine: Deterministic medication safety platform analyzing multi-drug interactions and mucosal stress. Technologies: React 18, FastAPI, SQLite WAL, OpenFDA API, Tailwind CSS. GitHub: https://github.com/rachts/MEDCHECK. Live site: https://medcheck-official.vercel.app/.
+- VITALS.IO — SaaS Unit Economics Platform: Solvency modeling engine converting CSV exports into CAC/LTV sensitivity curves. Technologies: FastAPI, Pydantic, Jinja2, Chart.js, Tailwind CSS. GitHub: https://github.com/rachts/VITALS.IO. Live site: https://vitals-io.onrender.com/.
+- VitaMend — Medicine OCR & Redistribution: Automated OCR extraction pipeline connecting surplus medicines to community clinics. Technologies: Python, OpenCV, Tesseract OCR, Next.js, Node.js. GitHub: https://github.com/rachts/vitamend-org. Live site: https://vitamend-ngo.vercel.app/.
+- Vocalis — Real-Time Voice Streaming Analytics: Low-latency WebSocket speech pipeline for pacing, filler word detection and cadence. Technologies: Python 3.14, WebSockets, FastAPI, React, Tailwind CSS. GitHub: https://github.com/rachts/Vocalis. Live site: https://vocalis-va.vercel.app/.
+- WelcomeToMyCity — Emotion-First Spatial OS: Emotion-mapped urban spatial canvas with WebGL vector clustering. Technologies: Next.js 15, MapLibre GL, Supabase, Framer Motion. GitHub: https://github.com/rachts/welcometomycity. Live site: https://welcometomycity.vercel.app/.
+- Air Mouse — Gesture-Based Spatial Controller: 21-point hand tracking spatial cursor with Kalman jitter elimination. Technologies: Python, OpenCV, MediaPipe, Kalman Filter. GitHub: https://github.com/rachts/Air-mouse.
+- Gesture Media — Contactless Media System: Touchless vision-based media player controller with HUD feedback. Technologies: Python, MediaPipe, PyAutoGUI, OpenCV. GitHub: https://github.com/rachts/gesture-media-controller.
+- Kolkata Metro — Dijkstra Transit Pathfinder: Graph-based urban transit calculator with interactive SVG route breakdown. Technologies: Next.js 15, TypeScript, Dijkstra Algorithm, Tailwind CSS. GitHub: https://github.com/rachts/kolkata-metro. Live site: https://metro-kolkata.vercel.app/.
+- Restaurant Bot — Conversational Reservation Flow: Conversational table booking engine with live availability validation. Technologies: React 18, TypeScript, Radix UI, Tailwind CSS. GitHub: https://github.com/rachts/RESTAURANT-RESERVATION-BOT. Live site: https://restaurantreservation-bot.netlify.app/.
+- KredAI — Real-Time Fact Verification Engine: Automated claim verification platform querying live search APIs. Technologies: Next.js 15, Serper API, Fact Checking, Tailwind CSS. GitHub: https://github.com/rachts/khabri.ai. Live site: https://kredai.vercel.app/.
+- PrivSight — Computer Vision Privacy Shield: Face-tracking desktop application that blurs screens against shoulder surfing. Technologies: Python, OpenCV, Electron, Computer Vision. GitHub: https://github.com/rachts/privsight. Live site: https://privsight.vercel.app/.
+- DocEasy — Browser-Based Document Cloud: Privacy-first PDF utility suite with Supabase RLS and client-side processing. Technologies: Next.js 15, Supabase, pdf-lib, Tailwind CSS. GitHub: https://github.com/rachts/doceasy. Live site: https://doceasy-official.vercel.app/.
+`.slice(0, MAX_CONTEXT_LENGTH);
 
 const systemPrompt = `You are the portfolio assistant for Rachit Kumar Tiwari. Answer as a grounded, first-person representative of Rachit when discussing his work, experience, education, skills, projects, and engineering decisions.
 
