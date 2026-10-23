@@ -1,3 +1,5 @@
+import type { IncomingMessage as NodeIncomingMessage, ServerResponse } from "node:http";
+
 const MODEL = "openai/gpt-oss-120b";
 const GROQ_CHAT_URL = "https://api.groq.com/openai/v1/chat/completions";
 const MAX_MESSAGES = 12;
@@ -182,4 +184,58 @@ export async function handleChatRequest(request: Request): Promise<Response> {
 
 export const runtime = "nodejs";
 
-export default handleChatRequest;
+type VercelRequest = NodeIncomingMessage & { body?: unknown };
+
+function toHeaders(request: VercelRequest): Headers {
+  const headers = new Headers();
+
+  for (const [name, value] of Object.entries(request.headers)) {
+    if (typeof value === "string") headers.set(name, value);
+    else if (Array.isArray(value)) headers.set(name, value.join(", "));
+  }
+
+  return headers;
+}
+
+async function toWebRequest(request: VercelRequest): Promise<Request> {
+  const body =
+    request.body === undefined
+      ? await new Promise<string>((resolve, reject) => {
+          let rawBody = "";
+          request.setEncoding("utf8");
+          request.on("data", (chunk) => {
+            rawBody += chunk;
+          });
+          request.on("end", () => resolve(rawBody));
+          request.on("error", reject);
+        })
+      : typeof request.body === "string"
+        ? request.body
+        : JSON.stringify(request.body);
+
+  return new Request(`https://${request.headers.host ?? "localhost"}${request.url ?? "/api/chat"}`, {
+    method: request.method ?? "POST",
+    headers: toHeaders(request),
+    body: request.method === "GET" || request.method === "HEAD" ? undefined : body,
+  });
+}
+
+async function writeWebResponse(response: ServerResponse, webResponse: Response): Promise<void> {
+  response.statusCode = webResponse.status;
+  webResponse.headers.forEach((value, name) => response.setHeader(name, value));
+  response.end(Buffer.from(await webResponse.arrayBuffer()));
+}
+
+export default async function handler(request: VercelRequest, response: ServerResponse): Promise<void> {
+  try {
+    const webRequest = await toWebRequest(request);
+    await writeWebResponse(response, await handleChatRequest(webRequest));
+  } catch (error) {
+    console.error("Chat handler failed", error instanceof Error ? error.message : "unknown error");
+    if (!response.writableEnded) {
+      response.statusCode = 500;
+      response.setHeader("Content-Type", "application/json");
+      response.end(JSON.stringify({ error: "Chat service failed." }));
+    }
+  }
+}
