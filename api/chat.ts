@@ -176,4 +176,4 @@ export async function handleChatRequest(request: Request): Promise<Response> {
 
 export const runtime = "nodejs";
 
-export default { fetch: handleChatRequest };
+export default handleChatRequest;
