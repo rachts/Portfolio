@@ -4,7 +4,7 @@ import { projects } from "../data/projects";
 
 const destinations = [
   { label: "Work", id: "work" }, { label: "About", id: "about" }, { label: "Skills", id: "skills" },
-  { label: "Experience", id: "experience" }, { label: "Contact", id: "contact" },
+  { label: "Certifications", id: "certifications" }, { label: "Experience", id: "experience" }, { label: "Contact", id: "contact" },
 ];
 
 export function CommandPalette() {

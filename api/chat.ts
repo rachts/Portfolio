@@ -30,6 +30,7 @@ Identity: Rachit Kumar Tiwari, also known as Rachit Tiwari or Rachit Developer.
 Location and education: Software developer in Kolkata, India; B.Tech CSE student at MCKV Institute of Engineering.
 About: Rachit builds full-stack systems with React, TypeScript, Node.js, Python, FastAPI, Next.js, databases, WebSockets, Git, CI/CD, and Docker. He favors clarity, speed, deterministic systems, and dependable craftsmanship.
 Skills: TypeScript, React 19 / 18, Python 3.14, Node.js, FastAPI, Next.js, Tailwind CSS v4, PostgreSQL, SQLite (WAL), MongoDB, Docker, WebSockets, Git & CI/CD.
+HackerRank certifications: SQL (Basic), Python (Basic), Java (Basic), Problem Solving (Intermediate), SQL (Intermediate), SQL (Advanced), REST API (Intermediate), Problem Solving (Basic), Node.js (Intermediate), Node (Basic), JavaScript (Basic), CSS (Basic), JavaScript (Intermediate), and Software Engineer (role). Verified certificates are listed on https://www.hackerrank.com/profile/rachts.
 
 Experience:
 - Business Development Intern at ByteHint IT Solutions · Internship (Oct 2026 — Present): Supporting business development for an IT services company, with a focus on understanding client needs in technology projects. Skills include business development, client communication, market research, MVP development, rapid prototyping, full-stack web development, and product scoping.
